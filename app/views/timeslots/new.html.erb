@@ -1,0 +1,22 @@
+<%= form_with(model: Timeslot.new, local: true) do |f| %>
+    
+    <p>
+        <%= f.label :start_time %>
+        <%= f.time_select :start_time, minute_step: 30%>
+    </p>
+    
+    <p>
+        <%= f.label :end_time %>
+        <%= f.time_select :end_time, minute_step: 30%>
+    </p>
+
+    <p>
+        <%= f.label :count %>
+        <%= f.number_field :count, step: 10, min: 10, max: 60 %>
+    </p>
+
+    <%= f.hidden_field :event_id%>
+
+    <%= f.submit %>
+<% end %>
+
