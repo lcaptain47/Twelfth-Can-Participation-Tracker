@@ -8,7 +8,7 @@ class TimeslotsController < ApplicationController
     end
 
     def create
-        byebug
+        
         
         count = params[:timeslot][:count].to_i
 
@@ -26,12 +26,14 @@ class TimeslotsController < ApplicationController
         hours = start_time_hour
 
         while minutes <= end_time_minute || hours < end_time_hour
-
+            
             
             
             timeslot = Timeslot.new
 
             string_time = "#{hours}:#{minutes}"
+
+            
 
             timeslot.time = string_time
             timeslot.duration = count
@@ -41,7 +43,7 @@ class TimeslotsController < ApplicationController
             timeslot.save
 
 
-            if minutes == 60
+            if minutes == 50
                 minutes = 0
                 hours = hours + 1
             else

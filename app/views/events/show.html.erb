@@ -1,4 +1,10 @@
 <p>Name: <%= @event.name%> </p>
 <p>Date: <%= @event.date %></p>
 
+<% @timeslots.each do |timeslot| %>
+    <p>
+        <%= timeslot.time.strftime('%l:%M %P') %>: Claim
+    </p>
+<% end %>
+
 <%= link_to "Add Timeslots", new_timeslot_path(event_id: @event.id)%>
