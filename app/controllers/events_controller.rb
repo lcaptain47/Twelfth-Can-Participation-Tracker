@@ -14,10 +14,18 @@ class EventsController < ApplicationController
     end
 
     def new
-
+        @event = Event.new
     end
 
     def create
         byebug
+        @event = Event.new(params.require(:event).permit(:name,:date))
+
+        if @event.save
+            redirect_to @event
+        else
+            render 'new'
+        end
+        
     end
 end

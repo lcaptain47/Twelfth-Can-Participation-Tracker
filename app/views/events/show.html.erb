@@ -3,8 +3,13 @@
 
 <% @timeslots.each do |timeslot| %>
     <p>
-        <%= timeslot.time.strftime('%l:%M %P') %>: Claim
+        <%= timeslot.time.strftime('%l:%M %P') %>: <a href="#">Claim</a>
     </p>
 <% end %>
 
-<%= link_to "Add Timeslots", new_timeslot_path(event_id: @event.id)%>
+<p>
+    <%= link_to "Add Timeslots", new_timeslot_path(event_id: @event.id)%>
+</p>
+<p>
+    <%= link_to "Homepage", events_path %>
+</p>

@@ -1,3 +1,4 @@
+require 'time'
 class TimeslotsController < ApplicationController
 
     def new
@@ -25,6 +26,10 @@ class TimeslotsController < ApplicationController
         minutes = start_time_minute
         hours = start_time_hour
 
+        string_time = "#{hours}:#{minutes}"
+
+        
+
         while minutes <= end_time_minute || hours < end_time_hour
             
             
@@ -42,15 +47,18 @@ class TimeslotsController < ApplicationController
             
             timeslot.save
 
-
-            if minutes == 50
-                minutes = 0
+            byebug
+            if minutes + count >= 60
+                minutes = (minutes + count) - 60
                 hours = hours + 1
             else
                 minutes += count
             end
         end
 
+        @eventid = params[:timeslot][:event_id]
+        @eventExit = Event.find(@eventid)
+        redirect_to @eventExit
         
         
         

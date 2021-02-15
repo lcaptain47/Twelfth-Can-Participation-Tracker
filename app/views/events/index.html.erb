@@ -4,9 +4,11 @@
         <th>Date</th>
     </tr>
 
+    <%= link_to "New Event", new_event_path %>
+
     <% @events.each do |event| %>
         <tr>
-            <td><%= event.name %></td>    
+            <td><%= link_to event.name, event_path(event) %></td>    
             <td><%= event.date %></td>
         </tr>
     <% end %>
