@@ -1,8 +1,18 @@
 
 <p>Filler</p>
 
-<%= link_to "Log out", logout_path, method: :delete %>
-<%= link_to "Sign up", new_user_path %>
+<% if logged_in? %>
+
+    <%= link_to "Log out", logout_path, method: :delete %>
+
+<% else %>
+    <%= link_to "Log in", login_path%>
+    <%= link_to "Sign up", new_user_path %>
+
+<% end %>
+
+
+
 <table>
     <tr>
         <th>Name</th>

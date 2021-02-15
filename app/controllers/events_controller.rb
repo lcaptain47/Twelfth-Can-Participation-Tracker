@@ -2,7 +2,7 @@ class EventsController < ApplicationController
     def index
         #index
         @events = Event.all
-        byebug
+        
 
     end
 
