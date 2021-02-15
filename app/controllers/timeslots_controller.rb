@@ -1,10 +1,14 @@
 class TimeslotsController < ApplicationController
 
     def new
+        
+        @timeslot = Timeslot.new(event_id: params[:event_id])
+        @event = Event.find(params[:event_id])
 
     end
 
     def create
+        byebug
         
         count = params[:timeslot][:count].to_i
 
@@ -23,7 +27,7 @@ class TimeslotsController < ApplicationController
 
         while minutes <= end_time_minute || hours < end_time_hour
 
-            byebug
+            
             
             timeslot = Timeslot.new
 
@@ -31,6 +35,7 @@ class TimeslotsController < ApplicationController
 
             timeslot.time = string_time
             timeslot.duration = count
+            timeslot.event_id = params[:timeslot][:event_id]
 
             
             timeslot.save

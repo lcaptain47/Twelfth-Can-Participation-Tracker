@@ -1,4 +1,4 @@
-<%= form_with(model: Timeslot.new, local: true) do |f| %>
+<%= form_with(model: @timeslot, local: true) do |f| %>
     
     <p>
         <%= f.label :start_time %>
@@ -15,7 +15,7 @@
         <%= f.number_field :count, step: 10, min: 10, max: 60 %>
     </p>
 
-    <%= f.hidden_field :event_id%>
+    <%= f.hidden_field :event_id %>
 
     <%= f.submit %>
 <% end %>

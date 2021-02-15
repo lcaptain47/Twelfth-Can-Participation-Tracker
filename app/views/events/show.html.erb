@@ -1,2 +1,4 @@
 <p>Name: <%= @event.name%> </p>
 <p>Date: <%= @event.date %></p>
+
+<%= link_to "Add Timeslots", new_timeslot_path(event_id: @event.id)%>
