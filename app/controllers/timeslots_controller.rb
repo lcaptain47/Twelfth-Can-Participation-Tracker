@@ -28,32 +28,29 @@ class TimeslotsController < ApplicationController
 
         string_time = "#{hours}:#{minutes}"
 
+        end_time = Time.find_zone("UTC").parse("#{end_time_hour}:#{end_time_minute}")
+        
         
 
-        while minutes <= end_time_minute || hours < end_time_hour
-            
+        time = Time.find_zone("UTC").parse(string_time)
+
+        
+
+        while time <= end_time
             
             
             timeslot = Timeslot.new
 
-            string_time = "#{hours}:#{minutes}"
-
-            
-
-            timeslot.time = string_time
+            timeslot.time = time
             timeslot.duration = count
             timeslot.event_id = params[:timeslot][:event_id]
 
             
             timeslot.save
 
-            byebug
-            if minutes + count >= 60
-                minutes = (minutes + count) - 60
-                hours = hours + 1
-            else
-                minutes += count
-            end
+            
+
+            time = time + (count * 60)
         end
 
         @eventid = params[:timeslot][:event_id]

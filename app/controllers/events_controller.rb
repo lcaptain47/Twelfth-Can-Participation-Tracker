@@ -9,7 +9,6 @@ class EventsController < ApplicationController
         @event = Event.find(params[:id])
         @timeslots = @event.timeslots
         @timeslots = Timeslot.where(:event_id => params[:id]).order("time")
-        # byebug
         
     end
 
@@ -18,7 +17,6 @@ class EventsController < ApplicationController
     end
 
     def create
-        byebug
         @event = Event.new(params.require(:event).permit(:name,:date))
 
         if @event.save
