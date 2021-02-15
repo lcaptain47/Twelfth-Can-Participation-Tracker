@@ -1,7 +1,8 @@
 class EventsController < ApplicationController
     def index
-        #comments
+        #index
         @events = Event.all
+        byebug
 
     end
 
