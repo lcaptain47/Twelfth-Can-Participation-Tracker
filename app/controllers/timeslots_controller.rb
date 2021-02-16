@@ -16,9 +16,6 @@ class TimeslotsController < ApplicationController
     start_time_minute = params[:timeslot]['start_time(5i)'].to_i
     end_time_minute = params[:timeslot]['end_time(5i)'].to_i
 
-    # start_time_hour_in_minutes = (start_time_hour * 60) + start_time_minute
-    # end_time_hour_in_minutes = (end_time_hour * 60) + end_time_minute
-
     minutes = start_time_minute
     hours = start_time_hour
 
@@ -28,21 +25,27 @@ class TimeslotsController < ApplicationController
 
     time = Time.find_zone('UTC').parse(string_time)
 
-    while time <= end_time
+    if time > end_time || count < 10
+      redirect_to new_timeslot_path(event_id: params[:timeslot][:event_id])
+    else
+      while time <= end_time
 
-      timeslot = Timeslot.new
-
-      timeslot.time = time
-      timeslot.duration = count
-      timeslot.event_id = params[:timeslot][:event_id]
-
-      timeslot.save
-
-      time += (count * 60)
+        timeslot = Timeslot.new
+  
+        timeslot.time = time
+        timeslot.duration = count
+        timeslot.event_id = params[:timeslot][:event_id]
+  
+        timeslot.save
+  
+        time += (count * 60)
+      end
+  
+      @eventid = params[:timeslot][:event_id]
+      @eventExit = Event.find(@eventid)
+      redirect_to @eventExit
     end
 
-    @eventid = params[:timeslot][:event_id]
-    @eventExit = Event.find(@eventid)
-    redirect_to @eventExit
+    
   end
 end
