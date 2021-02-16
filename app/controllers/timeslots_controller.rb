@@ -54,21 +54,15 @@ class TimeslotsController < ApplicationController
   end
 
   def claim
-    
-
     timeslot = Timeslot.find(params[:id])
-    if timeslot.user != nil
+    if !timeslot.user.nil?
       @events = Event.all
       redirect_to events_path
     else
       timeslot.user = current_user
       timeslot.save
 
-      
       redirect_to event_path(timeslot.event)
     end
-    
-    
-
   end
 end
