@@ -2,6 +2,7 @@
 
 class User < ApplicationRecord
   before_save { self.email = email.downcase }
+  has_many :timeslots
 
   validates :first_name, presence: true, length: { minimum: 2, maximum: 30 }
   validates :last_name, presence: true, length: { minimum: 2, maximum: 30 }
