@@ -5,7 +5,7 @@
     <p>
         <%= timeslot.time.strftime('%l:%M %P') %>: 
         <% if timeslot.user == nil %>
-            <%= link_to "Claim", claim_path(timeslot), method: :put%>
+            <%= link_to "Claim", claim_path(timeslot), method: :post%>
         <% else %>
                 <%= timeslot.user.first_name %> <%= timeslot.user.last_name %>
         <% end %>
