@@ -1,21 +1,24 @@
 # frozen_string_literal: true
 
 class EventsController < ApplicationController
+  # Prepares events index page
   def index
-    # index
     @events = Event.all
   end
 
+  # Prepares show page of an event
   def show
     @event = Event.find(params[:id])
     @timeslots = @event.timeslots
     @timeslots = Timeslot.where(event_id: params[:id]).order('time')
   end
 
+  # Prepares form for a new event
   def new
     @event = Event.new
   end
 
+  # Creates event from input of new event form
   def create
     @event = Event.new(params.require(:event).permit(:name, :date))
 
