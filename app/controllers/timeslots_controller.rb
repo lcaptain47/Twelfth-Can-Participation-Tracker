@@ -54,14 +54,13 @@ class TimeslotsController < ApplicationController
   end
 
   def claim
-    flash[:notice] = "Claim function ran"
     timeslot = Timeslot.find(params[:id])
     if !timeslot.user.nil?
-      flash[:notice] = "Timeslot claimed"
+      flash[:notice] = "Timeslot is already claimed claimed"
       @events = Event.all
       redirect_to events_path
     else
-      flash[:notice] = current_user.first_name
+      flash[:notice] = "Timeslot claimed"
       timeslot.user = current_user
       timeslot.save
 
