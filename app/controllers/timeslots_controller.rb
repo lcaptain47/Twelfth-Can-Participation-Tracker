@@ -54,7 +54,7 @@ class TimeslotsController < ApplicationController
   end
 
   def claim
-    puts "I'M IN THE CLAIM FUNCTION"
+    flash[:notice] = "Claim function ran"
     timeslot = Timeslot.find(params[:id])
     if !timeslot.user.nil?
       @events = Event.all
