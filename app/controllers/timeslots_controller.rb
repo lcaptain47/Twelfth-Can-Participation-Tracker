@@ -31,21 +31,19 @@ class TimeslotsController < ApplicationController
       while time <= end_time
 
         timeslot = Timeslot.new
-  
+
         timeslot.time = time
         timeslot.duration = count
         timeslot.event_id = params[:timeslot][:event_id]
-  
+
         timeslot.save
-  
+
         time += (count * 60)
       end
-  
+
       @eventid = params[:timeslot][:event_id]
       @eventExit = Event.find(@eventid)
       redirect_to @eventExit
     end
-
-    
   end
 end
