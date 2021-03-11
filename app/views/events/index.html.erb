@@ -1,14 +1,7 @@
-<% if logged_in? %>
+<p>filler</p>
+<%= link_to "Sign Out", destroy_user_session_path %>
 
-    <%= link_to "Log out", logout_path, method: :delete %>
-
-<% else %>
-    <%= link_to "Log in", login_path%>
-    <%= link_to "Sign up", new_user_path %>
-
-<% end %>
-
-
+<%= current_user.full_name %>
 
 <table>
     <tr>

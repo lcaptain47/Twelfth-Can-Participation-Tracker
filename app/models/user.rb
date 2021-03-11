@@ -1,15 +1,10 @@
-# frozen_string_literal: true
-
 class User < ApplicationRecord
-  before_save { self.email = email.downcase }
-  has_many :timeslots
+  # Include default devise modules. Others available are:
+  # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
+  devise :omniauthable, omniauth_providers: [:google_oauth2]
 
-  validates :first_name, presence: true, length: { minimum: 2, maximum: 30 }
-  validates :last_name, presence: true, length: { minimum: 2, maximum: 30 }
-  EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-]+(\.[a-z]+)*\.[a-z]+\z/i.freeze
-  validates :email, presence: true,
-                    uniqueness: { case_sensitive: false },
-                    length: { maximum: 100 },
-                    format: { with: EMAIL_REGEX }
-  has_secure_password
+  def self.from_google(email:, full_name:, uid:, avatar_url:)
+    # return nil unless email =~ /@mybusiness.com\z/
+    create_with(uid: uid, full_name: full_name, avatar_url: avatar_url).find_or_create_by!(email: email)
+  end
 end

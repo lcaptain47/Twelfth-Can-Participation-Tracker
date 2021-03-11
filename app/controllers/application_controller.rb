@@ -5,7 +5,7 @@ class ApplicationController < ActionController::Base
 
   # Finds the user who is in the session hash
   # Uses ||= as to not query the database when not needed
-  def current_user
-    @current_user ||= User.find(session[:user_id]) if session[:user_id]
-  end
+  # def current_user
+  #   @current_user ||= User.find(session[:user_id]) if session[:user_id]
+  # end
 end
