@@ -1,5 +1,6 @@
 class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
     def google_oauth2
+      # byebug
       user = User.from_google(from_google_params)
   
       if user.present?
@@ -25,11 +26,12 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
     private
   
     def from_google_params
+      # byebug
       @from_google_params ||= {
-        uid: auth.uid,
-        email: auth.info.email,
-        full_name: auth.info.name,
-        avatar_url: auth.info.image
+        uid: auth[:uid],
+        email: auth[:info][:email],
+        full_name: auth[:info][:name],
+        avatar_url: auth[:info][:image]
       }
     end
   
