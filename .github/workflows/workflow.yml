@@ -1,0 +1,56 @@
+env:
+  RUBY_VERSION: 2.7.2
+  POSTGRES_USER: postgres
+  POSTGRES_PASSWORD: w3l2ltpw3f
+  POSTGRES_DB: postgres
+
+name: Rails tests
+on: 
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+jobs:
+  rspec-test:
+    name: RSpec
+    runs-on: ubuntu-18.04
+    services:
+      postgres:
+        image: postgres:12
+        ports:
+        - 5432:5432
+        env:
+          POSTGRES_USER: ${{ env.POSTGRES_USER }}
+          POSTGRES_PASSWORD: ${{ env.POSTGRES_PASSWORD }}
+    steps:
+      - uses: actions/checkout@v2
+      - uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: ${{ env.RUBY_VERSION }}
+      - name: Install postgres client
+        run: sudo apt-get install libpq-dev
+      - name: Install dependencies
+        run: |
+          gem install bundler
+          bundler install
+      - name: Create database
+        run: |
+          bundler exec rails db:create RAILS_ENV=test
+          bundler exec rails db:migrate RAILS_ENV=test
+      - uses: borales/actions-yarn@v2.3.0
+        with:
+          cmd: install
+      - name: Run tests
+        run: bundler exec rspec .
+  # deploy-to-heroku:
+  #   needs: rspec-test
+  #   runs-on: ubuntu-18.04
+  #   steps:
+  #     - uses: actions/checkout@v2
+  #     - uses: akhileshns/heroku-deploy@v3.0.0
+  #       if: contains(github.ref, 'main')
+  #       with:
+  #         heroku_api_key: ${{secrets.HEROKU_API_KEY}}
+  #         heroku_app_name: "whispering-inlet-58484"
+  #         heroku_email: "lcaptain47@tamu.edu"
+  #         usedocker: true
