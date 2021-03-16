@@ -31,6 +31,13 @@ rescue ActiveRecord::PendingMigrationError => e
   exit 1
 end
 RSpec.configure do |config|
+  config.before(:suite) do
+    Rails.application.load_seed
+  end
+
+  config.after(:suite) do
+    UserRole.destroy_all
+  end
   # Remove this line if you're not using ActiveRecord or ActiveRecord fixtures
   config.fixture_path = "#{::Rails.root}/spec/fixtures"
 

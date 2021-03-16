@@ -3,6 +3,12 @@ require 'faker'
 
 RSpec.describe 'Testing Google Oauth' do
 
+    it 'Prints out first role' do
+        puts UserRole.first.name
+        puts UserRole.first.id
+        puts UserRole.last.id
+    end
+
     it 'Redirects user to homepage, no matter where they go to if not logged in' do
         visit '/'
         expect(page).to have_content('Sign in')
@@ -24,6 +30,8 @@ RSpec.describe 'Testing Google Oauth' do
 
         OmniAuth.config.mock_auth[:google_oauth2] = Faker::Omniauth.google
         OmniAuth.config.mock_auth[:google_oauth2][:info][:name] = "Lucas Campbell"
+
+        
         
     end
     
