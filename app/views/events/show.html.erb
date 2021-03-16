@@ -7,8 +7,9 @@
         <% if timeslot.user == nil %>
             <%= link_to "Claim", claim_path(timeslot), method: :post%>
         <% else %>
-                <%= timeslot.user.first_name %> <%= timeslot.user.last_name %>
+                <%= timeslot.user.full_name%>
         <% end %>
+        
     </p>
 <% end %>
 
