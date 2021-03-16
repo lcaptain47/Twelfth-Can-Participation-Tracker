@@ -1,5 +1,7 @@
 <div class="container bg-overlay">
     <h2>You're Logged out! Log in to access the Twelth Can Participation Tracker</h2>
+    <%= UserRole.first.name %>
+    <%= UserRole.first.id %>
     <div class = "text-center">
         <%= link_to "Sign in with Google", user_google_oauth2_omniauth_authorize_path, :class => "btn btn-light" %>
     </div>
