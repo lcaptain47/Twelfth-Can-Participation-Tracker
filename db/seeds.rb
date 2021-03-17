@@ -8,3 +8,4 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 UserRole.create(name: 'Officer', can_create: true, can_delete: true)
+UserRole.create(name: 'User', can_create: false, can_delete: false)
