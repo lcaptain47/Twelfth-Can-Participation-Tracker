@@ -33,7 +33,8 @@ class TimeslotsController < ApplicationController
     if time > end_time || count < 10
       redirect_to new_timeslot_path(event_id: params[:timeslot][:event_id])
     else
-      # Creates timeslots by starting at start time and skip counting(using 'count' variable) to end time
+      # Creates timeslots by starting at start time and skip counting
+      # (using 'count' variable) to end time
       while time <= end_time
 
         timeslot = Timeslot.new
@@ -48,19 +49,19 @@ class TimeslotsController < ApplicationController
 
       # Redirects to the event page for the timslots' event
       @eventid = params[:timeslot][:event_id]
-      @eventExit = Event.find(@eventid)
-      redirect_to @eventExit
+      @event_exit = Event.find(@eventid)
+      redirect_to @event_exit
     end
   end
 
   def claim
     timeslot = Timeslot.find(params[:id])
     if !timeslot.user.nil?
-      flash[:notice] = "Timeslot is already claimed claimed"
+      flash[:notice] = 'Timeslot is already claimed claimed'
       @events = Event.all
       redirect_to events_path
     else
-      flash[:notice] = "Timeslot claimed"
+      flash[:notice] = 'Timeslot claimed'
       timeslot.user = current_user
       timeslot.save
 

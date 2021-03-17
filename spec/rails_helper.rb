@@ -1,9 +1,11 @@
+# frozen_string_literal: true
+
 # This file is copied to spec/ when you run 'rails generate rspec:install'
 require 'spec_helper'
 ENV['RAILS_ENV'] ||= 'test'
 require File.expand_path('../config/environment', __dir__)
 # Prevent database truncation if the environment is production
-abort("The Rails environment is running in production mode!") if Rails.env.production?
+abort('The Rails environment is running in production mode!') if Rails.env.production?
 require 'rspec/rails'
 # Add additional requires below this line. Rails is not loaded until this point!
 
@@ -32,8 +34,8 @@ rescue ActiveRecord::PendingMigrationError => e
 end
 RSpec.configure do |config|
   config.before(:suite) do
-    UserRole.create(name: "Officer", can_create: true, can_delete: true)
-    UserRole.create(name: "User", can_create: true, can_delete: true)
+    UserRole.create(name: 'Officer', can_create: true, can_delete: true)
+    UserRole.create(name: 'User', can_create: true, can_delete: true)
   end
 
   config.after(:suite) do
@@ -74,4 +76,4 @@ end
 # Capybara.default_driver = :selenium_chrome
 OmniAuth.config.test_mode = true
 OmniAuth.config.mock_auth[:google_oauth2] = Faker::Omniauth.google
-OmniAuth.config.mock_auth[:google_oauth2][:info][:name] = "Lucas Campbell"
+OmniAuth.config.mock_auth[:google_oauth2][:info][:name] = 'Lucas Campbell'
