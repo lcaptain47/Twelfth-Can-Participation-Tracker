@@ -1,10 +1,11 @@
 require 'rails_helper'
 
 RSpec.describe UserRole do
+
     it "is valid with valid input" do
         role = UserRole.new(name: "President", can_create: true, can_delete: true)
         expect(role).to be_valid
-        role = UserRole.new(name: "User", can_create: false, can_delete: false)
+        role = UserRole.new(name: "User1", can_create: false, can_delete: false)
         expect(role).to be_valid
     end
 

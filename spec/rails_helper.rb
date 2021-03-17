@@ -33,6 +33,7 @@ end
 RSpec.configure do |config|
   config.before(:suite) do
     UserRole.create(name: "Officer", can_create: true, can_delete: true)
+    UserRole.create(name: "User", can_create: true, can_delete: true)
   end
 
   config.after(:suite) do
