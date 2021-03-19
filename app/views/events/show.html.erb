@@ -9,7 +9,7 @@
         <% else %>
                 <%= timeslot.user.full_name%>
                 <% if timeslot.user.id == current_user.id || current_user.user_role.can_create %>
-                    <a href="#">Unclaim</a>
+                    <%= link_to "Unclaim", unclaim_path(timeslot), method: :post %>
                 <% end %>
         <% end %>
         

@@ -2,7 +2,7 @@ require 'rails_helper'
 require 'faker'
 
 RSpec.describe 'Tests unclaim and claim features' do
-    it 'Lets user claim timeslot' do
+    it 'Lets user claim and unclaim timeslot' do
         Event.create(name: "Test", date: "12-01-2021")
         Timeslot.create(time: "12:00", duration: 60, event: Event.first)
         visit '/'
@@ -11,6 +11,9 @@ RSpec.describe 'Tests unclaim and claim features' do
         click_link "Claim"
         expect(page).to have_content("Lucas Campbell")
         expect(page).to have_content("Unclaim")
+
+        click_link "Unclaim"
+        expect(page).to have_content("Claim")
  
     end
 
@@ -26,7 +29,7 @@ RSpec.describe 'Tests unclaim and claim features' do
         expect(page).to_not have_content('Unclaim')
     end
 
-    it 'Shows unclaim button if user is an officer' do
+    it 'Shows unclaim button if user is an officer and lets them unclaim it' do
         Event.create(name: "Test", date: "12-01-2021")
         test_user = Faker::Omniauth.google
         User.create(uid: test_user[:uid], full_name: test_user[:info][:name], email: test_user[:info][:email], avatar_url: test_user[:info][:image], user_role: UserRole.find_by(name: "User"), total_approved_hours: 0.0, total_unapproved_hours: 0.0)
@@ -38,7 +41,9 @@ RSpec.describe 'Tests unclaim and claim features' do
         visit '/'
         click_link 'Sign in'
         click_link "Test"
-        sleep 5
         expect(page).to have_content('Unclaim')
+        click_link 'Unclaim'
+        expect(page).to have_content('Claim')
     end
+
 end

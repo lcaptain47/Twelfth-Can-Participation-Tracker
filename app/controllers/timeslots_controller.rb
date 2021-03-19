@@ -80,4 +80,16 @@ class TimeslotsController < ApplicationController
       redirect_to event_path(timeslot.event)
     end
   end
+
+  def unclaim
+    timeslot = Timeslot.find(params[:id])
+    if current_user.id == timeslot.user_id || current_user.user_role.can_create 
+      timeslot.user = nil
+      timeslot.save
+
+      redirect_to event_path(timeslot.event)
+    else
+      redirect_to event_path(timeslot.event)
+    end
+  end
 end
