@@ -35,7 +35,7 @@ end
 RSpec.configure do |config|
   config.before(:suite) do
     UserRole.create(name: 'Officer', can_create: true, can_delete: true)
-    UserRole.create(name: 'User', can_create: true, can_delete: true)
+    UserRole.create(name: 'User', can_create: false, can_delete: false)
   end
 
   config.after(:suite) do
@@ -73,7 +73,7 @@ RSpec.configure do |config|
   # config.filter_gems_from_backtrace("gem name")
 end
 
-# Capybara.default_driver = :selenium_chrome
+Capybara.default_driver = :selenium_chrome
 OmniAuth.config.test_mode = true
 OmniAuth.config.mock_auth[:google_oauth2] = Faker::Omniauth.google
 OmniAuth.config.mock_auth[:google_oauth2][:info][:name] = 'Lucas Campbell'

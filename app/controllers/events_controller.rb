@@ -15,7 +15,13 @@ class EventsController < ApplicationController
 
   # Prepares form for a new event
   def new
-    @event = Event.new
+    if current_user.user_role.can_create
+      @event = Event.new
+    else
+      redirect_to events_path
+    end
+  
+    
   end
 
   # Creates event from input of new event form
