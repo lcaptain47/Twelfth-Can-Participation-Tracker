@@ -13,9 +13,16 @@
     </p>
 <% end %>
 
-<p>
-    <%= link_to "Add Timeslots", new_timeslot_path(event_id: @event.id)%>
-</p>
+<% if current_user.user_role.can_create %>
+    <p>
+        <%= link_to "Add Timeslots", new_timeslot_path(event_id: @event.id)%>
+    </p>
+<% end %>
+
+
+<% if current_user.user_role.can_delete %>
+    <%= link_to "Delete", event_path(@event), method: :delete %>
+<% end %>
 <p>
     <%= link_to "Homepage", events_path %>
 </p>

@@ -34,4 +34,20 @@ class EventsController < ApplicationController
       render 'new'
     end
   end
+
+  def destroy
+
+    if current_user.user_role.can_delete
+      @event = Event.find(params[:id])
+      @event.destroy
+      
+      @events = Event.all
+      redirect_to root_path
+    else
+      redirect_to event_path(@event)
+    end
+
+    
+    
+  end
 end

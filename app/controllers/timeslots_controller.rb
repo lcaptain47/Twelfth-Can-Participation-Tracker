@@ -4,12 +4,24 @@ require 'time'
 class TimeslotsController < ApplicationController
   # Prepares new timeslot form
   def new
-    @timeslot = Timeslot.new(event_id: params[:event_id])
     @event = Event.find(params[:event_id])
+
+    if !current_user.user_role.can_create
+      redirect_to event_path(@event)
+    end
+    @timeslot = Timeslot.new(event_id: params[:event_id])
+    
   end
 
   # Post Route function for timeslot
   def create
+    @event = Event.find(params[:timeslot][:event_id])
+    if !current_user.user_role.can_create
+      redirect_to event_path(@event)
+    end
+
+    
+
     # Used as increment
     count = params[:timeslot][:count].to_i
 
