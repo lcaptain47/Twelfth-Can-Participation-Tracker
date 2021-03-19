@@ -85,13 +85,5 @@ RSpec.describe 'Tests the user priviledges feature' do
         expect(page).to_not have_content('Start time')
     end
 
-    # it 'Lets user claim timeslot' do
-    #     Event.create(name: "Test", date: "12-01-2021")
-    #     Timeslot.create(time: "12:00", duration: 60, event: Event.first)
-    #     visit '/'
-    #     click_link 'Sign in'
-    #     click_link "Test"
-    #     click_link "Claim"
-    #     expect(page).to have_content("Lucas Campbell")
-    # end
+    
 end
