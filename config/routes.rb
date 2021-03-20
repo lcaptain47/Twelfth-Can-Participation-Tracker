@@ -21,4 +21,5 @@ Rails.application.routes.draw do
   # post 'login', to: 'sessions#create'
   # delete 'logout', to: 'sessions#destroy'
   post '/claim/:id', to: 'timeslots#claim', as: 'claim'
+  post '/unclaim/:id', to: 'timeslots#unclaim', as: 'unclaim'
 end

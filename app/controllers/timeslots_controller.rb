@@ -4,12 +4,24 @@ require 'time'
 class TimeslotsController < ApplicationController
   # Prepares new timeslot form
   def new
-    @timeslot = Timeslot.new(event_id: params[:event_id])
     @event = Event.find(params[:event_id])
+
+    if !current_user.user_role.can_create
+      redirect_to event_path(@event)
+    end
+    @timeslot = Timeslot.new(event_id: params[:event_id])
+    
   end
 
   # Post Route function for timeslot
   def create
+    @event = Event.find(params[:timeslot][:event_id])
+    if !current_user.user_role.can_create
+      redirect_to event_path(@event)
+    end
+
+    
+
     # Used as increment
     count = params[:timeslot][:count].to_i
 
@@ -33,7 +45,8 @@ class TimeslotsController < ApplicationController
     if time > end_time || count < 10
       redirect_to new_timeslot_path(event_id: params[:timeslot][:event_id])
     else
-      # Creates timeslots by starting at start time and skip counting(using 'count' variable) to end time
+      # Creates timeslots by starting at start time and skip counting
+      # (using 'count' variable) to end time
       while time <= end_time
 
         timeslot = Timeslot.new
@@ -48,22 +61,34 @@ class TimeslotsController < ApplicationController
 
       # Redirects to the event page for the timslots' event
       @eventid = params[:timeslot][:event_id]
-      @eventExit = Event.find(@eventid)
-      redirect_to @eventExit
+      @event_exit = Event.find(@eventid)
+      redirect_to @event_exit
     end
   end
 
   def claim
     timeslot = Timeslot.find(params[:id])
     if !timeslot.user.nil?
-      flash[:notice] = "Timeslot is already claimed claimed"
+      flash[:notice] = 'Timeslot is already claimed claimed'
       @events = Event.all
       redirect_to events_path
     else
-      flash[:notice] = "Timeslot claimed"
+      flash[:notice] = 'Timeslot claimed'
       timeslot.user = current_user
       timeslot.save
 
+      redirect_to event_path(timeslot.event)
+    end
+  end
+
+  def unclaim
+    timeslot = Timeslot.find(params[:id])
+    if current_user.id == timeslot.user_id || current_user.user_role.can_create 
+      timeslot.user = nil
+      timeslot.save
+
+      redirect_to event_path(timeslot.event)
+    else
       redirect_to event_path(timeslot.event)
     end
   end
