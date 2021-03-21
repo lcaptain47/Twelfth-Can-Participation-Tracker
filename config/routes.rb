@@ -16,6 +16,7 @@ Rails.application.routes.draw do
   root 'events#index'
   resources :events
   resources :timeslots
+  resources :users
   # resources :users
   # get 'login', to: 'sessions#new'
   # post 'login', to: 'sessions#create'
