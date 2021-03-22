@@ -82,8 +82,8 @@ test:
 # Read https://guides.rubyonrails.org/configuring.html#configuring-a-database
 # for a full overview on how database connection configuration can be specified.
 #
-production:
+# production:
   <<: *default
   database: twelth_can_production
-  username: twelth_can
-  password: <%= ENV['TWELTH_CAN_DATABASE_PASSWORD'] %>
+#   username: twelth_can
+#   password: <%= ENV['TWELTH_CAN_DATABASE_PASSWORD'] %>
