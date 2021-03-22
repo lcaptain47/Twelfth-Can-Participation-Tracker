@@ -7,7 +7,7 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :omniauthable, omniauth_providers: [:google_oauth2]
 
-  #Creates a user from google account info
+  # Creates a user from google account info
   def self.from_google(email:, full_name:, uid:, avatar_url:)
     create_with(uid: uid, full_name: full_name, avatar_url: avatar_url,
                 user_role_id: UserRole.find_by(name: 'User').id, total_approved_hours: 0.0,
