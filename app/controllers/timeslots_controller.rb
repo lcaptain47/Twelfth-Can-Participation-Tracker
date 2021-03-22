@@ -59,6 +59,7 @@ class TimeslotsController < ApplicationController
     end
   end
 
+  #Claims an unclaimed timeslot
   def claim
     timeslot = Timeslot.find(params[:id])
     if !timeslot.user.nil?
@@ -74,6 +75,7 @@ class TimeslotsController < ApplicationController
     end
   end
 
+  #Unclaims a claimed timeslot if the user owned it or if the user has the right permissions
   def unclaim
     timeslot = Timeslot.find(params[:id])
     if current_user.id == timeslot.user_id || current_user.user_role.can_create
