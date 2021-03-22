@@ -85,5 +85,5 @@ test:
 # production:
   <<: *default
   database: twelth_can_production
-  username: postgres
-  password: w3l2ltpw3f
+  username: twelth_can
+  password: <%= ENV['TWELTH_CAN_DATABASE_PASSWORD'] %>
