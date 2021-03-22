@@ -20,8 +20,6 @@ class EventsController < ApplicationController
     else
       redirect_to events_path
     end
-  
-    
   end
 
   # Creates event from input of new event form
@@ -35,19 +33,16 @@ class EventsController < ApplicationController
     end
   end
 
+  # Deletes event if user has permissions to
   def destroy
-
     if current_user.user_role.can_delete
       @event = Event.find(params[:id])
       @event.destroy
-      
+
       @events = Event.all
       redirect_to root_path
     else
       redirect_to event_path(@event)
     end
-
-    
-    
   end
 end
