@@ -6,21 +6,14 @@ class TimeslotsController < ApplicationController
   def new
     @event = Event.find(params[:event_id])
 
-    if !current_user.user_role.can_create
-      redirect_to event_path(@event)
-    end
+    redirect_to event_path(@event) unless current_user.user_role.can_create
     @timeslot = Timeslot.new(event_id: params[:event_id])
-    
   end
 
   # Post Route function for timeslot
   def create
     @event = Event.find(params[:timeslot][:event_id])
-    if !current_user.user_role.can_create
-      redirect_to event_path(@event)
-    end
-
-    
+    redirect_to event_path(@event) unless current_user.user_role.can_create
 
     # Used as increment
     count = params[:timeslot][:count].to_i
@@ -83,13 +76,10 @@ class TimeslotsController < ApplicationController
 
   def unclaim
     timeslot = Timeslot.find(params[:id])
-    if current_user.id == timeslot.user_id || current_user.user_role.can_create 
+    if current_user.id == timeslot.user_id || current_user.user_role.can_create
       timeslot.user = nil
       timeslot.save
-
-      redirect_to event_path(timeslot.event)
-    else
-      redirect_to event_path(timeslot.event)
     end
+    redirect_to event_path(timeslot.event)
   end
 end
