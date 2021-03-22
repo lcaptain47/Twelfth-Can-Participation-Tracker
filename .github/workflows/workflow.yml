@@ -56,13 +56,13 @@ jobs:
         uses: actions/upload-artifact@master
         if: always()
         with:
-          name: rubocop-report
+          name: rubocop-report.txt
           path: rubocop.txt
       - name: Upload brakeman report
         uses: actions/upload-artifact@master
         if: always()
         with:
-          name: brakeman-report
+          name: brakeman-report.txt
           path: brakeman.txt
         
   # deploy-to-heroku:
