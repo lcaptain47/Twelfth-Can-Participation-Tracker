@@ -88,7 +88,7 @@ class TimeslotsController < ApplicationController
       time = start_time
       role_number += 1
 
-      input_role = "#{role_name} #{role_number}"
+      input_role = "#{role_name}"
 
       while time <= end_time
 
@@ -97,6 +97,7 @@ class TimeslotsController < ApplicationController
         timeslot.duration = count
         timeslot.event_id = params[:timeslot][:event_id]
         timeslot.role = input_role
+        timeslot.role_number = role_number
   
         timeslot.save
   
