@@ -37,8 +37,10 @@ rescue ActiveRecord::PendingMigrationError => e
 end
 RSpec.configure do |config|
   config.before(:suite) do
-    UserRole.create(name: 'Officer', can_create: true, can_delete: true)
-    UserRole.create(name: 'User', can_create: false, can_delete: false)
+    UserRole.create(name: 'Officer', can_create: true, can_delete: true, can_delete_users: false, can_promote_demote: false, can_claim_unclaim: true, can_approve_unapprove: true)
+    UserRole.create(name: 'President', can_create: true, can_delete: true, can_delete_users: true, can_promote_demote: true, can_claim_unclaim: true, can_approve_unapprove: true)
+    UserRole.create(name: 'User', can_create: false, can_delete: false, can_delete_users: false, can_promote_demote: false, can_claim_unclaim: false, can_approve_unapprove: false)
+
   end
 
   config.after(:suite) do

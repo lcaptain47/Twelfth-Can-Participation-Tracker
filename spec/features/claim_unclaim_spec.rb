@@ -21,7 +21,7 @@ RSpec.describe 'Tests unclaim and claim features' do
   it 'Does not show unclaim if user does not own that timeslot' do
     Event.create(name: 'Test', date: '12-01-2021')
     test_user = Faker::Omniauth.google
-    User.create(uid: test_user[:uid], full_name: test_user[:info][:name], email: test_user[:info][:email], avatar_url: test_user[:info][:image], user_role: UserRole.find_by(name: 'User'), total_approved_hours: 0.0, total_unapproved_hours: 0.0)
+    User.create(uid: test_user[:uid], full_name: test_user[:info][:name], email: test_user[:info][:email], avatar_url: test_user[:info][:image], user_role: UserRole.find_by(name: 'User'))
     Timeslot.create(time: '12:00', duration: 60, event: Event.first, user: User.first)
 
     visit '/'
@@ -33,11 +33,11 @@ RSpec.describe 'Tests unclaim and claim features' do
   it 'Shows unclaim button if user is an officer and lets them unclaim it' do
     Event.create(name: 'Test', date: '12-01-2021')
     test_user = Faker::Omniauth.google
-    User.create(uid: test_user[:uid], full_name: test_user[:info][:name], email: test_user[:info][:email], avatar_url: test_user[:info][:image], user_role: UserRole.find_by(name: 'User'), total_approved_hours: 0.0, total_unapproved_hours: 0.0)
+    User.create(uid: test_user[:uid], full_name: test_user[:info][:name], email: test_user[:info][:email], avatar_url: test_user[:info][:image], user_role: UserRole.find_by(name: 'User'))
     Timeslot.create(time: '12:00', duration: 60, event: Event.first, user: User.first)
 
     test_user = OmniAuth.config.mock_auth[:google_oauth2]
-    User.create(uid: test_user[:uid], full_name: test_user[:info][:name], email: test_user[:info][:email], avatar_url: test_user[:info][:image], user_role: UserRole.find_by(name: 'Officer'), total_approved_hours: 0.0, total_unapproved_hours: 0.0)
+    User.create(uid: test_user[:uid], full_name: test_user[:info][:name], email: test_user[:info][:email], avatar_url: test_user[:info][:image], user_role: UserRole.find_by(name: 'Officer'))
 
     visit '/'
     click_link 'Sign in'
