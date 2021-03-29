@@ -1,6 +1,9 @@
 <p>Name: <%= @event.name%> </p>
 <p>Date: <%= @event.date %></p>
-
+<p>Description: <%= @event.description %></p>
+<p>Volunteers: <%= @event.volunteers %></p>
+<p>Front Desks: <%= @event.front_desks %></p>
+<p>Runners: <%= @event.runners %></p>
 <% @timeslots.each do |timeslot| %>
     <p>
         <%= timeslot.time.strftime('%l:%M %P') %>: 

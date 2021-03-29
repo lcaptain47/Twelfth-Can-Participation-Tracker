@@ -24,7 +24,7 @@ class EventsController < ApplicationController
 
   # Creates event from input of new event form
   def create
-    @event = Event.new(params.require(:event).permit(:name, :date))
+    @event = Event.new(params.require(:event).permit(:name, :date, :description, :volunteers, :front_desks, :runners))
 
     if @event.save
       redirect_to @event
