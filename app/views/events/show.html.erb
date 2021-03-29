@@ -7,6 +7,7 @@
 <% @timeslots.each do |timeslot| %>
     <p>
         <%= timeslot.time.strftime('%l:%M %P') %>: 
+        <%= timeslot.role%>
         <% if timeslot.user == nil %>
             <%= link_to "Claim", claim_path(timeslot), method: :post%>
         <% else %>

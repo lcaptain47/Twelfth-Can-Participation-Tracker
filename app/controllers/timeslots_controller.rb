@@ -38,25 +38,17 @@ class TimeslotsController < ApplicationController
     if time > end_time || count < 10
       redirect_to new_timeslot_path(event_id: params[:timeslot][:event_id])
     else
-      # Creates timeslots by starting at start time and skip counting
-      # (using 'count' variable) to end time
-      while time <= end_time
-
-        timeslot = Timeslot.new
-        timeslot.time = time
-        timeslot.duration = count
-        timeslot.event_id = params[:timeslot][:event_id]
-
-        timeslot.save
-
-        time += (count * 60)
-      end
-
-      # Redirects to the event page for the timslots' event
-      @eventid = params[:timeslot][:event_id]
-      @event_exit = Event.find(@eventid)
-      redirect_to @event_exit
+      event = Event.find(params[:timeslot][:event_id])
+      create_timeslots(time, end_time, count, event, "Volunteer", event.volunteers)
+      create_timeslots(time, end_time, count, event, "Front Desk", event.front_desks)
+      create_timeslots(time, end_time, count, event, "Runner", event.runners)
+      
     end
+
+    # Redirects to the event page for the timslots' event
+    @eventid = params[:timeslot][:event_id]
+    @event_exit = Event.find(@eventid)
+    redirect_to @event_exit
   end
 
   # Claims an unclaimed timeslot
@@ -83,5 +75,37 @@ class TimeslotsController < ApplicationController
       timeslot.save
     end
     redirect_to event_path(timeslot.event)
+  end
+
+
+  private
+  def create_timeslots(start_time, end_time, count, event, role_name, role_amount)
+    
+    # byebug
+    role_number = 0
+
+    role_amount.times do
+      time = start_time
+      role_number += 1
+
+      input_role = "#{role_name} #{role_number}"
+
+      while time <= end_time
+
+        timeslot = Timeslot.new
+        timeslot.time = time
+        timeslot.duration = count
+        timeslot.event_id = params[:timeslot][:event_id]
+        timeslot.role = input_role
+  
+        timeslot.save
+  
+        time += (count * 60)
+      end
+    end
+
+    
+
+    
   end
 end
