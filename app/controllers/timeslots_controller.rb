@@ -36,19 +36,20 @@ class TimeslotsController < ApplicationController
     # Redirects to new form if count is not provided and if start time is larger than end time
     # Creates Timeslot objects otherwise
     if time > end_time || count < 10
+      flash[:notice] = 'You cannot use an end time smaller than your start time'
       redirect_to new_timeslot_path(event_id: params[:timeslot][:event_id])
     else
       event = Event.find(params[:timeslot][:event_id])
       create_timeslots(time, end_time, count, event, 'Volunteer', event.volunteers)
       create_timeslots(time, end_time, count, event, 'Front Desk', event.front_desks)
       create_timeslots(time, end_time, count, event, 'Runner', event.runners)
-
+      # Redirects to the event page for the timslots' event
+      @eventid = params[:timeslot][:event_id]
+      @event_exit = Event.find(@eventid)
+      redirect_to @event_exit
     end
 
-    # Redirects to the event page for the timslots' event
-    @eventid = params[:timeslot][:event_id]
-    @event_exit = Event.find(@eventid)
-    redirect_to @event_exit
+    
   end
 
   # Claims an unclaimed timeslot
