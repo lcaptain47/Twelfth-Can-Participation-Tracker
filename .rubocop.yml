@@ -28,6 +28,8 @@ Metrics/BlockLength:
     - spec/**/*
 Metrics/MethodLength:
   Max: 100
+Metrics/ParameterLists:
+  Max: 10
 Metrics/AbcSize:
   Enabled: false
 Rails/UniqueValidationWithoutIndex:

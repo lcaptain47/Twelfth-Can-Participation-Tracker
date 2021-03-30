@@ -12,12 +12,13 @@ RSpec.describe 'Tests the user priviledges feature' do
 
   it 'reveals the create button if user is an officer' do
     test_user = OmniAuth.config.mock_auth[:google_oauth2]
-    User.create(uid: test_user[:uid], full_name: test_user[:info][:name], email: test_user[:info][:email], avatar_url: test_user[:info][:image], user_role: UserRole.find_by(name: 'Officer'), total_approved_hours: 0.0, total_unapproved_hours: 0.0)
+    User.create(uid: test_user[:uid], full_name: test_user[:info][:name], email: test_user[:info][:email], avatar_url: test_user[:info][:image], user_role: UserRole.find_by(name: 'Officer'))
     visit '/'
     click_link 'Sign in'
     expect(page).to have_content('New Event')
     click_link 'New Event'
     fill_in 'event_name', with: 'Test'
+    fill_in 'event_volunteers', with: 1
     click_on 'Create Event'
     expect(page).to have_content('Test')
   end
@@ -30,8 +31,8 @@ RSpec.describe 'Tests the user priviledges feature' do
   end
 
   it 'cannot reveal delete button if user is not an officer' do
-    Event.create(name: 'Test', date: '12-01-2021')
-    Timeslot.create(time: '12:00', duration: 60, event: Event.first)
+    Event.create(name: 'Test', date: '12-01-2021', volunteers: 1)
+    Timeslot.create(time: '12:00', duration: 60, event: Event.first, role: 'Volunteer', role_number: 1)
     visit '/'
     click_link 'Sign in'
     click_link 'Test'
@@ -40,9 +41,9 @@ RSpec.describe 'Tests the user priviledges feature' do
 
   it 'reveals delete button if user is an officer and it allows delete' do
     test_user = OmniAuth.config.mock_auth[:google_oauth2]
-    User.create(uid: test_user[:uid], full_name: test_user[:info][:name], email: test_user[:info][:email], avatar_url: test_user[:info][:image], user_role: UserRole.find_by(name: 'Officer'), total_approved_hours: 0.0, total_unapproved_hours: 0.0)
-    Event.create(name: 'Test', date: '12-01-2021')
-    Timeslot.create(time: '12:00', duration: 60, event: Event.first)
+    User.create(uid: test_user[:uid], full_name: test_user[:info][:name], email: test_user[:info][:email], avatar_url: test_user[:info][:image], user_role: UserRole.find_by(name: 'Officer'))
+    Event.create(name: 'Test', date: '12-01-2021', volunteers: 1)
+    Timeslot.create(time: '12:00', duration: 60, event: Event.first, role: 'Volunteer', role_number: 1)
 
     visit '/'
     click_link 'Sign in'
@@ -54,8 +55,8 @@ RSpec.describe 'Tests the user priviledges feature' do
 
   it 'reveals add timeslot button if user is an officer and it allows creation' do
     test_user = OmniAuth.config.mock_auth[:google_oauth2]
-    User.create(uid: test_user[:uid], full_name: test_user[:info][:name], email: test_user[:info][:email], avatar_url: test_user[:info][:image], user_role: UserRole.find_by(name: 'Officer'), total_approved_hours: 0.0, total_unapproved_hours: 0.0)
-    Event.create(name: 'Test', date: '12-01-2021')
+    User.create(uid: test_user[:uid], full_name: test_user[:info][:name], email: test_user[:info][:email], avatar_url: test_user[:info][:image], user_role: UserRole.find_by(name: 'Officer'))
+    Event.create(name: 'Test', date: '12-01-2021', volunteers: 1)
 
     visit '/'
     click_link 'Sign in'
@@ -72,7 +73,7 @@ RSpec.describe 'Tests the user priviledges feature' do
   end
 
   it 'does not reveal the add timeslot button if user is not an officer and redirects them to event page' do
-    Event.create(name: 'Test', date: '12-01-2021')
+    Event.create(name: 'Test', date: '12-01-2021', volunteers: 1)
 
     visit '/'
     click_link 'Sign in'
