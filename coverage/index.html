@@ -14,7 +14,7 @@
       <img src="./assets/0.12.3/loading.gif" alt="loading"/>
     </div>
     <div id="wrapper" class="hide">
-      <div class="timestamp">Generated <abbr class="timeago" title="2021-03-30T12:48:12-05:00">2021-03-30T12:48:12-05:00</abbr></div>
+      <div class="timestamp">Generated <abbr class="timeago" title="2021-03-30T12:51:19-05:00">2021-03-30T12:51:19-05:00</abbr></div>
       <ul class="group_tabs"></ul>
 
       <div id="content">
@@ -425,7 +425,7 @@
           <tr class="t-file">
             <td class="strong t-file__name"><a href="#ac102ad931a7b790d56934627d9d7886b50b8183" class="src_link" title="spec/features/event_timeslot_spec.rb">spec/features/event_timeslot_spec.rb</a></td>
             <td class="green strong cell--number t-file__coverage">100.00 %</td>
-            <td class="cell--number">59</td>
+            <td class="cell--number">60</td>
             <td class="cell--number">52</td>
             <td class="cell--number">52</td>
             <td class="cell--number">0</td>
@@ -11930,13 +11930,13 @@
     <ol>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="1">
-            <span class="hits">1</span>
+          <li class="never" data-hits="" data-linenumber="1">
+            
             
 
             
 
-            <code class="ruby">require &#39;rails_helper&#39;</code>
+            <code class="ruby"># frozen_string_literal: true</code>
           </li>
         </div>
       
@@ -11958,7 +11958,7 @@
 
             
 
-            <code class="ruby">RSpec.describe &#39;Tests the new event and timeslot system&#39; do</code>
+            <code class="ruby">require &#39;rails_helper&#39;</code>
           </li>
         </div>
       
@@ -11969,7 +11969,7 @@
 
             
 
-            <code class="ruby">  it &#39;Creates the event with the inputted amount of roles&#39; do</code>
+            <code class="ruby">RSpec.describe &#39;Tests the new event and timeslot system&#39; do</code>
           </li>
         </div>
       
@@ -11980,7 +11980,7 @@
 
             
 
-            <code class="ruby">    test_user = OmniAuth.config.mock_auth[:google_oauth2]</code>
+            <code class="ruby">  it &#39;Creates the event with the inputted amount of roles&#39; do</code>
           </li>
         </div>
       
@@ -11991,7 +11991,7 @@
 
             
 
-            <code class="ruby">    User.create(uid: test_user[:uid], full_name: test_user[:info][:name], email: test_user[:info][:email], avatar_url: test_user[:info][:image], user_role: UserRole.find_by(name: &#39;Officer&#39;))</code>
+            <code class="ruby">    test_user = OmniAuth.config.mock_auth[:google_oauth2]</code>
           </li>
         </div>
       
@@ -12002,7 +12002,7 @@
 
             
 
-            <code class="ruby">    visit &#39;/&#39;</code>
+            <code class="ruby">    User.create(uid: test_user[:uid], full_name: test_user[:info][:name], email: test_user[:info][:email], avatar_url: test_user[:info][:image], user_role: UserRole.find_by(name: &#39;Officer&#39;))</code>
           </li>
         </div>
       
@@ -12013,7 +12013,7 @@
 
             
 
-            <code class="ruby">    click_link &#39;Sign in&#39;</code>
+            <code class="ruby">    visit &#39;/&#39;</code>
           </li>
         </div>
       
@@ -12024,7 +12024,7 @@
 
             
 
-            <code class="ruby">    click_link &#39;New Event&#39;</code>
+            <code class="ruby">    click_link &#39;Sign in&#39;</code>
           </li>
         </div>
       
@@ -12035,7 +12035,7 @@
 
             
 
-            <code class="ruby">    fill_in &#39;event_name&#39;, with: &#39;Test&#39;</code>
+            <code class="ruby">    click_link &#39;New Event&#39;</code>
           </li>
         </div>
       
@@ -12046,7 +12046,7 @@
 
             
 
-            <code class="ruby">    fill_in &#39;event_volunteers&#39;, with: 3</code>
+            <code class="ruby">    fill_in &#39;event_name&#39;, with: &#39;Test&#39;</code>
           </li>
         </div>
       
@@ -12057,7 +12057,7 @@
 
             
 
-            <code class="ruby">    fill_in &#39;event_front_desks&#39;, with: 3</code>
+            <code class="ruby">    fill_in &#39;event_volunteers&#39;, with: 3</code>
           </li>
         </div>
       
@@ -12068,7 +12068,7 @@
 
             
 
-            <code class="ruby">    fill_in &#39;event_runners&#39;, with: 3</code>
+            <code class="ruby">    fill_in &#39;event_front_desks&#39;, with: 3</code>
           </li>
         </div>
       
@@ -12079,7 +12079,7 @@
 
             
 
-            <code class="ruby">    fill_in &#39;event_description&#39;, with: &#39;Bleh&#39;</code>
+            <code class="ruby">    fill_in &#39;event_runners&#39;, with: 3</code>
           </li>
         </div>
       
@@ -12090,7 +12090,7 @@
 
             
 
-            <code class="ruby">    click_on &#39;Create Event&#39;</code>
+            <code class="ruby">    fill_in &#39;event_description&#39;, with: &#39;Bleh&#39;</code>
           </li>
         </div>
       
@@ -12101,7 +12101,7 @@
 
             
 
-            <code class="ruby">    expect(page).to have_content(&#39;Volunteers: 3&#39;)</code>
+            <code class="ruby">    click_on &#39;Create Event&#39;</code>
           </li>
         </div>
       
@@ -12112,7 +12112,7 @@
 
             
 
-            <code class="ruby">    expect(page).to have_content(&#39;Runners: 3&#39;)</code>
+            <code class="ruby">    expect(page).to have_content(&#39;Volunteers: 3&#39;)</code>
           </li>
         </div>
       
@@ -12123,18 +12123,18 @@
 
             
 
-            <code class="ruby">    expect(page).to have_content(&#39;Front Desks: 3&#39;)</code>
+            <code class="ruby">    expect(page).to have_content(&#39;Runners: 3&#39;)</code>
           </li>
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="19">
-            
-            
-
+          <li class="covered" data-hits="1" data-linenumber="19">
+            <span class="hits">1</span>
             
 
-            <code class="ruby">  end</code>
+            
+
+            <code class="ruby">    expect(page).to have_content(&#39;Front Desks: 3&#39;)</code>
           </li>
         </div>
       
@@ -12145,18 +12145,18 @@
 
             
 
-            <code class="ruby"></code>
+            <code class="ruby">  end</code>
           </li>
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="21">
-            <span class="hits">1</span>
+          <li class="never" data-hits="" data-linenumber="21">
+            
             
 
             
 
-            <code class="ruby">  it &#39;Does the above and creates timeslots and has 27 timeslot claim buttons&#39; do</code>
+            <code class="ruby"></code>
           </li>
         </div>
       
@@ -12167,7 +12167,7 @@
 
             
 
-            <code class="ruby">    test_user = OmniAuth.config.mock_auth[:google_oauth2]</code>
+            <code class="ruby">  it &#39;Does the above and creates timeslots and has 27 timeslot claim buttons&#39; do</code>
           </li>
         </div>
       
@@ -12178,7 +12178,7 @@
 
             
 
-            <code class="ruby">    User.create(uid: test_user[:uid], full_name: test_user[:info][:name], email: test_user[:info][:email], avatar_url: test_user[:info][:image], user_role: UserRole.find_by(name: &#39;Officer&#39;))</code>
+            <code class="ruby">    test_user = OmniAuth.config.mock_auth[:google_oauth2]</code>
           </li>
         </div>
       
@@ -12189,7 +12189,7 @@
 
             
 
-            <code class="ruby">    visit &#39;/&#39;</code>
+            <code class="ruby">    User.create(uid: test_user[:uid], full_name: test_user[:info][:name], email: test_user[:info][:email], avatar_url: test_user[:info][:image], user_role: UserRole.find_by(name: &#39;Officer&#39;))</code>
           </li>
         </div>
       
@@ -12200,7 +12200,7 @@
 
             
 
-            <code class="ruby">    click_link &#39;Sign in&#39;</code>
+            <code class="ruby">    visit &#39;/&#39;</code>
           </li>
         </div>
       
@@ -12211,7 +12211,7 @@
 
             
 
-            <code class="ruby">    click_link &#39;New Event&#39;</code>
+            <code class="ruby">    click_link &#39;Sign in&#39;</code>
           </li>
         </div>
       
@@ -12222,7 +12222,7 @@
 
             
 
-            <code class="ruby">    fill_in &#39;event_name&#39;, with: &#39;Test&#39;</code>
+            <code class="ruby">    click_link &#39;New Event&#39;</code>
           </li>
         </div>
       
@@ -12233,7 +12233,7 @@
 
             
 
-            <code class="ruby">    fill_in &#39;event_volunteers&#39;, with: 3</code>
+            <code class="ruby">    fill_in &#39;event_name&#39;, with: &#39;Test&#39;</code>
           </li>
         </div>
       
@@ -12244,7 +12244,7 @@
 
             
 
-            <code class="ruby">    fill_in &#39;event_front_desks&#39;, with: 3</code>
+            <code class="ruby">    fill_in &#39;event_volunteers&#39;, with: 3</code>
           </li>
         </div>
       
@@ -12255,7 +12255,7 @@
 
             
 
-            <code class="ruby">    fill_in &#39;event_runners&#39;, with: 3</code>
+            <code class="ruby">    fill_in &#39;event_front_desks&#39;, with: 3</code>
           </li>
         </div>
       
@@ -12266,7 +12266,7 @@
 
             
 
-            <code class="ruby">    fill_in &#39;event_description&#39;, with: &#39;Bleh&#39;</code>
+            <code class="ruby">    fill_in &#39;event_runners&#39;, with: 3</code>
           </li>
         </div>
       
@@ -12277,7 +12277,7 @@
 
             
 
-            <code class="ruby">    click_on &#39;Create Event&#39;</code>
+            <code class="ruby">    fill_in &#39;event_description&#39;, with: &#39;Bleh&#39;</code>
           </li>
         </div>
       
@@ -12288,7 +12288,7 @@
 
             
 
-            <code class="ruby">    click_link &#39;Add Timeslots&#39;</code>
+            <code class="ruby">    click_on &#39;Create Event&#39;</code>
           </li>
         </div>
       
@@ -12299,7 +12299,7 @@
 
             
 
-            <code class="ruby">    fill_in &#39;timeslot_count&#39;, with: 60</code>
+            <code class="ruby">    click_link &#39;Add Timeslots&#39;</code>
           </li>
         </div>
       
@@ -12310,7 +12310,7 @@
 
             
 
-            <code class="ruby">    select &#39;04&#39;, from: &#39;timeslot_start_time_4i&#39;</code>
+            <code class="ruby">    fill_in &#39;timeslot_count&#39;, with: 60</code>
           </li>
         </div>
       
@@ -12321,7 +12321,7 @@
 
             
 
-            <code class="ruby">    select &#39;00&#39;, from: &#39;timeslot_start_time_5i&#39;</code>
+            <code class="ruby">    select &#39;04&#39;, from: &#39;timeslot_start_time_4i&#39;</code>
           </li>
         </div>
       
@@ -12332,7 +12332,7 @@
 
             
 
-            <code class="ruby">    select &#39;06&#39;, from: &#39;timeslot_end_time_4i&#39;</code>
+            <code class="ruby">    select &#39;00&#39;, from: &#39;timeslot_start_time_5i&#39;</code>
           </li>
         </div>
       
@@ -12343,7 +12343,7 @@
 
             
 
-            <code class="ruby">    select &#39;00&#39;, from: &#39;timeslot_end_time_5i&#39;</code>
+            <code class="ruby">    select &#39;06&#39;, from: &#39;timeslot_end_time_4i&#39;</code>
           </li>
         </div>
       
@@ -12354,7 +12354,7 @@
 
             
 
-            <code class="ruby">    click_on &#39;Create Timeslot&#39;</code>
+            <code class="ruby">    select &#39;00&#39;, from: &#39;timeslot_end_time_5i&#39;</code>
           </li>
         </div>
       
@@ -12365,18 +12365,18 @@
 
             
 
-            <code class="ruby">    expect(page).to have_content(&#39;Claim&#39;, count: 27)</code>
+            <code class="ruby">    click_on &#39;Create Timeslot&#39;</code>
           </li>
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="41">
-            
-            
-
+          <li class="covered" data-hits="1" data-linenumber="41">
+            <span class="hits">1</span>
             
 
-            <code class="ruby">  end</code>
+            
+
+            <code class="ruby">    expect(page).to have_content(&#39;Claim&#39;, count: 27)</code>
           </li>
         </div>
       
@@ -12387,18 +12387,18 @@
 
             
 
-            <code class="ruby"></code>
+            <code class="ruby">  end</code>
           </li>
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="43">
-            <span class="hits">1</span>
+          <li class="never" data-hits="" data-linenumber="43">
+            
             
 
             
 
-            <code class="ruby">  it &#39;Does not let user use a smaller end time and bigger start time&#39; do</code>
+            <code class="ruby"></code>
           </li>
         </div>
       
@@ -12409,7 +12409,7 @@
 
             
 
-            <code class="ruby">    test_user = OmniAuth.config.mock_auth[:google_oauth2]</code>
+            <code class="ruby">  it &#39;Does not let user use a smaller end time and bigger start time&#39; do</code>
           </li>
         </div>
       
@@ -12420,7 +12420,7 @@
 
             
 
-            <code class="ruby">    User.create(uid: test_user[:uid], full_name: test_user[:info][:name], email: test_user[:info][:email], avatar_url: test_user[:info][:image], user_role: UserRole.find_by(name: &#39;Officer&#39;))</code>
+            <code class="ruby">    test_user = OmniAuth.config.mock_auth[:google_oauth2]</code>
           </li>
         </div>
       
@@ -12431,7 +12431,7 @@
 
             
 
-            <code class="ruby">    Event.create(name: &#39;Test&#39;, date: &#39;12-01-2021&#39;, volunteers: 3, front_desks: 3, runners: 3)</code>
+            <code class="ruby">    User.create(uid: test_user[:uid], full_name: test_user[:info][:name], email: test_user[:info][:email], avatar_url: test_user[:info][:image], user_role: UserRole.find_by(name: &#39;Officer&#39;))</code>
           </li>
         </div>
       
@@ -12442,7 +12442,7 @@
 
             
 
-            <code class="ruby">    visit &#39;/&#39;</code>
+            <code class="ruby">    Event.create(name: &#39;Test&#39;, date: &#39;12-01-2021&#39;, volunteers: 3, front_desks: 3, runners: 3)</code>
           </li>
         </div>
       
@@ -12453,7 +12453,7 @@
 
             
 
-            <code class="ruby">    click_link &#39;Sign in&#39;</code>
+            <code class="ruby">    visit &#39;/&#39;</code>
           </li>
         </div>
       
@@ -12464,7 +12464,7 @@
 
             
 
-            <code class="ruby">    click_link &#39;Test&#39;</code>
+            <code class="ruby">    click_link &#39;Sign in&#39;</code>
           </li>
         </div>
       
@@ -12475,7 +12475,7 @@
 
             
 
-            <code class="ruby">    click_link &#39;Add Timeslots&#39;</code>
+            <code class="ruby">    click_link &#39;Test&#39;</code>
           </li>
         </div>
       
@@ -12486,7 +12486,7 @@
 
             
 
-            <code class="ruby">    fill_in &#39;timeslot_count&#39;, with: 60</code>
+            <code class="ruby">    click_link &#39;Add Timeslots&#39;</code>
           </li>
         </div>
       
@@ -12497,7 +12497,7 @@
 
             
 
-            <code class="ruby">    select &#39;06&#39;, from: &#39;timeslot_start_time_4i&#39;</code>
+            <code class="ruby">    fill_in &#39;timeslot_count&#39;, with: 60</code>
           </li>
         </div>
       
@@ -12508,7 +12508,7 @@
 
             
 
-            <code class="ruby">    select &#39;00&#39;, from: &#39;timeslot_start_time_5i&#39;</code>
+            <code class="ruby">    select &#39;06&#39;, from: &#39;timeslot_start_time_4i&#39;</code>
           </li>
         </div>
       
@@ -12519,7 +12519,7 @@
 
             
 
-            <code class="ruby">    select &#39;04&#39;, from: &#39;timeslot_end_time_4i&#39;</code>
+            <code class="ruby">    select &#39;00&#39;, from: &#39;timeslot_start_time_5i&#39;</code>
           </li>
         </div>
       
@@ -12530,7 +12530,7 @@
 
             
 
-            <code class="ruby">    select &#39;00&#39;, from: &#39;timeslot_end_time_5i&#39;</code>
+            <code class="ruby">    select &#39;04&#39;, from: &#39;timeslot_end_time_4i&#39;</code>
           </li>
         </div>
       
@@ -12541,7 +12541,7 @@
 
             
 
-            <code class="ruby">    click_on &#39;Create Timeslot&#39;</code>
+            <code class="ruby">    select &#39;00&#39;, from: &#39;timeslot_end_time_5i&#39;</code>
           </li>
         </div>
       
@@ -12552,12 +12552,23 @@
 
             
 
+            <code class="ruby">    click_on &#39;Create Timeslot&#39;</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="58">
+            <span class="hits">1</span>
+            
+
+            
+
             <code class="ruby">    expect(page).to have_content(&#39;You cannot use an end time smaller than your start time&#39;)</code>
           </li>
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="58">
+          <li class="never" data-hits="" data-linenumber="59">
             
             
 
@@ -12568,7 +12579,7 @@
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="59">
+          <li class="never" data-hits="" data-linenumber="60">
             
             
 
