@@ -48,7 +48,7 @@ RSpec.describe UserRole do
     role = described_class.new(name: 'User1', can_create: true, can_delete: true, can_delete_users: true, can_claim_unclaim: true, can_approve_unapprove: true)
     expect(role).not_to be_valid
   end
-  
+
   it 'is not valid without a can_claim_unclaim entry' do
     role = described_class.new(name: 'User1', can_create: true, can_delete: true, can_delete_users: true, can_promote_demote: true, can_approve_unapprove: true)
     expect(role).not_to be_valid

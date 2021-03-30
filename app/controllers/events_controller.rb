@@ -10,7 +10,8 @@ class EventsController < ApplicationController
   def show
     @event = Event.find(params[:id])
     @timeslots = @event.timeslots
-    @timeslots = Timeslot.where(event_id: params[:id]).order(time: 'asc', role: 'asc', role_number: 'asc')
+    @timeslots = Timeslot.where(event_id: params[:id]).order(time: 'asc', role: 'asc',
+                                                             role_number: 'asc')
 
     @timeslots_matrix = []
 
@@ -18,10 +19,9 @@ class EventsController < ApplicationController
 
     row = []
 
-    #Adds timeslots for an easy to use matrix that the view will use
+    # Adds timeslots for an easy to use matrix that the view will use
     total_roles = @event.volunteers + @event.front_desks + @event.runners
     @timeslots.each do |timeslot|
-      
       if role_count <= total_roles
         row.push(timeslot)
         role_count += 1
@@ -36,8 +36,6 @@ class EventsController < ApplicationController
     @timeslots_matrix.push(row)
 
     @header = ['time']
-
-
 
     counter = 0
     @event.front_desks.times do
@@ -58,8 +56,6 @@ class EventsController < ApplicationController
       header_part = "Volunteer #{counter}"
       @header.push(header_part)
     end
-
-
   end
 
   # Prepares form for a new event
@@ -73,7 +69,8 @@ class EventsController < ApplicationController
 
   # Creates event from input of new event form
   def create
-    @event = Event.new(params.require(:event).permit(:name, :date, :description, :volunteers, :front_desks, :runners))
+    @event = Event.new(params.require(:event).permit(:name, :date, :description, :volunteers,
+                                                     :front_desks, :runners))
 
     if @event.save
       redirect_to @event

@@ -39,10 +39,10 @@ class TimeslotsController < ApplicationController
       redirect_to new_timeslot_path(event_id: params[:timeslot][:event_id])
     else
       event = Event.find(params[:timeslot][:event_id])
-      create_timeslots(time, end_time, count, event, "Volunteer", event.volunteers)
-      create_timeslots(time, end_time, count, event, "Front Desk", event.front_desks)
-      create_timeslots(time, end_time, count, event, "Runner", event.runners)
-      
+      create_timeslots(time, end_time, count, event, 'Volunteer', event.volunteers)
+      create_timeslots(time, end_time, count, event, 'Front Desk', event.front_desks)
+      create_timeslots(time, end_time, count, event, 'Runner', event.runners)
+
     end
 
     # Redirects to the event page for the timslots' event
@@ -77,10 +77,9 @@ class TimeslotsController < ApplicationController
     redirect_to event_path(timeslot.event)
   end
 
-
   private
-  def create_timeslots(start_time, end_time, count, event, role_name, role_amount)
-    
+
+  def create_timeslots(start_time, end_time, count, _event, role_name, role_amount)
     # byebug
     role_number = 0
 
@@ -88,7 +87,7 @@ class TimeslotsController < ApplicationController
       time = start_time
       role_number += 1
 
-      input_role = "#{role_name}"
+      input_role = role_name.to_s
 
       while time <= end_time
 
@@ -98,15 +97,11 @@ class TimeslotsController < ApplicationController
         timeslot.event_id = params[:timeslot][:event_id]
         timeslot.role = input_role
         timeslot.role_number = role_number
-  
+
         timeslot.save
-  
+
         time += (count * 60)
       end
     end
-
-    
-
-    
   end
 end

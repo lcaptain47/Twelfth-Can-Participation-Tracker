@@ -15,10 +15,10 @@ class User < ApplicationRecord
   end
 
   def default_values
-    self.total_approved_hours = self.total_approved_hours.presence || 0.0
-    self.total_unapproved_hours = self.total_unapproved_hours.presence || 0.0
-    self.volunteer_hours = self.volunteer_hours.presence || 0.0
-    self.pantry_runner_hours = self.pantry_runner_hours.presence || 0.0
-    self.front_office_hours = self.front_office_hours.presence || 0.0
+    self.total_approved_hours = total_approved_hours.presence || 0.0
+    self.total_unapproved_hours = total_unapproved_hours.presence || 0.0
+    self.volunteer_hours = volunteer_hours.presence || 0.0
+    self.pantry_runner_hours = pantry_runner_hours.presence || 0.0
+    self.front_office_hours = front_office_hours.presence || 0.0
   end
 end

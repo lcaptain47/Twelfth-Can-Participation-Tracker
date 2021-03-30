@@ -7,9 +7,8 @@ class Event < ApplicationRecord
   validates :name, presence: true
 
   def default_values
-    self.volunteers = self.volunteers.presence || 0
-    self.front_desks = self.front_desks.presence || 0
-    self.runners = self.runners.presence || 0
-
+    self.volunteers = volunteers.presence || 0
+    self.front_desks = front_desks.presence || 0
+    self.runners = runners.presence || 0
   end
 end
