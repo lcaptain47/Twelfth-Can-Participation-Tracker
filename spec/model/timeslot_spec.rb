@@ -40,11 +40,11 @@ RSpec.describe Timeslot do
 
   it 'is not valid without a role' do
     timeslot = described_class.new(time: '12:00', duration: 60, event_id: Event.first.id, role_number: 1)
-    expect(timeslot).to_not be_valid
+    expect(timeslot).not_to be_valid
   end
 
   it 'is not valid without a role number' do
     timeslot = described_class.new(time: '12:00', duration: 60, event_id: Event.first.id, role: 'Volunteer')
-    expect(timeslot).to_not be_valid
+    expect(timeslot).not_to be_valid
   end
 end

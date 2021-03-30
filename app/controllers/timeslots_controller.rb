@@ -48,8 +48,6 @@ class TimeslotsController < ApplicationController
       @event_exit = Event.find(@eventid)
       redirect_to @event_exit
     end
-
-    
   end
 
   # Claims an unclaimed timeslot
@@ -60,7 +58,9 @@ class TimeslotsController < ApplicationController
       @events = Event.all
       redirect_to events_path
     else
-      flash[:notice] = "You have claimed the timeslot at #{timeslot.time.strftime('%l:%M %P')} for the role #{timeslot.role} #{timeslot.role_number}"
+      flash[:notice] =
+        "You have claimed the timeslot at #{timeslot.time.strftime('%l:%M %P')}
+         for the role #{timeslot.role} #{timeslot.role_number}"
       timeslot.is_approved = false
       timeslot.user = current_user
       timeslot.save
@@ -73,7 +73,9 @@ class TimeslotsController < ApplicationController
   def unclaim
     timeslot = Timeslot.find(params[:id])
     if current_user.id == timeslot.user_id || current_user.user_role.can_claim_unclaim
-      flash[:notice] = "You have unclaimed the timeslot at #{timeslot.time.strftime('%l:%M %P')} for the role #{timeslot.role} #{timeslot.role_number}"
+      flash[:notice] =
+        "You have unclaimed the timeslot at #{timeslot.time.strftime('%l:%M %P')}
+         for the role #{timeslot.role} #{timeslot.role_number}"
       timeslot.is_approved = false
       timeslot.user = nil
       timeslot.save

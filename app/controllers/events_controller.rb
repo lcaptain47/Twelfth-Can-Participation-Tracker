@@ -9,7 +9,7 @@ class EventsController < ApplicationController
   # Prepares show page of an event
   def show
     @event = Event.find(params[:id])
-    
+
     @timeslots = @event.timeslots
     @timeslots = Timeslot.where(event_id: params[:id]).order(time: 'asc', role: 'asc',
                                                              role_number: 'asc')

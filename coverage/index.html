@@ -14,7 +14,7 @@
       <img src="./assets/0.12.3/loading.gif" alt="loading"/>
     </div>
     <div id="wrapper" class="hide">
-      <div class="timestamp">Generated <abbr class="timeago" title="2021-03-30T12:44:53-05:00">2021-03-30T12:44:53-05:00</abbr></div>
+      <div class="timestamp">Generated <abbr class="timeago" title="2021-03-30T12:48:12-05:00">2021-03-30T12:48:12-05:00</abbr></div>
       <ul class="group_tabs"></ul>
 
       <div id="content">
@@ -95,7 +95,7 @@
           <tr class="t-file">
             <td class="strong t-file__name"><a href="#044fc66fdb3e363672419a70d60773d1f1687a5c" class="src_link" title="app/controllers/timeslots_controller.rb">app/controllers/timeslots_controller.rb</a></td>
             <td class="green strong cell--number t-file__coverage">95.38 %</td>
-            <td class="cell--number">112</td>
+            <td class="cell--number">114</td>
             <td class="cell--number">65</td>
             <td class="cell--number">62</td>
             <td class="cell--number">3</td>
@@ -833,7 +833,7 @@
 
             
 
-            <code class="ruby">    </code>
+            <code class="ruby"></code>
           </li>
         </div>
       
@@ -2338,7 +2338,7 @@
 
             
 
-            <code class="ruby"></code>
+            <code class="ruby">  end</code>
           </li>
         </div>
       
@@ -2349,7 +2349,7 @@
 
             
 
-            <code class="ruby">    </code>
+            <code class="ruby"></code>
           </li>
         </div>
       
@@ -2360,34 +2360,12 @@
 
             
 
-            <code class="ruby">  end</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="54">
-            
-            
-
-            
-
-            <code class="ruby"></code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="55">
-            
-            
-
-            
-
             <code class="ruby">  # Claims an unclaimed timeslot</code>
           </li>
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="56">
+          <li class="covered" data-hits="1" data-linenumber="54">
             <span class="hits">1</span>
             
 
@@ -2398,7 +2376,7 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="57">
+          <li class="covered" data-hits="1" data-linenumber="55">
             <span class="hits">1</span>
             
 
@@ -2409,7 +2387,7 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="58">
+          <li class="covered" data-hits="1" data-linenumber="56">
             <span class="hits">1</span>
             
 
@@ -2420,7 +2398,7 @@
         </div>
       
         <div>
-          <li class="missed" data-hits="0" data-linenumber="59">
+          <li class="missed" data-hits="0" data-linenumber="57">
             
             
 
@@ -2431,7 +2409,7 @@
         </div>
       
         <div>
-          <li class="missed" data-hits="0" data-linenumber="60">
+          <li class="missed" data-hits="0" data-linenumber="58">
             
             
 
@@ -2442,7 +2420,7 @@
         </div>
       
         <div>
-          <li class="missed" data-hits="0" data-linenumber="61">
+          <li class="missed" data-hits="0" data-linenumber="59">
             
             
 
@@ -2453,7 +2431,7 @@
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="62">
+          <li class="never" data-hits="" data-linenumber="60">
             
             
 
@@ -2464,13 +2442,35 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="63">
+          <li class="covered" data-hits="1" data-linenumber="61">
             <span class="hits">1</span>
             
 
             
 
-            <code class="ruby">      flash[:notice] = &quot;You have claimed the timeslot at #{timeslot.time.strftime(&#39;%l:%M %P&#39;)} for the role #{timeslot.role} #{timeslot.role_number}&quot;</code>
+            <code class="ruby">      flash[:notice] =</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="62">
+            
+            
+
+            
+
+            <code class="ruby">        &quot;You have claimed the timeslot at #{timeslot.time.strftime(&#39;%l:%M %P&#39;)}</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="63">
+            
+            
+
+            
+
+            <code class="ruby">         for the role #{timeslot.role} #{timeslot.role_number}&quot;</code>
           </li>
         </div>
       
@@ -2613,29 +2613,29 @@
 
             
 
-            <code class="ruby">      flash[:notice] = &quot;You have unclaimed the timeslot at #{timeslot.time.strftime(&#39;%l:%M %P&#39;)} for the role #{timeslot.role} #{timeslot.role_number}&quot;</code>
+            <code class="ruby">      flash[:notice] =</code>
           </li>
         </div>
       
         <div>
-          <li class="covered" data-hits="2" data-linenumber="77">
-            <span class="hits">2</span>
+          <li class="never" data-hits="" data-linenumber="77">
+            
             
 
             
 
-            <code class="ruby">      timeslot.is_approved = false</code>
+            <code class="ruby">        &quot;You have unclaimed the timeslot at #{timeslot.time.strftime(&#39;%l:%M %P&#39;)}</code>
           </li>
         </div>
       
         <div>
-          <li class="covered" data-hits="2" data-linenumber="78">
-            <span class="hits">2</span>
+          <li class="never" data-hits="" data-linenumber="78">
+            
             
 
             
 
-            <code class="ruby">      timeslot.user = nil</code>
+            <code class="ruby">         for the role #{timeslot.role} #{timeslot.role_number}&quot;</code>
           </li>
         </div>
       
@@ -2646,18 +2646,18 @@
 
             
 
-            <code class="ruby">      timeslot.save</code>
+            <code class="ruby">      timeslot.is_approved = false</code>
           </li>
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="80">
-            
-            
-
+          <li class="covered" data-hits="2" data-linenumber="80">
+            <span class="hits">2</span>
             
 
-            <code class="ruby">    end</code>
+            
+
+            <code class="ruby">      timeslot.user = nil</code>
           </li>
         </div>
       
@@ -2668,7 +2668,7 @@
 
             
 
-            <code class="ruby">    redirect_to event_path(timeslot.event)</code>
+            <code class="ruby">      timeslot.save</code>
           </li>
         </div>
       
@@ -2679,29 +2679,29 @@
 
             
 
+            <code class="ruby">    end</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="2" data-linenumber="83">
+            <span class="hits">2</span>
+            
+
+            
+
+            <code class="ruby">    redirect_to event_path(timeslot.event)</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="84">
+            
+            
+
+            
+
             <code class="ruby">  end</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="83">
-            
-            
-
-            
-
-            <code class="ruby"></code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="1" data-linenumber="84">
-            <span class="hits">1</span>
-            
-
-            
-
-            <code class="ruby">  private</code>
           </li>
         </div>
       
@@ -2723,7 +2723,7 @@
 
             
 
-            <code class="ruby">  def create_timeslots(start_time, end_time, count, _event, role_name, role_amount)</code>
+            <code class="ruby">  private</code>
           </li>
         </div>
       
@@ -2734,18 +2734,18 @@
 
             
 
-            <code class="ruby">    # byebug</code>
+            <code class="ruby"></code>
           </li>
         </div>
       
         <div>
-          <li class="covered" data-hits="6" data-linenumber="88">
-            <span class="hits">6</span>
+          <li class="covered" data-hits="1" data-linenumber="88">
+            <span class="hits">1</span>
             
 
             
 
-            <code class="ruby">    role_number = 0</code>
+            <code class="ruby">  def create_timeslots(start_time, end_time, count, _event, role_name, role_amount)</code>
           </li>
         </div>
       
@@ -2756,7 +2756,7 @@
 
             
 
-            <code class="ruby"></code>
+            <code class="ruby">    # byebug</code>
           </li>
         </div>
       
@@ -2767,34 +2767,12 @@
 
             
 
-            <code class="ruby">    role_amount.times do</code>
+            <code class="ruby">    role_number = 0</code>
           </li>
         </div>
       
         <div>
-          <li class="covered" data-hits="10" data-linenumber="91">
-            <span class="hits">10</span>
-            
-
-            
-
-            <code class="ruby">      time = start_time</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="10" data-linenumber="92">
-            <span class="hits">10</span>
-            
-
-            
-
-            <code class="ruby">      role_number += 1</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="93">
+          <li class="never" data-hits="" data-linenumber="91">
             
             
 
@@ -2805,13 +2783,35 @@
         </div>
       
         <div>
+          <li class="covered" data-hits="6" data-linenumber="92">
+            <span class="hits">6</span>
+            
+
+            
+
+            <code class="ruby">    role_amount.times do</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="10" data-linenumber="93">
+            <span class="hits">10</span>
+            
+
+            
+
+            <code class="ruby">      time = start_time</code>
+          </li>
+        </div>
+      
+        <div>
           <li class="covered" data-hits="10" data-linenumber="94">
             <span class="hits">10</span>
             
 
             
 
-            <code class="ruby">      input_role = role_name.to_s</code>
+            <code class="ruby">      role_number += 1</code>
           </li>
         </div>
       
@@ -2833,7 +2833,7 @@
 
             
 
-            <code class="ruby">      while time &lt;= end_time</code>
+            <code class="ruby">      input_role = role_name.to_s</code>
           </li>
         </div>
       
@@ -2849,84 +2849,18 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="28" data-linenumber="98">
-            <span class="hits">28</span>
+          <li class="covered" data-hits="10" data-linenumber="98">
+            <span class="hits">10</span>
             
 
             
 
-            <code class="ruby">        timeslot = Timeslot.new</code>
+            <code class="ruby">      while time &lt;= end_time</code>
           </li>
         </div>
       
         <div>
-          <li class="covered" data-hits="28" data-linenumber="99">
-            <span class="hits">28</span>
-            
-
-            
-
-            <code class="ruby">        timeslot.time = time</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="28" data-linenumber="100">
-            <span class="hits">28</span>
-            
-
-            
-
-            <code class="ruby">        timeslot.duration = count</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="28" data-linenumber="101">
-            <span class="hits">28</span>
-            
-
-            
-
-            <code class="ruby">        timeslot.event_id = params[:timeslot][:event_id]</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="28" data-linenumber="102">
-            <span class="hits">28</span>
-            
-
-            
-
-            <code class="ruby">        timeslot.role = input_role</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="28" data-linenumber="103">
-            <span class="hits">28</span>
-            
-
-            
-
-            <code class="ruby">        timeslot.role_number = role_number</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="28" data-linenumber="104">
-            <span class="hits">28</span>
-            
-
-            
-
-            <code class="ruby">        timeslot.is_approved = false</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="105">
+          <li class="never" data-hits="" data-linenumber="99">
             
             
 
@@ -2937,13 +2871,79 @@
         </div>
       
         <div>
+          <li class="covered" data-hits="28" data-linenumber="100">
+            <span class="hits">28</span>
+            
+
+            
+
+            <code class="ruby">        timeslot = Timeslot.new</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="28" data-linenumber="101">
+            <span class="hits">28</span>
+            
+
+            
+
+            <code class="ruby">        timeslot.time = time</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="28" data-linenumber="102">
+            <span class="hits">28</span>
+            
+
+            
+
+            <code class="ruby">        timeslot.duration = count</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="28" data-linenumber="103">
+            <span class="hits">28</span>
+            
+
+            
+
+            <code class="ruby">        timeslot.event_id = params[:timeslot][:event_id]</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="28" data-linenumber="104">
+            <span class="hits">28</span>
+            
+
+            
+
+            <code class="ruby">        timeslot.role = input_role</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="28" data-linenumber="105">
+            <span class="hits">28</span>
+            
+
+            
+
+            <code class="ruby">        timeslot.role_number = role_number</code>
+          </li>
+        </div>
+      
+        <div>
           <li class="covered" data-hits="28" data-linenumber="106">
             <span class="hits">28</span>
             
 
             
 
-            <code class="ruby">        timeslot.save</code>
+            <code class="ruby">        timeslot.is_approved = false</code>
           </li>
         </div>
       
@@ -2965,7 +2965,7 @@
 
             
 
-            <code class="ruby">        time += (count * 60)</code>
+            <code class="ruby">        timeslot.save</code>
           </li>
         </div>
       
@@ -2976,18 +2976,18 @@
 
             
 
-            <code class="ruby">      end</code>
+            <code class="ruby"></code>
           </li>
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="110">
-            
-            
-
+          <li class="covered" data-hits="28" data-linenumber="110">
+            <span class="hits">28</span>
             
 
-            <code class="ruby">    end</code>
+            
+
+            <code class="ruby">        time += (count * 60)</code>
           </li>
         </div>
       
@@ -2998,12 +2998,34 @@
 
             
 
-            <code class="ruby">  end</code>
+            <code class="ruby">      end</code>
           </li>
         </div>
       
         <div>
           <li class="never" data-hits="" data-linenumber="112">
+            
+            
+
+            
+
+            <code class="ruby">    end</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="113">
+            
+            
+
+            
+
+            <code class="ruby">  end</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="114">
             
             
 
@@ -4615,7 +4637,7 @@
 
             
 
-            <code class="ruby">  validates :time, uniqueness: { scope: [:event_id, :role, :role_number]}, presence: true</code>
+            <code class="ruby">  validates :time, uniqueness: { scope: %i[event_id role role_number] }, presence: true</code>
           </li>
         </div>
       
@@ -11947,7 +11969,7 @@
 
             
 
-            <code class="ruby">    it &#39;Creates the event with the inputted amount of roles&#39; do</code>
+            <code class="ruby">  it &#39;Creates the event with the inputted amount of roles&#39; do</code>
           </li>
         </div>
       
@@ -11958,7 +11980,7 @@
 
             
 
-            <code class="ruby">        test_user = OmniAuth.config.mock_auth[:google_oauth2]</code>
+            <code class="ruby">    test_user = OmniAuth.config.mock_auth[:google_oauth2]</code>
           </li>
         </div>
       
@@ -11969,7 +11991,7 @@
 
             
 
-            <code class="ruby">        User.create(uid: test_user[:uid], full_name: test_user[:info][:name], email: test_user[:info][:email], avatar_url: test_user[:info][:image], user_role: UserRole.find_by(name: &#39;Officer&#39;))</code>
+            <code class="ruby">    User.create(uid: test_user[:uid], full_name: test_user[:info][:name], email: test_user[:info][:email], avatar_url: test_user[:info][:image], user_role: UserRole.find_by(name: &#39;Officer&#39;))</code>
           </li>
         </div>
       
@@ -11980,7 +12002,7 @@
 
             
 
-            <code class="ruby">        visit &#39;/&#39;</code>
+            <code class="ruby">    visit &#39;/&#39;</code>
           </li>
         </div>
       
@@ -11991,7 +12013,7 @@
 
             
 
-            <code class="ruby">        click_link &#39;Sign in&#39;</code>
+            <code class="ruby">    click_link &#39;Sign in&#39;</code>
           </li>
         </div>
       
@@ -12002,7 +12024,7 @@
 
             
 
-            <code class="ruby">        click_link &#39;New Event&#39;</code>
+            <code class="ruby">    click_link &#39;New Event&#39;</code>
           </li>
         </div>
       
@@ -12013,7 +12035,7 @@
 
             
 
-            <code class="ruby">        fill_in &#39;event_name&#39;, with: &#39;Test&#39;</code>
+            <code class="ruby">    fill_in &#39;event_name&#39;, with: &#39;Test&#39;</code>
           </li>
         </div>
       
@@ -12024,7 +12046,7 @@
 
             
 
-            <code class="ruby">        fill_in &#39;event_volunteers&#39;, with: 3</code>
+            <code class="ruby">    fill_in &#39;event_volunteers&#39;, with: 3</code>
           </li>
         </div>
       
@@ -12035,7 +12057,7 @@
 
             
 
-            <code class="ruby">        fill_in &#39;event_front_desks&#39;, with: 3</code>
+            <code class="ruby">    fill_in &#39;event_front_desks&#39;, with: 3</code>
           </li>
         </div>
       
@@ -12046,7 +12068,7 @@
 
             
 
-            <code class="ruby">        fill_in &#39;event_runners&#39;, with: 3</code>
+            <code class="ruby">    fill_in &#39;event_runners&#39;, with: 3</code>
           </li>
         </div>
       
@@ -12057,7 +12079,7 @@
 
             
 
-            <code class="ruby">        fill_in &#39;event_description&#39;, with: &#39;Bleh&#39;</code>
+            <code class="ruby">    fill_in &#39;event_description&#39;, with: &#39;Bleh&#39;</code>
           </li>
         </div>
       
@@ -12068,7 +12090,7 @@
 
             
 
-            <code class="ruby">        click_on &#39;Create Event&#39;</code>
+            <code class="ruby">    click_on &#39;Create Event&#39;</code>
           </li>
         </div>
       
@@ -12079,7 +12101,7 @@
 
             
 
-            <code class="ruby">        expect(page).to have_content(&#39;Volunteers: 3&#39;)</code>
+            <code class="ruby">    expect(page).to have_content(&#39;Volunteers: 3&#39;)</code>
           </li>
         </div>
       
@@ -12090,7 +12112,7 @@
 
             
 
-            <code class="ruby">        expect(page).to have_content(&#39;Runners: 3&#39;)</code>
+            <code class="ruby">    expect(page).to have_content(&#39;Runners: 3&#39;)</code>
           </li>
         </div>
       
@@ -12101,7 +12123,7 @@
 
             
 
-            <code class="ruby">        expect(page).to have_content(&#39;Front Desks: 3&#39;)</code>
+            <code class="ruby">    expect(page).to have_content(&#39;Front Desks: 3&#39;)</code>
           </li>
         </div>
       
@@ -12112,7 +12134,7 @@
 
             
 
-            <code class="ruby">    end</code>
+            <code class="ruby">  end</code>
           </li>
         </div>
       
@@ -12134,7 +12156,7 @@
 
             
 
-            <code class="ruby">    it &#39;Does the above and creates timeslots and has 27 timeslot claim buttons&#39; do</code>
+            <code class="ruby">  it &#39;Does the above and creates timeslots and has 27 timeslot claim buttons&#39; do</code>
           </li>
         </div>
       
@@ -12145,7 +12167,7 @@
 
             
 
-            <code class="ruby">        test_user = OmniAuth.config.mock_auth[:google_oauth2]</code>
+            <code class="ruby">    test_user = OmniAuth.config.mock_auth[:google_oauth2]</code>
           </li>
         </div>
       
@@ -12156,7 +12178,7 @@
 
             
 
-            <code class="ruby">        User.create(uid: test_user[:uid], full_name: test_user[:info][:name], email: test_user[:info][:email], avatar_url: test_user[:info][:image], user_role: UserRole.find_by(name: &#39;Officer&#39;))</code>
+            <code class="ruby">    User.create(uid: test_user[:uid], full_name: test_user[:info][:name], email: test_user[:info][:email], avatar_url: test_user[:info][:image], user_role: UserRole.find_by(name: &#39;Officer&#39;))</code>
           </li>
         </div>
       
@@ -12167,7 +12189,7 @@
 
             
 
-            <code class="ruby">        visit &#39;/&#39;</code>
+            <code class="ruby">    visit &#39;/&#39;</code>
           </li>
         </div>
       
@@ -12178,7 +12200,7 @@
 
             
 
-            <code class="ruby">        click_link &#39;Sign in&#39;</code>
+            <code class="ruby">    click_link &#39;Sign in&#39;</code>
           </li>
         </div>
       
@@ -12189,7 +12211,7 @@
 
             
 
-            <code class="ruby">        click_link &#39;New Event&#39;</code>
+            <code class="ruby">    click_link &#39;New Event&#39;</code>
           </li>
         </div>
       
@@ -12200,7 +12222,7 @@
 
             
 
-            <code class="ruby">        fill_in &#39;event_name&#39;, with: &#39;Test&#39;</code>
+            <code class="ruby">    fill_in &#39;event_name&#39;, with: &#39;Test&#39;</code>
           </li>
         </div>
       
@@ -12211,7 +12233,7 @@
 
             
 
-            <code class="ruby">        fill_in &#39;event_volunteers&#39;, with: 3</code>
+            <code class="ruby">    fill_in &#39;event_volunteers&#39;, with: 3</code>
           </li>
         </div>
       
@@ -12222,7 +12244,7 @@
 
             
 
-            <code class="ruby">        fill_in &#39;event_front_desks&#39;, with: 3</code>
+            <code class="ruby">    fill_in &#39;event_front_desks&#39;, with: 3</code>
           </li>
         </div>
       
@@ -12233,7 +12255,7 @@
 
             
 
-            <code class="ruby">        fill_in &#39;event_runners&#39;, with: 3</code>
+            <code class="ruby">    fill_in &#39;event_runners&#39;, with: 3</code>
           </li>
         </div>
       
@@ -12244,7 +12266,7 @@
 
             
 
-            <code class="ruby">        fill_in &#39;event_description&#39;, with: &#39;Bleh&#39;</code>
+            <code class="ruby">    fill_in &#39;event_description&#39;, with: &#39;Bleh&#39;</code>
           </li>
         </div>
       
@@ -12255,7 +12277,7 @@
 
             
 
-            <code class="ruby">        click_on &#39;Create Event&#39;</code>
+            <code class="ruby">    click_on &#39;Create Event&#39;</code>
           </li>
         </div>
       
@@ -12266,7 +12288,7 @@
 
             
 
-            <code class="ruby">        click_link &#39;Add Timeslots&#39;</code>
+            <code class="ruby">    click_link &#39;Add Timeslots&#39;</code>
           </li>
         </div>
       
@@ -12277,7 +12299,7 @@
 
             
 
-            <code class="ruby">        fill_in &#39;timeslot_count&#39;, with: 60</code>
+            <code class="ruby">    fill_in &#39;timeslot_count&#39;, with: 60</code>
           </li>
         </div>
       
@@ -12288,7 +12310,7 @@
 
             
 
-            <code class="ruby">        select &#39;04&#39;, from: &#39;timeslot_start_time_4i&#39;</code>
+            <code class="ruby">    select &#39;04&#39;, from: &#39;timeslot_start_time_4i&#39;</code>
           </li>
         </div>
       
@@ -12299,7 +12321,7 @@
 
             
 
-            <code class="ruby">        select &#39;00&#39;, from: &#39;timeslot_start_time_5i&#39;</code>
+            <code class="ruby">    select &#39;00&#39;, from: &#39;timeslot_start_time_5i&#39;</code>
           </li>
         </div>
       
@@ -12310,7 +12332,7 @@
 
             
 
-            <code class="ruby">        select &#39;06&#39;, from: &#39;timeslot_end_time_4i&#39;</code>
+            <code class="ruby">    select &#39;06&#39;, from: &#39;timeslot_end_time_4i&#39;</code>
           </li>
         </div>
       
@@ -12321,7 +12343,7 @@
 
             
 
-            <code class="ruby">        select &#39;00&#39;, from: &#39;timeslot_end_time_5i&#39;</code>
+            <code class="ruby">    select &#39;00&#39;, from: &#39;timeslot_end_time_5i&#39;</code>
           </li>
         </div>
       
@@ -12332,7 +12354,7 @@
 
             
 
-            <code class="ruby">        click_on &#39;Create Timeslot&#39;</code>
+            <code class="ruby">    click_on &#39;Create Timeslot&#39;</code>
           </li>
         </div>
       
@@ -12343,7 +12365,7 @@
 
             
 
-            <code class="ruby">        expect(page).to have_content(&#39;Claim&#39;, count: 27)</code>
+            <code class="ruby">    expect(page).to have_content(&#39;Claim&#39;, count: 27)</code>
           </li>
         </div>
       
@@ -12354,7 +12376,7 @@
 
             
 
-            <code class="ruby">    end</code>
+            <code class="ruby">  end</code>
           </li>
         </div>
       
@@ -12376,7 +12398,7 @@
 
             
 
-            <code class="ruby">    it &#39;Does not let user use a smaller end time and bigger start time&#39; do</code>
+            <code class="ruby">  it &#39;Does not let user use a smaller end time and bigger start time&#39; do</code>
           </li>
         </div>
       
@@ -12387,7 +12409,7 @@
 
             
 
-            <code class="ruby">        test_user = OmniAuth.config.mock_auth[:google_oauth2]</code>
+            <code class="ruby">    test_user = OmniAuth.config.mock_auth[:google_oauth2]</code>
           </li>
         </div>
       
@@ -12398,7 +12420,7 @@
 
             
 
-            <code class="ruby">        User.create(uid: test_user[:uid], full_name: test_user[:info][:name], email: test_user[:info][:email], avatar_url: test_user[:info][:image], user_role: UserRole.find_by(name: &#39;Officer&#39;))</code>
+            <code class="ruby">    User.create(uid: test_user[:uid], full_name: test_user[:info][:name], email: test_user[:info][:email], avatar_url: test_user[:info][:image], user_role: UserRole.find_by(name: &#39;Officer&#39;))</code>
           </li>
         </div>
       
@@ -12409,7 +12431,7 @@
 
             
 
-            <code class="ruby">        Event.create(name: &#39;Test&#39;, date: &#39;12-01-2021&#39;, volunteers: 3, front_desks: 3, runners: 3)</code>
+            <code class="ruby">    Event.create(name: &#39;Test&#39;, date: &#39;12-01-2021&#39;, volunteers: 3, front_desks: 3, runners: 3)</code>
           </li>
         </div>
       
@@ -12420,7 +12442,7 @@
 
             
 
-            <code class="ruby">        visit &#39;/&#39;</code>
+            <code class="ruby">    visit &#39;/&#39;</code>
           </li>
         </div>
       
@@ -12431,7 +12453,7 @@
 
             
 
-            <code class="ruby">        click_link &#39;Sign in&#39;</code>
+            <code class="ruby">    click_link &#39;Sign in&#39;</code>
           </li>
         </div>
       
@@ -12442,7 +12464,7 @@
 
             
 
-            <code class="ruby">        click_link &#39;Test&#39;</code>
+            <code class="ruby">    click_link &#39;Test&#39;</code>
           </li>
         </div>
       
@@ -12453,7 +12475,7 @@
 
             
 
-            <code class="ruby">        click_link &#39;Add Timeslots&#39;</code>
+            <code class="ruby">    click_link &#39;Add Timeslots&#39;</code>
           </li>
         </div>
       
@@ -12464,7 +12486,7 @@
 
             
 
-            <code class="ruby">        fill_in &#39;timeslot_count&#39;, with: 60</code>
+            <code class="ruby">    fill_in &#39;timeslot_count&#39;, with: 60</code>
           </li>
         </div>
       
@@ -12475,7 +12497,7 @@
 
             
 
-            <code class="ruby">        select &#39;06&#39;, from: &#39;timeslot_start_time_4i&#39;</code>
+            <code class="ruby">    select &#39;06&#39;, from: &#39;timeslot_start_time_4i&#39;</code>
           </li>
         </div>
       
@@ -12486,7 +12508,7 @@
 
             
 
-            <code class="ruby">        select &#39;00&#39;, from: &#39;timeslot_start_time_5i&#39;</code>
+            <code class="ruby">    select &#39;00&#39;, from: &#39;timeslot_start_time_5i&#39;</code>
           </li>
         </div>
       
@@ -12497,7 +12519,7 @@
 
             
 
-            <code class="ruby">        select &#39;04&#39;, from: &#39;timeslot_end_time_4i&#39;</code>
+            <code class="ruby">    select &#39;04&#39;, from: &#39;timeslot_end_time_4i&#39;</code>
           </li>
         </div>
       
@@ -12508,7 +12530,7 @@
 
             
 
-            <code class="ruby">        select &#39;00&#39;, from: &#39;timeslot_end_time_5i&#39;</code>
+            <code class="ruby">    select &#39;00&#39;, from: &#39;timeslot_end_time_5i&#39;</code>
           </li>
         </div>
       
@@ -12519,7 +12541,7 @@
 
             
 
-            <code class="ruby">        click_on &#39;Create Timeslot&#39;</code>
+            <code class="ruby">    click_on &#39;Create Timeslot&#39;</code>
           </li>
         </div>
       
@@ -12530,7 +12552,7 @@
 
             
 
-            <code class="ruby">        expect(page).to have_content(&#39;You cannot use an end time smaller than your start time&#39;)</code>
+            <code class="ruby">    expect(page).to have_content(&#39;You cannot use an end time smaller than your start time&#39;)</code>
           </li>
         </div>
       
@@ -12541,7 +12563,7 @@
 
             
 
-            <code class="ruby">    end</code>
+            <code class="ruby">  end</code>
           </li>
         </div>
       
@@ -14896,7 +14918,7 @@
 
             
 
-            <code class="ruby">    expect(timeslot).to_not be_valid</code>
+            <code class="ruby">    expect(timeslot).not_to be_valid</code>
           </li>
         </div>
       
@@ -14951,7 +14973,7 @@
 
             
 
-            <code class="ruby">    expect(timeslot).to_not be_valid</code>
+            <code class="ruby">    expect(timeslot).not_to be_valid</code>
           </li>
         </div>
       
