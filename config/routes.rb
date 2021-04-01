@@ -23,4 +23,7 @@ Rails.application.routes.draw do
   # delete 'logout', to: 'sessions#destroy'
   post '/claim/:id', to: 'timeslots#claim', as: 'claim'
   post '/unclaim/:id', to: 'timeslots#unclaim', as: 'unclaim'
+
+  post '/users/promote/:id', to: 'users#promote', as: 'promote'
+  post '/users/demote/:id', to: 'users#demote', as: 'demote'
 end

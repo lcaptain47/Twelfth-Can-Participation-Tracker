@@ -3,4 +3,17 @@
 <p>Total Unapproved Hours: <%= @user.total_unapproved_hours %> </p>
 <p>User Role: <%= @user.user_role.name %> </p>
 
+
+<% if current_user.user_role.can_promote_demote %>
+    <% if @user.user_role.name == 'User' %>
+        <%= link_to "Promote to Officer", promote_path(@user), method: :post %>
+    <% end %>
+
+    <% if @user.user_role.name == 'Officer' %>
+        <%= link_to "Promote to President", promote_path(@user), method: :post, data: {confirm: "Are you sure you want to promote this officer to president? You will be demoted to a regular user!"} %>
+        <%= link_to "Demote to User", demote_path(@user), method: :post %>
+    <% end %>
+<% end %>
+
+
 <%= link_to "Homepage", root_path %>
