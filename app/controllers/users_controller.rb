@@ -24,7 +24,6 @@ class UsersController < ApplicationController
       current_user.user_role = UserRole.find_by(name: 'User')
       current_user.save
       redirect_to user_path(user)
-      nil
     end
   end
 
