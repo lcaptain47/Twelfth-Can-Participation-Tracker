@@ -11,7 +11,6 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
   end
 
-
   def promote
     user = User.find(params[:id])
 
@@ -24,13 +23,13 @@ class UsersController < ApplicationController
       return
     end
 
-    if user.user_role.name == 'Officer'
-      user.user_role = UserRole.find_by(name: 'President')
-      user.save
-      current_user.user_role = UserRole.find_by(name: 'User')
-      current_user.save
-      redirect_to user_path(user)
-    end
+    return unless user.user_role.name == 'Officer'
+
+    user.user_role = UserRole.find_by(name: 'President')
+    user.save
+    current_user.user_role = UserRole.find_by(name: 'User')
+    current_user.save
+    redirect_to user_path(user)
   end
 
   def demote
