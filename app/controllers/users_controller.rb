@@ -48,7 +48,7 @@ class UsersController < ApplicationController
   def search_page; end
 
   def search
-    @users = User.where(full_name: params[:query])
+    @users = User.where(full_name: params[:query].strip)
     if @users.length.zero?
       flash[:notice] = "#{params[:query]} not found"
       redirect_to users_path
