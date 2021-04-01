@@ -7,5 +7,5 @@
 
 
 <% if current_user.user_role.can_delete_users %>
-    <%= link_to "System Wipe" %>
+    <%= link_to "System Wipe" , wipe_all_path , method: :delete %>
 <% end %>
