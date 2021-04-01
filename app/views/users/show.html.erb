@@ -2,11 +2,10 @@
 <p>Total Approved Hours: <%= @user.total_approved_hours %> </p>
 <p>Total Unapproved Hours: <%= @user.total_unapproved_hours %> </p>
 <p>User Role: <%= @user.user_role.name %> </p>
-# current_user != @user
-# can user delete??
-# MAKE A DEAD LINK 
-#MAKE SURE VIEW WORKS THEN ADD IMPLIMENTATION 
-#<% if current_user.user_role.can_delete %>
-#<%= link_to "Delete", event_path(@event), method: :delete %>
-#<% end %>
+
 <%= link_to "Homepage", root_path %>
+
+
+<% if current_user.user_role.can_delete_users %>
+    <%= link_to "System Wipe" %>
+<% end %>
