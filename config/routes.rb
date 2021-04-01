@@ -26,4 +26,11 @@ Rails.application.routes.draw do
 
   post '/users/promote/:id', to: 'users#promote', as: 'promote'
   post '/users/demote/:id', to: 'users#demote', as: 'demote'
+
+  get '/search', to: 'users#search_page', as: 'search_page'
+  post '/search', to: 'users#search', as: 'search' 
+
+
 end
+
+

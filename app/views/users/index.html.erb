@@ -1,0 +1,19 @@
+<h1> List of all current users </h1>
+<%= link_to "Search" , search_page_path %>
+
+<table class="listing" summary="List of all users">
+
+    <% @users.each do |user| %>
+        <tr class="p">
+            <td><%= link_to user.full_name,user_path(user) %>
+            <td> Total Approved Hours: <%= user.total_approved_hours %>
+            <td> | Total Unapproved Hours: <%= user.total_unapproved_hours %>
+            <td> | User Role: <%= user.user_role.name %>
+            </td>
+        </tr>
+<% end %>
+</table>
+
+
+<br>
+<%= link_to "Homepage" , root_path %>

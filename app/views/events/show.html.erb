@@ -21,7 +21,7 @@
                         <%= link_to "Claim", claim_path(timeslot), method: :post%>
                     <% else %>
                         <%= link_to timeslot.user.full_name, user_path(timeslot.user)%>
-                            <% if timeslot.user.id == current_user.id || current_user.user_role.can_create %>
+                            <% if timeslot.user.id == current_user.id || current_user.user_role.can_claim_unclaim %>
                                 <%= link_to "Unclaim", unclaim_path(timeslot), method: :post %>
                             <% end %>
         <% end %>

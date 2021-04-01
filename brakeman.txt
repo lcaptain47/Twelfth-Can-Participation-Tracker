@@ -1,18 +1,20 @@
  
 == Brakeman Report ==
 
-Application Path: /home/alejandro_8321/csce431/project12/twelfthCan/Twelth-Can-Participation-Tracker
+
+Application Path: /home/val/code/Twelth-Can-Participation-Tracker
 Rails Version: 6.1.1
 Brakeman Version: 5.0.0
-Scan Date: 2021-04-01 13:36:04 -0500
-Duration: 6.3000321 seconds
+Scan Date: 2021-04-01 16:14:09 -0500
+Duration: 2.7736579 seconds
+
 Checks Run: BasicAuth, BasicAuthTimingAttack, CSRFTokenForgeryCVE, ContentTag, CookieSerialization, CreateWith, CrossSiteScripting, DefaultRoutes, Deserialize, DetailedExceptions, DigestDoS, DynamicFinders, EscapeFunction, Evaluation, Execute, FileAccess, FileDisclosure, FilterSkipping, ForgerySetting, HeaderDoS, I18nXSS, JRubyXML, JSONEncoding, JSONEntityEscape, JSONParsing, LinkTo, LinkToHref, MailTo, MassAssignment, MimeTypeDoS, ModelAttrAccessible, ModelAttributes, ModelSerialize, NestedAttributes, NestedAttributesBypass, NumberToCurrency, PageCachingCVE, PermitAttributes, QuoteTableName, Redirect, RegexDoS, Render, RenderDoS, RenderInline, ResponseSplitting, RouteDoS, SQL, SQLCVEs, SSLVerify, SafeBufferManipulation, SanitizeMethods, SelectTag, SelectVulnerability, Send, SendFile, SessionManipulation, SessionSettings, SimpleFormat, SingleQuotes, SkipBeforeFilter, SprocketsPathTraversal, StripTags, SymbolDoSCVE, TemplateInjection, TranslateBug, UnsafeReflection, UnsafeReflectionMethods, ValidationRegex, VerbConfusion, WithoutProtection, XMLDoS, YAMLParsing
 
 == Overview ==
 
 Controllers: 6
 Models: 5
-Templates: 9
+Templates: 11
 Errors: 0
 Security Warnings: 0
 

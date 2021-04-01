@@ -20,6 +20,7 @@ RSpec.describe 'Tests the user priviledges feature' do
     fill_in 'event_name', with: 'Test'
     fill_in 'event_volunteers', with: 1
     click_on 'Create Event'
+    sleep 5
     expect(page).to have_content('Test')
   end
 
