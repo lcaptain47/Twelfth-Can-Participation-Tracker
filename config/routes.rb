@@ -24,9 +24,9 @@ Rails.application.routes.draw do
   post '/claim/:id', to: 'timeslots#claim', as: 'claim'
   post '/unclaim/:id', to: 'timeslots#unclaim', as: 'unclaim'
 
-  get '/users/search', to: 'users#search_show', as: 'search_show'
-  post '/users/search', to: 'users#search', as: 'search' 
-   
+  get '/search', to: 'users#search_page', as: 'search_page'
+  post '/search', to: 'users#search', as: 'search' 
+
 end
 
 
