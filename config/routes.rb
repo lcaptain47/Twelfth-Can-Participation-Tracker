@@ -23,4 +23,10 @@ Rails.application.routes.draw do
   # delete 'logout', to: 'sessions#destroy'
   post '/claim/:id', to: 'timeslots#claim', as: 'claim'
   post '/unclaim/:id', to: 'timeslots#unclaim', as: 'unclaim'
+
+  get '/search', to: 'users#search_page', as: 'search_page'
+  post '/search', to: 'users#search', as: 'search' 
+
 end
+
+
