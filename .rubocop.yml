@@ -47,4 +47,5 @@ RSpec/DescribeClass:
 Naming/MethodName:
   Enabled: true
   EnforcedStyle: snake_case #default
-
+RSpec/RepeatedExample:
+  Enabled: false

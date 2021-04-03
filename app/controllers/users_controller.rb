@@ -13,7 +13,7 @@ class UsersController < ApplicationController
 
     users = user_role.users
     users.each(&:destroy)
-    flash[:notice] = "Sytem Wiped of all normal users"
+    flash[:notice] = 'Sytem Wiped of all normal users'
     redirect_to root_path
   end
 

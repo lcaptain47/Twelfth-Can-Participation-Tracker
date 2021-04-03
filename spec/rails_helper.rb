@@ -77,7 +77,8 @@ RSpec.configure do |config|
   # config.filter_gems_from_backtrace("gem name")
 end
 
-Capybara.default_driver = :selenium_chrome_headless
+Capybara.default_driver = :selenium_chrome
+# add back _headless
 OmniAuth.config.test_mode = true
 OmniAuth.config.mock_auth[:google_oauth2] = Faker::Omniauth.google
 OmniAuth.config.mock_auth[:google_oauth2][:info][:name] = 'Lucas Campbell'
