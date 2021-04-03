@@ -10,15 +10,15 @@ class UsersController < ApplicationController
     if current_user.user_role.can_delete_users
       @user.each do
       if user != current_user
-        user.destroy
+        user.delete
       end
 
     #if user is not an officer or preseident delete them
     end
   end
 
-  def destroy
-    @user.destroy
+  def delete
+    @user.delete
   end
 end
   
