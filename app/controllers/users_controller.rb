@@ -11,7 +11,6 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
   end
 
-<<<<<<< HEAD
   def wipe_all
     return unless current_user.user_role.can_delete_users
 
@@ -32,7 +31,6 @@ class UsersController < ApplicationController
       redirect_to root_path
     else
       redirect_to user_path(@user)
-=======
   def promote
     user = User.find(params[:id])
 
@@ -76,7 +74,6 @@ class UsersController < ApplicationController
       redirect_to users_path
     else
       render 'index'
->>>>>>> c3b3fafe80df169265a83c1d61cced3718843569
     end
   end
 end
