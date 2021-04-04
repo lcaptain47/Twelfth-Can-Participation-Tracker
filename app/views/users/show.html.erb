@@ -3,6 +3,7 @@
 <p>Total Unapproved Hours: <%= @user.total_unapproved_hours %> </p>
 <p>User Role: <%= @user.user_role.name %> </p>
 
+<<<<<<< HEAD
 <%= link_to "Homepage", root_path %>
 
 
@@ -12,3 +13,20 @@
 <% elsif  current_user.user_role.can_delete_users %>
     <%= link_to "Delete User" , user_path(@user) , method: :delete , data: {confirm: "Are you sure you want to delete this user?"}%>
 <% end %>
+=======
+
+
+<% if current_user.user_role.can_promote_demote %>
+    <% if @user.user_role.name == 'User' %>
+        <%= link_to "Promote to Officer", promote_path(@user), method: :post %>
+    <% end %>
+
+    <% if @user.user_role.name == 'Officer' %>
+        <%= link_to "Promote to President", promote_path(@user), method: :post, data: {confirm: "Are you sure you want to promote this officer to president? You will be demoted to a regular user!"} %>
+        <%= link_to "Demote to User", demote_path(@user), method: :post %>
+    <% end %>
+<% end %>
+
+
+<%= link_to "Homepage", root_path %>
+>>>>>>> c3b3fafe80df169265a83c1d61cced3718843569

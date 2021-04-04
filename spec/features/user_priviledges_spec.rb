@@ -20,6 +20,7 @@ RSpec.describe 'Tests the user priviledges feature' do
     fill_in 'event_name', with: 'Test'
     fill_in 'event_volunteers', with: 1
     click_on 'Create Event'
+    sleep 5
     expect(page).to have_content('Test')
   end
 
@@ -49,7 +50,12 @@ RSpec.describe 'Tests the user priviledges feature' do
     click_link 'Sign in'
     click_link 'Test'
     expect(page).to have_content('Delete')
-    click_link 'Delete'
+    page.accept_confirm do
+      click_link 'Delete'
+    end
+
+    sleep(1)
+
     expect(page).to have_content('Sign Out')
   end
 

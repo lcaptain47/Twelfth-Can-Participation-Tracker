@@ -24,4 +24,14 @@ Rails.application.routes.draw do
   post '/users/wipe_all', to: 'users#wipe_all', as: 'wipe_all'
   post '/claim/:id', to: 'timeslots#claim', as: 'claim'
   post '/unclaim/:id', to: 'timeslots#unclaim', as: 'unclaim'
+
+  post '/users/promote/:id', to: 'users#promote', as: 'promote'
+  post '/users/demote/:id', to: 'users#demote', as: 'demote'
+
+  get '/search', to: 'users#search_page', as: 'search_page'
+  post '/search', to: 'users#search', as: 'search' 
+
+
 end
+
+
