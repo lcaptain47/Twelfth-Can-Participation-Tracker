@@ -21,6 +21,7 @@ Rails.application.routes.draw do
   # get 'login', to: 'sessions#new'
   # post 'login', to: 'sessions#create'
   # delete 'logout', to: 'sessions#destroy'
+  post '/users/wipe_all', to: 'users#wipe_all', as: 'wipe_all'
   post '/claim/:id', to: 'timeslots#claim', as: 'claim'
   post '/unclaim/:id', to: 'timeslots#unclaim', as: 'unclaim'
 

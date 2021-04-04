@@ -83,6 +83,7 @@ RSpec.describe 'Tests the user priviledges feature' do
 
     visit '/'
     click_link 'Sign in'
+    sleep(5)
     click_link 'Test'
     expect(page).not_to have_content('Add Timeslots')
     TimeslotsController.new
