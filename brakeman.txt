@@ -1,19 +1,11 @@
 
 == Brakeman Report ==
 
-<<<<<<< HEAD
 Application Path: /home/scott/Twelth-Can-Participation-Tracker
 Rails Version: 6.1.1
 Brakeman Version: 5.0.0
-Scan Date: 2021-04-03 12:35:08 -0500
-Duration: 3.4177323 seconds
-=======
-Application Path: /home/alejandro_8321/csce431/project12/twelfthCan/Twelth-Can-Participation-Tracker
-Rails Version: 6.1.1
-Brakeman Version: 5.0.0
-Scan Date: 2021-04-02 17:46:04 -0500
-Duration: 7.5045978 seconds
->>>>>>> c3b3fafe80df169265a83c1d61cced3718843569
+Scan Date: 2021-04-04 11:17:28 -0500
+Duration: 6.4950219 seconds
 Checks Run: BasicAuth, BasicAuthTimingAttack, CSRFTokenForgeryCVE, ContentTag, CookieSerialization, CreateWith, CrossSiteScripting, DefaultRoutes, Deserialize, DetailedExceptions, DigestDoS, DynamicFinders, EscapeFunction, Evaluation, Execute, FileAccess, FileDisclosure, FilterSkipping, ForgerySetting, HeaderDoS, I18nXSS, JRubyXML, JSONEncoding, JSONEntityEscape, JSONParsing, LinkTo, LinkToHref, MailTo, MassAssignment, MimeTypeDoS, ModelAttrAccessible, ModelAttributes, ModelSerialize, NestedAttributes, NestedAttributesBypass, NumberToCurrency, PageCachingCVE, PermitAttributes, QuoteTableName, Redirect, RegexDoS, Render, RenderDoS, RenderInline, ResponseSplitting, RouteDoS, SQL, SQLCVEs, SSLVerify, SafeBufferManipulation, SanitizeMethods, SelectTag, SelectVulnerability, Send, SendFile, SessionManipulation, SessionSettings, SimpleFormat, SingleQuotes, SkipBeforeFilter, SprocketsPathTraversal, StripTags, SymbolDoSCVE, TemplateInjection, TranslateBug, UnsafeReflection, UnsafeReflectionMethods, ValidationRegex, VerbConfusion, WithoutProtection, XMLDoS, YAMLParsing
 
 == Overview ==

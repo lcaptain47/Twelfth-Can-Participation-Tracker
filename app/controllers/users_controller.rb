@@ -28,10 +28,10 @@ class UsersController < ApplicationController
       flash[:notice] = "#{@user.full_name} Deleted"
       @user.destroy
     end
-  
-    end
+    redirect_to root_path
+  end
 
-    def promote
+  def promote
     user = User.find(params[:id])
 
     return unless current_user.user_role.can_promote_demote
