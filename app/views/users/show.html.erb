@@ -1,7 +1,10 @@
 <p>Name: <%= @user.full_name %> </p>
+
+<p>Total Front Office Hours: <%= @user.front_office_hours %> </p>
+<p>Total Pantry Runner Hours: <%= @user.pantry_runner_hours %> </p>
+<p>Total Volunteer Hours: <%= @user.volunteer_hours %> </p>
 <p>Total Approved Hours: <%= @user.total_approved_hours %> </p>
 <p>Total Unapproved Hours: <%= @user.total_unapproved_hours %> </p>
 <p>User Role: <%= @user.user_role.name %> </p>
-
 
 <%= link_to "Homepage", root_path %>
