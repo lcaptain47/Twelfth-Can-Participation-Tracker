@@ -24,7 +24,16 @@
                             <% if timeslot.user.id == current_user.id || current_user.user_role.can_claim_unclaim %>
                                 <%= link_to "Unclaim", unclaim_path(timeslot), method: :post %>
                             <% end %>
-        <% end %>
+                            <% if current_user.user_role.can_approve_unapprove %>
+                                <% if timeslot.is_approved %>
+                                    <%= link_to "Unapprove", unapprove_path(timeslot), method: :post %>
+                                <% else %>
+                                    <%= link_to "Approve", approve_path(timeslot), method: :post %>
+                                <% end %>
+                            <% end %>
+                            
+                            
+                    <% end %>
                 </td>
             <% end %>
         </tr>

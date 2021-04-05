@@ -25,6 +25,8 @@ Rails.application.routes.draw do
   post '/claim/:id', to: 'timeslots#claim', as: 'claim'
   post '/unclaim/:id', to: 'timeslots#unclaim', as: 'unclaim'
 
+  post '/unapprove/:id', to: 'timeslots#unapprove', as: 'unapprove' 
+  post '/approve/:id', to: 'timeslots#approve', as: 'approve'
   post '/users/promote/:id', to: 'users#promote', as: 'promote'
   post '/users/demote/:id', to: 'users#demote', as: 'demote'
 

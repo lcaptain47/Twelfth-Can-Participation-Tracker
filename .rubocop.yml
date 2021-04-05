@@ -47,5 +47,9 @@ RSpec/DescribeClass:
 Naming/MethodName:
   Enabled: true
   EnforcedStyle: snake_case #default
+Metrics/ClassLength:
+  Max: 150
 RSpec/RepeatedExample:
+  Enabled: false
+Metrics/CyclomaticComplexity:
   Enabled: false
