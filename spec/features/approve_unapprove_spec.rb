@@ -10,7 +10,7 @@ RSpec.describe 'Tests the approve and unapprove features' do
     # test_user = Faker::Omniauth.google
     test_user = OmniAuth.config.mock_auth[:google_oauth2]
     User.create(uid: test_user[:uid], full_name: test_user[:info][:name], email: test_user[:info][:email], avatar_url: test_user[:info][:image], user_role: UserRole.find_by(name: 'Officer'))
-    
+
     visit '/'
     click_link 'Sign in'
     click_link 'Test'
@@ -87,6 +87,4 @@ RSpec.describe 'Tests the approve and unapprove features' do
     click_link 'Lucas Campbell'
     expect(page).to have_content('0.0', count: 5)
   end
-
-
 end
