@@ -47,4 +47,5 @@ RSpec/DescribeClass:
 Naming/MethodName:
   Enabled: true
   EnforcedStyle: snake_case #default
-
+Metrics/ClassLength:
+  Max: 150
