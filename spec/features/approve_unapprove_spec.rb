@@ -10,7 +10,7 @@ RSpec.describe 'Tests the approve and unapprove features' do
     # test_user = Faker::Omniauth.google
     test_user = OmniAuth.config.mock_auth[:google_oauth2]
     User.create(uid: test_user[:uid], full_name: test_user[:info][:name], email: test_user[:info][:email], avatar_url: test_user[:info][:image], user_role: UserRole.find_by(name: 'Officer'))
-
+    
     visit '/'
     click_link 'Sign in'
     click_link 'Test'
@@ -24,7 +24,6 @@ RSpec.describe 'Tests the approve and unapprove features' do
     click_link 'Test'
     click_link 'Unapprove'
     click_link test_user[:info][:name]
-    sleep 2
     expect(page).to have_content('Total Unapproved Hours: 1.0')
     expect(page).to have_content('Total Volunteer Hours: 0.0')
   end
@@ -71,4 +70,23 @@ RSpec.describe 'Tests the approve and unapprove features' do
     expect(page).not_to have_content('Approve')
     expect(page).not_to have_content('Unapprove')
   end
+
+  it 'Tests the unclaim feature for the right values' do
+    Event.create(name: 'Test', date: '12-01-2021', volunteers: 1)
+    Timeslot.create(time: '12:00', duration: 60, event: Event.first, role: 'Volunteer', role_number: 1)
+    # test_user = Faker::Omniauth.google
+    test_user = OmniAuth.config.mock_auth[:google_oauth2]
+    User.create(uid: test_user[:uid], full_name: test_user[:info][:name], email: test_user[:info][:email], avatar_url: test_user[:info][:image], user_role: UserRole.find_by(name: 'Officer'))
+    visit '/'
+    click_link 'Sign in'
+    click_link 'Test'
+    click_link 'Claim'
+    click_link 'Approve'
+    click_link 'Unclaim'
+    click_link 'Homepage'
+    click_link 'Lucas Campbell'
+    expect(page).to have_content('0.0', count: 5)
+  end
+
+
 end

@@ -77,7 +77,7 @@ class TimeslotsController < ApplicationController
   # Unclaims a claimed timeslot if the user owned it or if the user has the right permissions
   def unclaim
     timeslot = Timeslot.find(params[:id])
-    user = current_user
+    user = timeslot.user
     if current_user.id == timeslot.user_id || current_user.user_role.can_claim_unclaim
       flash[:notice] =
         "You have unclaimed the timeslot at #{timeslot.time.strftime('%l:%M %P')}
