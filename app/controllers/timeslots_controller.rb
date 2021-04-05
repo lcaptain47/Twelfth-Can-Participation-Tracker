@@ -58,10 +58,6 @@ class TimeslotsController < ApplicationController
       @events = Event.all
       redirect_to events_path
     else
-      if timeslot.duration == 10
-        byebug
-      end
-
       flash[:notice] =
         "You have claimed the timeslot at #{timeslot.time.strftime('%l:%M %P')}
          for the role #{timeslot.role} #{timeslot.role_number}"
@@ -98,14 +94,12 @@ class TimeslotsController < ApplicationController
         when 'Volunteer'
           user.volunteer_hours -= timeslot.duration
         end
-        user.save
 
-      else   
+      else
         user.total_unapproved_hours -= timeslot.duration
-        user.save
+
       end
-
-
+      user.save
       timeslot.is_approved = false
       timeslot.user = nil
       timeslot.save
@@ -115,6 +109,7 @@ class TimeslotsController < ApplicationController
 
   def approve
     return unless current_user.user_role.can_approve_unapprove
+
     timeslot = Timeslot.find(params[:id])
     timeslot.is_approved = true
     user = timeslot.user
@@ -134,7 +129,7 @@ class TimeslotsController < ApplicationController
     timeslot.save
     flash[:notice] = "You have approved the timeslot at #{timeslot.time.strftime('%l:%M %P')}
     for the role #{timeslot.role} #{timeslot.role_number} for the user #{timeslot.user.full_name}"
-    redirect_to (event_path(timeslot.event))
+    redirect_to(event_path(timeslot.event))
   end
 
   def unapprove
@@ -159,9 +154,8 @@ class TimeslotsController < ApplicationController
     timeslot.save
     flash[:notice] = "You have unapproved the timeslot at #{timeslot.time.strftime('%l:%M %P')}
     for the role #{timeslot.role} #{timeslot.role_number} for the user #{timeslot.user.full_name}"
-    redirect_to (event_path(timeslot.event))
+    redirect_to(event_path(timeslot.event))
   end
-
 
   private
 
@@ -191,5 +185,4 @@ class TimeslotsController < ApplicationController
       end
     end
   end
-
 end
