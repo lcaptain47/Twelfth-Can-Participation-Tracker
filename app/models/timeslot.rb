@@ -13,8 +13,8 @@ class Timeslot < ApplicationRecord
   def clean_up
     user = self.user
     if is_approved && !user.nil?
-      user.total_unapproved_hours -= duration
-
+      user.total_approved_hours -= duration
+      
       case role
       when 'Front Desk'
         user.front_office_hours -= duration
@@ -25,7 +25,7 @@ class Timeslot < ApplicationRecord
       end
       user.save
 
-    elsif !user.nil?
+    elsif !is_approved && !user.nil?
       user.total_unapproved_hours -= duration
       user.save
     end
