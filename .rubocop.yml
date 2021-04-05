@@ -49,3 +49,6 @@ Naming/MethodName:
   EnforcedStyle: snake_case #default
 Metrics/ClassLength:
   Max: 150
+RSpec/RepeatedExample:
+  Enabled: false
+
