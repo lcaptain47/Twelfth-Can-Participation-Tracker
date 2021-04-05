@@ -51,3 +51,5 @@ Metrics/ClassLength:
   Max: 150
 RSpec/RepeatedExample:
   Enabled: false
+Metrics/CyclomaticComplexity:
+  Enabled: false

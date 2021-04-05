@@ -14,7 +14,7 @@ class Timeslot < ApplicationRecord
     user = self.user
     if is_approved && !user.nil?
       user.total_approved_hours -= duration
-      
+
       case role
       when 'Front Desk'
         user.front_office_hours -= duration
