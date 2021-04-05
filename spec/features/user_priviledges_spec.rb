@@ -50,7 +50,12 @@ RSpec.describe 'Tests the user priviledges feature' do
     click_link 'Sign in'
     click_link 'Test'
     expect(page).to have_content('Delete')
-    click_link 'Delete'
+    page.accept_confirm do
+      click_link 'Delete'
+    end
+
+    sleep(1)
+
     expect(page).to have_content('Sign Out')
   end
 
@@ -78,6 +83,7 @@ RSpec.describe 'Tests the user priviledges feature' do
 
     visit '/'
     click_link 'Sign in'
+    sleep(5)
     click_link 'Test'
     expect(page).not_to have_content('Add Timeslots')
     TimeslotsController.new

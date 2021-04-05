@@ -82,8 +82,9 @@ class EventsController < ApplicationController
 
   # Deletes event if user has permissions to
   def destroy
+    @event = Event.find(params[:id])
     if current_user.user_role.can_delete
-      @event = Event.find(params[:id])
+
       @event.destroy
 
       @events = Event.all
