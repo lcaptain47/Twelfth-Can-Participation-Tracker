@@ -42,7 +42,7 @@ This includes a guide on how to run the application locally and how to deploy it
     1. Log into the application via a google account
     2. Run ```rails c```
     3. In the rails console run ```user = User.first``` or ```user = User.find_by(full_name: "full-name-here")```
-    4. Run ``` user.user_role = UserRole.find_by(name: "role-name-here"). Roles include "User", "Officer", or "President"
+    4. Run ```user.user_role = UserRole.find_by(name: "role-name-here")```. Roles include "User", "Officer", or "President"
   * If you can't log in because google says that the address wasn't added to the oauth list, contact lcaptain47
 
 * How to run the test suite
