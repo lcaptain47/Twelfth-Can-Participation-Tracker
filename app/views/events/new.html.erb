@@ -1,23 +1,53 @@
-<%= form_with(model: Event.new, local: true) do |f| %>
-    <%= f.label :name %>
-    <%= f.text_field :name%>
+<nav class="navbar navbar-light navbar-fixed-top" style="background-color: #800000;">
+    <ul class="nav">
+        <li>
+            <%= link_to "Homepage", events_path, :class => "btn btn-outline-light mr-1" %>
+        </li>
+    </ul>
+</nav>
 
-    <%= f.label :date %>
-    <%= f.date_select :date%>
+
+<div class="row justify-content-center">
+    <%= form_with(model: Event.new, local: true) do |f| %>
+
+        <div class = "form-group my-2">
+            <%= f.label :name %>
+            <%= f.text_field :name, class: "form-control" %>
+        </div>
+
+        <div class = "form-group my-2">
+            <%= f.label :date %>
+            <%= f.date_select :date, class: "form-control" %>
+        </div>
     
-    <%= f.label :description %>
-    <%= f.text_area :description %>
+        
+        <div class = "form-group my-2">
+            <%= f.label :description %>
+            <%= f.text_area :description, class: "form-control" %>
+        </div>
+        
+        <div class = "form-group my-2">
+            <%= f.label :volunteers %>
+            <%= f.number_field :volunteers, min: 0, max: 20, class: "form-control" %>
+        </div>
 
-    <%= f.label :volunteers %>
-    <%= f.number_field :volunteers, min: 0, max: 20 %>
+        <div class = "form-group my-2">
+            <%= f.label :front_desks %>
+            <%= f.number_field :front_desks, min: 0, max: 20, class: "form-control" %>
+        </div>
 
-    <%= f.label :front_desks %>
-    <%= f.number_field :front_desks, min: 0, max: 20%>
+        <div class = "form-group my-2">
+            <%= f.label :runners %>
+            <%= f.number_field :runners, min: 0, max: 20, class: "form-control" %>
+        </div>
+        
+        <div class = "actions my-2">
+            <p>
+                <%= f.submit "Create Event", class: "btn btn-success" %>
+            </p>
+        </div>
+        
+    <% end %>
+</div>
 
-    <%= f.label :runners %>
-    <%= f.number_field :runners, min: 0, max: 20%>
 
-    <%= f.submit %>
-<% end %>
-
-<%= link_to "Homepage", events_path %>

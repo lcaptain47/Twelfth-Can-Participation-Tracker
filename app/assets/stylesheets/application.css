@@ -15,17 +15,14 @@
  *= require_self
  */
 
- body {
-    background: linear-gradient(rgba(0,0,0,.4), rgba(0,0,0,.4)), url("https://upload.wikimedia.org/wikipedia/commons/e/eb/AcademicBuilding-TAMU.jpg");
-    background-size: cover;
-    background-repeat: no-repeat;
-    padding-bottom: 57.5%;
-    color: white;
-    font-family: 'Merriweather', sans-serif;
-}
 
 .logo-position {
     position: fixed;
     bottom: 0;
     left: 0;
+}
+
+
+p, h1 {
+    text-align: center;
 }

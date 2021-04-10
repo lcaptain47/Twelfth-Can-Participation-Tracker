@@ -1,59 +1,74 @@
-<p>Name: <%= @event.name%> </p>
+<nav class="navbar navbar-light navbar-fixed-top" style="background-color: #800000;">
+    <ul class="nav">
+        <li>
+            <%= link_to "Homepage", events_path, :class => "btn btn-outline-light mr-1" %>
+        </li>
+    </ul>
+</nav>
+
+<p>Name: <%= @event.name%><br></p>
 <p>Date: <%= @event.date %></p>
 <p>Description: <%= @event.description %></p>
 <p>Volunteers: <%= @event.volunteers %></p>
 <p>Front Desks: <%= @event.front_desks %></p>
 <p>Runners: <%= @event.runners %></p>
-<% if @timeslots.size > 0 %>
-    <div style="overflow-x:auto;">
-        <table>
-        <% @header.each do |part| %>
-            <th><%= part %></th>
-        <% end %>
 
-        <% @timeslots_matrix.each do |row| %>
-        <tr>
-            <td> <%= row.first.time.strftime('%l:%M %P') %> </td>
-
-            <% row.each do |timeslot| %>
-                <td>
-                    <% if timeslot.user == nil %>
-                        <%= link_to "Claim", claim_path(timeslot), method: :post%>
-                    <% else %>
-                        <%= link_to timeslot.user.full_name, user_path(timeslot.user)%>
-                            <% if timeslot.user.id == current_user.id || current_user.user_role.can_claim_unclaim %>
-                                <%= link_to "Unclaim", unclaim_path(timeslot), method: :post %>
-                            <% end %>
-                            <% if current_user.user_role.can_approve_unapprove %>
-                                <% if timeslot.is_approved %>
-                                    <%= link_to "Unapprove", unapprove_path(timeslot), method: :post %>
-                                <% else %>
-                                    <%= link_to "Approve", approve_path(timeslot), method: :post %>
-                                <% end %>
-                            <% end %>
-                            
-                            
-                    <% end %>
-                </td>
-            <% end %>
-        </tr>
-
-        <% end %>
-        </table>
-    </div>
-<% end %>
-
-
-<% if current_user.user_role.can_create %>
-    <p>
-        <%= link_to "Add Timeslots", new_timeslot_path(event_id: @event.id)%>
-    </p>
-<% end %>
-
-
-<% if current_user.user_role.can_delete %>
-    <%= link_to "Delete", event_path(@event), method: :delete, data: {confirm: "Are you sure you want to delete this event?"} %>
-<% end %>
 <p>
-    <%= link_to "Homepage", events_path %>
+    <% if current_user.user_role.can_create %>
+        <%= link_to "Add Timeslots", new_timeslot_path(event_id: @event.id), :class => "btn btn-dark my-2"%>
+    <% end %>
+
+    <% if current_user.user_role.can_delete %>
+        <%= link_to "Delete", event_path(@event), method: :delete, data: {confirm: "Are you sure you want to delete this event?"}, :class => "btn btn-danger my-2" %>
+    <% end %>
 </p>
+
+
+<div class="row justify-content-center">
+    <% if @timeslots.size > 0 %>
+        <div style="overflow-x:auto;">
+            <table class = "table table-striped my-2 w-auto">
+            <% @header.each do |part| %>
+                <th><%= part %></th>
+            <% end %>
+
+            <% @timeslots_matrix.each do |row| %>
+            <tr>
+                <td> <%= row.first.time.strftime('%l:%M %P') %> </td>
+
+                <% row.each do |timeslot| %>
+                    <td>
+                        <% if timeslot.user == nil %>
+                            <%= link_to "Claim", claim_path(timeslot), method: :post %>
+                        <% else %>
+                            <%= link_to timeslot.user.full_name, user_path(timeslot.user) %>
+                                <% if timeslot.user.id == current_user.id || current_user.user_role.can_claim_unclaim %>
+                                    <%= link_to "Unclaim", unclaim_path(timeslot), method: :post %>
+                                <% end %>
+                                <% if current_user.user_role.can_approve_unapprove %>
+                                    <% if timeslot.is_approved %>
+                                        <%= link_to "Unapprove", unapprove_path(timeslot), method: :post %>
+                                    <% else %>
+                                        <%= link_to "Approve", approve_path(timeslot), method: :post %>
+                                    <% end %>
+                                <% end %>
+                                
+                                
+                        <% end %>
+                    </td>
+                <% end %>
+            </tr>
+
+            <% end %>
+            </table>
+        </div>
+    <% end %>
+</div>
+
+
+
+
+
+
+    
+
