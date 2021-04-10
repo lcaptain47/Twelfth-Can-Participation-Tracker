@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_03_11_211909) do
+ActiveRecord::Schema.define(version: 2021_03_29_214615) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -20,17 +20,34 @@ ActiveRecord::Schema.define(version: 2021_03_11_211909) do
     t.date "date"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.text "description"
+    t.integer "volunteers"
+    t.integer "front_desks"
+    t.integer "runners"
   end
 
   create_table "timeslots", force: :cascade do |t|
     t.time "time"
     t.integer "duration"
     t.boolean "is_approved"
-    t.string "job_type"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.integer "event_id"
     t.integer "user_id"
+    t.string "role"
+    t.integer "role_number"
+  end
+
+  create_table "user_roles", force: :cascade do |t|
+    t.string "name"
+    t.boolean "can_create"
+    t.boolean "can_delete"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.boolean "can_delete_users"
+    t.boolean "can_promote_demote"
+    t.boolean "can_claim_unclaim"
+    t.boolean "can_approve_unapprove"
   end
 
   create_table "users", force: :cascade do |t|
@@ -40,6 +57,12 @@ ActiveRecord::Schema.define(version: 2021_03_11_211909) do
     t.string "avatar_url"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.integer "user_role_id"
+    t.float "total_approved_hours"
+    t.float "total_unapproved_hours"
+    t.float "front_office_hours"
+    t.float "pantry_runner_hours"
+    t.float "volunteer_hours"
     t.index ["email"], name: "index_users_on_email", unique: true
   end
 

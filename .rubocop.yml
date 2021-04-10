@@ -1,0 +1,55 @@
+require:
+  - rubocop-performance
+  - rubocop-rails
+  - rubocop-rspec
+AllCops:
+  Exclude:
+    - 'db/**/*'
+    - 'script/**/*'
+    - 'bin/**/*'
+    - 'config/**/*'
+    - 'script/**/*'
+    - 'bin/{rails,rake}'
+    - !ruby/regexp /old_and_unused\.rb$/
+    - 'node_modules/**/*'
+    - 'tmp/**/*'
+    - 'vendor/**/*'
+    - '.git/**/*'
+    - 'Gemfile'
+Layout/LineLength:
+  Max: 100
+  Exclude:
+    - config/**/*
+    - spec/**/*
+Metrics/BlockLength:
+  Max: 100
+  Exclude:
+    - config/**/*
+    - spec/**/*
+Metrics/MethodLength:
+  Max: 100
+Metrics/ParameterLists:
+  Max: 10
+Metrics/AbcSize:
+  Enabled: false
+Rails/UniqueValidationWithoutIndex:
+  Enabled: false
+Style/Documentation:
+  Enabled: false
+Layout/IndentationWidth:
+  Width: 2
+RSpec/ExampleLength: 
+  Max: 25
+RSpec/MultipleExpectations:
+  Max: 10
+RSpec/DescribeClass:
+  Enabled: false
+Naming/MethodName:
+  Enabled: true
+  EnforcedStyle: snake_case #default
+Metrics/ClassLength:
+  Max: 150
+RSpec/RepeatedExample:
+  Enabled: false
+Metrics/CyclomaticComplexity:
+  Enabled: false

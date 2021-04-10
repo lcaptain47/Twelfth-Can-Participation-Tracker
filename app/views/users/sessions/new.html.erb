@@ -1,4 +1,5 @@
 <div class="container bg-overlay">
+
     <style>
         body {
             background: linear-gradient(rgba(0,0,0,.4), rgba(0,0,0,.4)), url("https://i.imgur.com/gU4l11q.jpg");
@@ -9,14 +10,17 @@
             font-family: 'Merriweather', sans-serif;
         }
     </style>
+
     <h2>You're Logged out! Log in to access the Twelth Can Participation Tracker</h2>
     <div class = "text-center">
         <%= link_to "Sign in with Google", user_google_oauth2_omniauth_authorize_path, :class => "btn btn-light" %>
     </div>
+
     <div class = "logo-position">
       <%= image_tag("logos/WhiteLogoWithSlogan.png", width: '300px') %>
     </div>
 </div>
+
 
 
 
