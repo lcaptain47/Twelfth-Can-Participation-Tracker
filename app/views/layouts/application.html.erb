@@ -11,10 +11,14 @@
   </head>
 
   <body>
-  <% flash.each do |name,msg| %>
-      <%= msg %>
-    <% end %>
+
+    <div class="alert alert-success" role = "alert">
+      <% flash.each do |name,msg| %>
+        <%= msg %>
+      <% end %>
+    </div>
+
     <%= yield %>
-  <div class = "logo-position"><%= image_tag("logos/WhiteLogoWithSlogan.png", width: '200px') %></div>
+
   </body>
 </html>

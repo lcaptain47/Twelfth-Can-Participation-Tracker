@@ -1,0 +1,42 @@
+<nav class="navbar navbar-light navbar-fixed-top" style="background-color: #800000;">
+    <ul class="nav">
+        <li>
+            <%= link_to "Homepage", root_path, :class => "btn btn-outline-light mr-1" %>
+        </li>
+    </ul>
+</nav>
+
+<p>Name: <%= @user.full_name %> </p>
+
+<p>Total Front Office Hours: <%= @user.front_office_hours / 60 %> </p>
+<p>Total Pantry Runner Hours: <%= @user.pantry_runner_hours / 60  %> </p>
+<p>Total Volunteer Hours: <%= @user.volunteer_hours / 60 %> </p>
+<p>Total Approved Hours: <%= @user.total_approved_hours / 60 %> </p>
+<p>Total Unapproved Hours: <%= @user.total_unapproved_hours / 60 %> </p>
+<p>User Role: <%= @user.user_role.name %> </p>
+
+
+<p>
+    <% if current_user.user_role.can_delete_users && current_user.id == @user.id %>
+        <%= link_to "System Wipe" , wipe_all_path , method: :post , data: {confirm: "You are about to delete every normal user account in this database, Only the president and officers will be unaffected. Are you sure you want to continue?"}, class: "btn btn-danger my-2" %>
+
+    <% elsif  current_user.user_role.can_delete_users %>
+        <%= link_to "Delete User" , user_path(@user) , method: :delete , data: {confirm: "Are you sure you want to delete this user?"}, class: "btn btn-danger my-2"%>
+
+    <% end %>
+
+
+    <% if current_user.user_role.can_promote_demote %>
+        <% if @user.user_role.name == 'User' %>
+            <%= link_to "Promote to Officer", promote_path(@user), method: :post, class: "btn btn-dark my-2" %>
+        <% end %>
+
+        <% if @user.user_role.name == 'Officer' %>
+            <%= link_to "Promote to President", promote_path(@user), method: :post, data: {confirm: "Are you sure you want to promote this officer to president? You will be demoted to a regular user!"}, class: "btn btn-dark my-2" %>
+            <%= link_to "Demote to User", demote_path(@user), method: :post, class: "btn btn-dark my-2" %>
+
+        <% end %>
+    <% end %>
+</p>
+
+

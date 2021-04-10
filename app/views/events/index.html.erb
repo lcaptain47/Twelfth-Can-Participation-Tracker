@@ -1,21 +1,44 @@
-<p>filler</p>
-<%= link_to "Sign Out", destroy_user_session_path %>
+<% if User.first.full_name == 'Jane Doe' %>
+    <%= link_to User.first.full_name , user_path(User.first) %>
+<% end %>
 
-<%= current_user.full_name %>
+<nav class="navbar navbar-light navbar-fixed-top" style="background-color: #800000;">
+    <ul class="nav">
+        <li>
+            <%= link_to "Sign Out", destroy_user_session_path, :class => "btn btn-danger mr-1" %>
+        </li>
+        <li>
+            <%= link_to current_user.full_name, user_path(current_user), :class => "btn btn-outline-light mr-1" %>
+        </li>
+        <li>
+            <%= link_to "User Index Page", users_path, :class => "btn btn-outline-light mr-1" %>
+        </li>
+    </ul>
+</nav>
 
-<table>
-    <tr>
-        <th>Name</th>
-        <th>Date</th>
-    </tr>
 
-    <%= link_to "New Event", new_event_path, :class => "btn btn-default" %>
+<div class="row justify-content-center">
+    <div class="col-auto">
+        <table class = "table table-striped my-2">
+            <tr>
+                <th class = "th-lg">Name</th>
+                <th class = "th-lg">Date</th>
+            </tr>
 
-    <% @events.each do |event| %>
-        <tr>
-            <td><%= link_to event.name, event_path(event) %></td>    
-            <td><%= event.date %></td>
-        </tr>
-    <% end %>
+            <% if current_user.user_role.can_create %>
+                <p>
+                    <%= link_to "New Event", new_event_path, :class => "btn btn-dark my-2" %>
+                </p>
+            <% end %>
     
-</table>
+
+            <% @events.each do |event| %>
+                <tr>
+                    <td><%= link_to event.name, event_path(event) %></td>    
+                    <td><%= event.date %></td>
+                </tr>
+            <% end %>
+        </table>
+    </div>
+</div>
+

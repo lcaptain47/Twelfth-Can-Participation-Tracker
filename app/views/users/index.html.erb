@@ -1,0 +1,29 @@
+<nav class="navbar navbar-light navbar-fixed-top" style="background-color: #800000;">
+    <ul class="nav">
+        <li>
+            <%= link_to "Homepage", root_path, :class => "btn btn-outline-light mr-1" %>
+        </li>
+        <li>
+            <%= link_to "Search", search_page_path, :class => "btn btn-outline-light mr-1" %>
+        </li>
+    </ul>
+</nav>
+
+<h1 class = "my-2"> List of all current users </h1>
+
+<div class="row justify-content-center">
+    <table class="listing table table-striped my-2 w-auto" summary="List of all users">
+
+        <% @users.each do |user| %>
+            <tr class="p">
+                <td><%= link_to user.full_name,user_path(user) %>
+                <td> Total Approved Hours: <%= user.total_approved_hours / 60 %>
+                <td> | Total Unapproved Hours: <%= user.total_unapproved_hours / 60 %>
+                <td> | User Role: <%= user.user_role.name %>
+                </td>
+            </tr>
+    <% end %>
+    </table>
+</div>
+
+
