@@ -1,5 +1,5 @@
-class TutorialsController < ApplicationController
-    def show
+# frozen_string_literal: true
 
-    end
+class TutorialsController < ApplicationController
+  def show; end
 end
