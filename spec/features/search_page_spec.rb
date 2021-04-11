@@ -15,7 +15,7 @@ RSpec.describe 'Tests search features and the existence of users' do
     click_link 'Sign in'
     sleep 0.5
     click_link 'User Index Page'
-    expect(page).to have_content('List of all current users')
+    expect(page).to have_content('User Index')
     expect(page).to have_content('Total Approved Hours:')
     expect(page).to have_content('Total Unapproved Hours:')
     expect(page).to have_content('User Role:')

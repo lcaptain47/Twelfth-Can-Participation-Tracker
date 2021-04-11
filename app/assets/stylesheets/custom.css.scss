@@ -2,6 +2,7 @@
 
 .page-content{
     flex: 1 0 auto;
+    
 }
 
 .wide-content{
@@ -20,4 +21,14 @@ a:hover{
 .form-styling{
     color:white;
     background-color: #94333a;
+}
+
+.login-page{
+    background: url("https://images.unsplash.com/photo-1611095973015-2c65f77541e1?ixid=MXwxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1351&q=80") !important;
+    background-color: black;
+}
+
+.smol {
+    height:50px;
+    
 }
