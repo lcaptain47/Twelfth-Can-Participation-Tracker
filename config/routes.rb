@@ -33,6 +33,8 @@ Rails.application.routes.draw do
   get '/search', to: 'users#search_page', as: 'search_page'
   post '/search', to: 'users#search', as: 'search' 
 
+  get '/tutorials', to: 'tutorials#show', as: 'tutorial_page'
+
 
 end
 
