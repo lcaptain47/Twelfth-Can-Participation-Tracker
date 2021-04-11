@@ -13,7 +13,7 @@ RSpec.describe 'Tests the user promotion feature' do
 
     visit '/'
     click_link 'Sign in'
-    click_link 'User Index page'
+    click_link 'User Index Page'
     expect(page).to have_content('John Doe')
     click_link 'John Doe'
     expect(page).to have_content('John Doe')
@@ -29,7 +29,7 @@ RSpec.describe 'Tests the user promotion feature' do
 
     visit '/'
     click_link 'Sign in'
-    click_link 'User Index page'
+    click_link 'User Index Page'
     expect(page).to have_content('John Doe')
     click_link 'John Doe'
     expect(page).to have_content('John Doe')
@@ -46,7 +46,7 @@ RSpec.describe 'Tests the user promotion feature' do
 
     visit '/'
     click_link 'Sign in'
-    click_link 'User Index page'
+    click_link 'User Index Page'
     expect(page).to have_content('John Doe')
     click_link 'John Doe'
     expect(page).to have_content('John Doe')
@@ -69,7 +69,7 @@ RSpec.describe 'Tests the user promotion feature' do
     click_link 'Chuck Bronson'
     expect(page).to have_content('User Role: President')
     click_link 'Homepage'
-    click_link 'User Index page'
+    click_link 'User Index Page'
     click_link 'John Doe'
     expect(page).to have_link('Promote to President')
     expect(page).to have_link('Demote to User')
@@ -96,7 +96,7 @@ RSpec.describe 'Tests the user promotion feature' do
 
     visit '/'
     click_link 'Sign in'
-    click_link 'User Index page'
+    click_link 'User Index Page'
     expect(page).to have_content('John Doe')
     click_link 'John Doe'
     expect(page).to have_content('John Doe')
@@ -123,7 +123,7 @@ RSpec.describe 'Tests the user promotion feature' do
 
     visit '/'
     click_link 'Sign in'
-    click_link 'User Index page'
+    click_link 'User Index Page'
     expect(page).to have_content('John Doe')
     click_link 'John Doe'
     expect(page).to have_content('John Doe')
@@ -148,7 +148,7 @@ RSpec.describe 'Tests the user promotion feature' do
 
     visit '/'
     click_link 'Sign in'
-    click_link 'User Index page'
+    click_link 'User Index Page'
     expect(page).to have_content('John Doe')
     click_link 'John Doe'
     expect(page).to have_content('John Doe')
@@ -167,7 +167,7 @@ RSpec.describe 'Tests the user promotion feature' do
 
     visit '/'
     click_link 'Sign in'
-    click_link 'User Index page'
+    click_link 'User Index Page'
     expect(page).to have_content('James Doe')
     click_link 'James Doe'
     expect(page).to have_content('James Doe')
@@ -186,7 +186,7 @@ RSpec.describe 'Tests the user promotion feature' do
 
     visit '/'
     click_link 'Sign in'
-    click_link 'User Index page'
+    click_link 'User Index Page'
     expect(page).to have_content('Jonathan Doe')
     click_link 'Jonathan Doe'
     expect(page).to have_content('Jonathan Doe')
@@ -205,7 +205,7 @@ RSpec.describe 'Tests the user promotion feature' do
 
     visit '/'
     click_link 'Sign in'
-    click_link 'User Index page'
+    click_link 'User Index Page'
     expect(page).to have_content('John Doe')
     click_link 'John Doe'
     expect(page).to have_content('John Doe')
@@ -224,7 +224,7 @@ RSpec.describe 'Tests the user promotion feature' do
 
     visit '/'
     click_link 'Sign in'
-    click_link 'User Index page'
+    click_link 'User Index Page'
     expect(page).to have_content('James Doe')
     click_link 'James Doe'
     expect(page).to have_content('James Doe')
@@ -243,7 +243,7 @@ RSpec.describe 'Tests the user promotion feature' do
 
     visit '/'
     click_link 'Sign in'
-    click_link 'User Index page'
+    click_link 'User Index Page'
     expect(page).to have_content('Jonathan Doe')
     click_link 'Jonathan Doe'
     expect(page).to have_content('Jonathan Doe')

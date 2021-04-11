@@ -1,1 +1,23 @@
-@import 'bootstrap/dist/css/bootstrap'
+@import 'bootstrap/dist/css/bootstrap';
+
+.page-content{
+    flex: 1 0 auto;
+}
+
+.wide-content{
+    width: 75%;
+}
+
+.navbar-color{
+    background-color: #94333a;
+}
+
+a,
+a:hover{
+    color: #94333a;
+}
+
+.form-styling{
+    color:white;
+    background-color: #94333a;
+}

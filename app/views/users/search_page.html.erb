@@ -1,11 +1,31 @@
-<h1> You have made it to the user search form </h1>
+<div class = "container">
+    <div class="row justify-content-md-center">
 
-<%= form_with url: "/search", method: :post do |form| %>
-    <%= form.label :query, "Search for user:" %>
-    <%= form.text_field :query %>
-    <%= form.submit "Search" %>
-  <% end %>
-
-
+      <div class="col-10">
   
-<%= link_to "Homepage" , root_path %>
+        <%= form_with url: "/search", class: "shadow form-styling rounded p-3 mt-4" ,method: :post do |form| %>
+
+          <div class="form-group row">
+            <%= form.label :query, "Search for user:" ,class: "col-2 col-form-label"%>
+            
+            <div class="col-10">
+              <%= form.text_field :query, class: "form-control shadow my-2" %>
+            </div>
+
+            
+
+            
+            
+          </div>
+          <div class="row justify-content-center">
+            <%= form.submit "Search", class: "btn btn-dark my-2" %>
+          </div>
+          
+            
+        <% end %>
+      </div>
+      
+    </div>
+</div>
+
+
