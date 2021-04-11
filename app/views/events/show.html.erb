@@ -41,7 +41,7 @@
                 
                         <% @timeslots_matrix.each do |row| %>
                         <tr>
-                            <td> <%= row.first.time.strftime('%l:%M %P') %> </td>
+                            <td> <%= row.first.time.strftime('%l:%M %P') %> - <%= (row.first.time + row.first.duration * 60).strftime('%l:%M %P') %></td>
                 
                             <% row.each do |timeslot| %>
                                 <td>
