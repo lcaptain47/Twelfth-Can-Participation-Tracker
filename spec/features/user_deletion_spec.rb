@@ -9,14 +9,14 @@ RSpec.describe 'User Deletion feature' do
 
     visit '/'
     click_link 'Sign in'
-    click_link 'User Index page'
+    click_link 'User Index Page'
     click_link 'Jane Doe'
 
     expect(page).not_to have_content('Delete User')
     expect(page).not_to have_content('System Wipe')
 
     click_link 'Homepage'
-    click_link 'User Index page'
+    click_link 'User Index Page'
     click_link 'Lucas Campbell'
 
     expect(page).not_to have_content('Delete User')
@@ -32,7 +32,7 @@ RSpec.describe 'User Deletion feature' do
 
     visit '/'
     click_link 'Sign in'
-    click_link 'User Index page'
+    click_link 'User Index Page'
     expect(page).to have_content('Jane Doe')
     click_link 'Jane Doe'
     expect(page).to have_content('Delete User')
@@ -60,7 +60,7 @@ RSpec.describe 'User Deletion feature' do
 
     visit '/'
     click_link 'Sign in'
-    click_link 'User Index page'
+    click_link 'User Index Page'
     expect(page).to have_content('Tony Stark')
     click_link 'Tony Stark'
     expect(page).to have_content('Delete User')
@@ -70,7 +70,7 @@ RSpec.describe 'User Deletion feature' do
       click_link 'Delete User'
     end
 
-    click_link 'User Index page'
+    click_link 'User Index Page'
     expect(page).not_to have_content('Tony Stark')
   end
 
@@ -93,7 +93,7 @@ RSpec.describe 'User Deletion feature' do
       click_link 'System Wipe'
     end
 
-    click_link 'User Index page'
+    click_link 'User Index Page'
     expect(page).not_to have_content('Tony Stark')
   end
 end

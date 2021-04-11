@@ -1,22 +1,44 @@
-<%= form_with(model: @timeslot, local: true) do |f| %>
-    
-    <p>
-        <%= f.label :start_time %>
-        <%= f.time_select :start_time, minute_step: 30%>
-    </p>
-    
-    <p>
-        <%= f.label :end_time %>
-        <%= f.time_select :end_time, minute_step: 30%>
-    </p>
 
-    <p>
-        <%= f.label :count %>
-        <%= f.number_field :count, step: 10, min: 10, max: 60 %>
-    </p>
+<div class="container">
+    <div class="row justify-content-md-center">
 
-    <%= f.hidden_field :event_id %>
+        <div class="col-10">
+            <%= form_with(model: @timeslot,  class: "shadow form-styling rounded p-3 mt-4", local: true) do |f| %>
+                
 
-    <%= f.submit %>
-<% end %>
+                <div class="form-group row">
+                    <%= f.label :start_time, class: "col-2 col-form-label" %>
+                    <div class="col-10">
+                        <%= f.time_select :start_time, minute_step: 30, class: "form-control shadow my-2"%>
+                    </div>
+
+                </div>
+
+                <div class="form-group row">
+                    <%= f.label :end_time, class: "col-2 col-form-label" %>
+                    <div class="col-10">
+                        <%= f.time_select :end_time, minute_step: 30, class: "form-control shadow my-2"%>
+                    </div>
+
+                </div>
+
+                <div class="form-group row">
+                    <%= f.label :count, "Increment (Minutes)", class: "col-2 col-form-label" %>
+                    <div class="col-10">
+                        <%= f.number_field :count, step: 10, min: 10, max: 60, class: "form-control shadow my-2", placeholder: "From 10 to 60 in increments of 10"%>
+                    </div>
+
+                </div>
+
+                <%= f.hidden_field :event_id %>
+
+                <div class="row justify-content-center">
+                    <%= f.submit class: "btn btn-dark my-2"%>
+                </div>
+
+                
+            <% end %>
+        </div>
+    </div>
+</div>
 

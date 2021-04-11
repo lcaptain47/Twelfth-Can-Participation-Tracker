@@ -14,8 +14,8 @@ RSpec.describe 'Tests search features and the existence of users' do
     visit '/'
     click_link 'Sign in'
     sleep 0.5
-    click_link 'User Index page'
-    expect(page).to have_content('List of all current users')
+    click_link 'User Index Page'
+    expect(page).to have_content('User Index')
     expect(page).to have_content('Total Approved Hours:')
     expect(page).to have_content('Total Unapproved Hours:')
     expect(page).to have_content('User Role:')
@@ -31,7 +31,7 @@ RSpec.describe 'Tests search features and the existence of users' do
 
     visit '/'
     click_link 'Sign in'
-    click_link 'User Index page'
+    click_link 'User Index Page'
     click_link 'Search'
     fill_in 'Search', with: test_user[:info][:name]
     click_button('Search')
@@ -51,7 +51,7 @@ RSpec.describe 'Tests search features and the existence of users' do
 
     visit '/'
     click_link 'Sign in'
-    click_link 'User Index page'
+    click_link 'User Index Page'
     click_link 'Search'
     fill_in 'Search', with: 'test user'
     click_button('Search')

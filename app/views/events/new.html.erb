@@ -1,23 +1,59 @@
-<%= form_with(model: Event.new, local: true) do |f| %>
-    <%= f.label :name %>
-    <%= f.text_field :name%>
+<div class="container">
+    <div class="row justify-content-md-center">
 
-    <%= f.label :date %>
-    <%= f.date_select :date%>
-    
-    <%= f.label :description %>
-    <%= f.text_area :description %>
+        <div class="col-10">
+            <%= form_with(model: Event.new, class: "shadow form-styling rounded p-3 mt-4" , local: true) do |f| %>
+                <div class="form-group row">
+                    <%= f.label :name, class: "col-2 col-form-label"%>
+                    <div class="col-10">
+                        <%= f.text_field :name, class: "form-control shadow my-2" %>
+                    </div>
+                
+                </div>
 
-    <%= f.label :volunteers %>
-    <%= f.number_field :volunteers, min: 0, max: 20 %>
+                <div class="form-group row">
+                    <%= f.label :date, class: "col-2 col-form-label" %>
+                    <div class="col-10">
+                        <%= f.date_select :date, class: "form-control shadow my-2" %>
+                    </div>
+                
+                </div>
+                
+                <div class="form-group row">
+                    <%= f.label :description, class: "col-2 col-form-label" %>
+                    <div class="col-10">
+                        <%= f.text_area :description, class: "form-control shadow my-2" %>
+                    </div>
+                
+                </div>
+                <div class="form-group row">
+                     <%= f.label :volunteers, class: "col-2 col-form-label" %>
+                    <div class="col-10">
+                        <%= f.number_field :volunteers, min: 0, max: 20, class: "form-control shadow my-2" %>
+                    </div>
+                
+                </div>
+                <div class="form-group row">
+                    <%= f.label :front_desks, class: "col-2 col-form-label" %>
+                    <div class="col-10">
+                        <%= f.number_field :front_desks, min: 0, max: 20, class: "form-control shadow my-2" %>
+                    </div>
+                
+                </div>
+                <div class="form-group row">
+                    <%= f.label :runners, class: "col-2 col-form-label" %>
+                    <div class="col-10">
+                        <%= f.number_field :runners, min: 0, max: 20, class: "form-control shadow my-2" %>
+                    </div>
+                
+                </div>
 
-    <%= f.label :front_desks %>
-    <%= f.number_field :front_desks, min: 0, max: 20%>
+                <div class="row justify-content-center">
+                    <%= f.submit "Create Event", class: "btn btn-dark" %>
+                </div>
+                
+            <% end %>
+        </div>
+    </div>
+</div>
 
-    <%= f.label :runners %>
-    <%= f.number_field :runners, min: 0, max: 20%>
-
-    <%= f.submit %>
-<% end %>
-
-<%= link_to "Homepage", events_path %>

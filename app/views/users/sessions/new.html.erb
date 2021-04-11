@@ -1,5 +1,22 @@
-<div class="container bg-overlay">
-    <h2>You're Logged out! Log in to access the Twelth Can Participation Tracker</h2>
+<div class="container">
+
+    <style>
+        body {
+            background: linear-gradient(rgba(0,0,0,.4), rgba(0,0,0,.4)), url("https://i.imgur.com/gU4l11q.jpg");
+            background-size: cover;
+            background-repeat: no-repeat;
+            padding-bottom: 57.5%;
+            color: white;
+            font-family: 'Merriweather', sans-serif;
+        }
+    </style>
+
+    <div class="row justify-content-center">
+        <%= image_tag("The12thCan.png", class: "align-self-center", style: "height:250px;") %>
+    </div>
+
+    
+    <h2>You're Logged out! Log in to access the 12<sup>th</sup> Can Participation Tracker</h2>
     <div class = "text-center">
         <%= link_to "Sign in with Google", user_google_oauth2_omniauth_authorize_path, :class => "btn btn-light" %>
     </div>

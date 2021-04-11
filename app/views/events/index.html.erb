@@ -1,27 +1,22 @@
-<% if User.first.full_name == 'Jane Doe' %>
-    <%= link_to User.first.full_name , user_path(User.first) %>
-<% end %>
-<%= link_to "Sign Out", destroy_user_session_path %>
-<%= link_to current_user.full_name, user_path(current_user)%>
 
-<%= link_to "User Index page", users_path %>
-
-<table>
-    <tr>
-        <th>Name</th>
-        <th>Date</th>
-    </tr>
-
-    <% if current_user.user_role.can_create %>
-        <%= link_to "New Event", new_event_path %>
-    <% end %>
+<div class="container">
+    <div class="row justify-content-md-center">
+        <h3 style="text-align:center;">Homepage</h3>
     
+        <table class = "table table-striped my-2" >
+            <tr>
+                <th class = "th-lg">Event Name</th>
+                <th class = "th-lg">Date</th>
+            </tr>
 
-    <% @events.each do |event| %>
-        <tr>
-            <td><%= link_to event.name, event_path(event) %></td>    
-            <td><%= event.date %></td>
-        </tr>
-    <% end %>
-    
-</table>
+
+            <% @events.each do |event| %>
+                <tr>
+                    <td><%= link_to event.name, event_path(event) %></td>    
+                    <td><%= event.date %></td>
+                </tr>
+            <% end %>
+            
+        </table>
+    </div>
+</div>
