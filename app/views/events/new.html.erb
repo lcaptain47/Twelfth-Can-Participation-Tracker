@@ -4,6 +4,18 @@
 
     <%= f.label :date %>
     <%= f.date_select :date%>
+    
+    <%= f.label :description %>
+    <%= f.text_area :description %>
+
+    <%= f.label :volunteers %>
+    <%= f.number_field :volunteers, min: 0, max: 20 %>
+
+    <%= f.label :front_desks %>
+    <%= f.number_field :front_desks, min: 0, max: 20%>
+
+    <%= f.label :runners %>
+    <%= f.number_field :runners, min: 0, max: 20%>
 
     <%= f.submit %>
 <% end %>

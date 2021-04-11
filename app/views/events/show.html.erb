@@ -1,20 +1,48 @@
 <p>Name: <%= @event.name%> </p>
 <p>Date: <%= @event.date %></p>
-
-<% @timeslots.each do |timeslot| %>
-    <p>
-        <%= timeslot.time.strftime('%l:%M %P') %>: 
-        <% if timeslot.user == nil %>
-            <%= link_to "Claim", claim_path(timeslot), method: :post%>
-        <% else %>
-                <%= link_to timeslot.user.full_name, user_path(timeslot.user)%>
-                <% if timeslot.user.id == current_user.id || current_user.user_role.can_create %>
-                    <%= link_to "Unclaim", unclaim_path(timeslot), method: :post %>
-                <% end %>
+<p>Description: <%= @event.description %></p>
+<p>Volunteers: <%= @event.volunteers %></p>
+<p>Front Desks: <%= @event.front_desks %></p>
+<p>Runners: <%= @event.runners %></p>
+<% if @timeslots.size > 0 %>
+    <div style="overflow-x:auto;">
+        <table>
+        <% @header.each do |part| %>
+            <th><%= part %></th>
         <% end %>
-        
-    </p>
+
+        <% @timeslots_matrix.each do |row| %>
+        <tr>
+            <td> <%= row.first.time.strftime('%l:%M %P') %> </td>
+
+            <% row.each do |timeslot| %>
+                <td>
+                    <% if timeslot.user == nil %>
+                        <%= link_to "Claim", claim_path(timeslot), method: :post%>
+                    <% else %>
+                        <%= link_to timeslot.user.full_name, user_path(timeslot.user)%>
+                            <% if timeslot.user.id == current_user.id || current_user.user_role.can_claim_unclaim %>
+                                <%= link_to "Unclaim", unclaim_path(timeslot), method: :post %>
+                            <% end %>
+                            <% if current_user.user_role.can_approve_unapprove %>
+                                <% if timeslot.is_approved %>
+                                    <%= link_to "Unapprove", unapprove_path(timeslot), method: :post %>
+                                <% else %>
+                                    <%= link_to "Approve", approve_path(timeslot), method: :post %>
+                                <% end %>
+                            <% end %>
+                            
+                            
+                    <% end %>
+                </td>
+            <% end %>
+        </tr>
+
+        <% end %>
+        </table>
+    </div>
 <% end %>
+
 
 <% if current_user.user_role.can_create %>
     <p>
@@ -24,7 +52,7 @@
 
 
 <% if current_user.user_role.can_delete %>
-    <%= link_to "Delete", event_path(@event), method: :delete %>
+    <%= link_to "Delete", event_path(@event), method: :delete, data: {confirm: "Are you sure you want to delete this event?"} %>
 <% end %>
 <p>
     <%= link_to "Homepage", events_path %>

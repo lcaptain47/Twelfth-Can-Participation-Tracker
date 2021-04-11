@@ -5,8 +5,8 @@ require 'faker'
 
 RSpec.describe 'Tests unclaim and claim features' do
   it 'Lets user claim and unclaim timeslot' do
-    Event.create(name: 'Test', date: '12-01-2021')
-    Timeslot.create(time: '12:00', duration: 60, event: Event.first)
+    Event.create(name: 'Test', date: '12-01-2021', volunteers: 1)
+    Timeslot.create(time: '12:00', duration: 60, event: Event.first, role: 'Volunteer', role_number: 1)
     visit '/'
     click_link 'Sign in'
     click_link 'Test'
@@ -19,10 +19,10 @@ RSpec.describe 'Tests unclaim and claim features' do
   end
 
   it 'Does not show unclaim if user does not own that timeslot' do
-    Event.create(name: 'Test', date: '12-01-2021')
+    Event.create(name: 'Test', date: '12-01-2021', volunteers: 1)
     test_user = Faker::Omniauth.google
     User.create(uid: test_user[:uid], full_name: test_user[:info][:name], email: test_user[:info][:email], avatar_url: test_user[:info][:image], user_role: UserRole.find_by(name: 'User'))
-    Timeslot.create(time: '12:00', duration: 60, event: Event.first, user: User.first)
+    Timeslot.create(time: '12:00', duration: 60, event: Event.first, user: User.first, role: 'Volunteer', role_number: 1)
 
     visit '/'
     click_link 'Sign in'
@@ -31,10 +31,10 @@ RSpec.describe 'Tests unclaim and claim features' do
   end
 
   it 'Shows unclaim button if user is an officer and lets them unclaim it' do
-    Event.create(name: 'Test', date: '12-01-2021')
+    Event.create(name: 'Test', date: '12-01-2021', volunteers: 1)
     test_user = Faker::Omniauth.google
     User.create(uid: test_user[:uid], full_name: test_user[:info][:name], email: test_user[:info][:email], avatar_url: test_user[:info][:image], user_role: UserRole.find_by(name: 'User'))
-    Timeslot.create(time: '12:00', duration: 60, event: Event.first, user: User.first)
+    Timeslot.create(time: '12:00', duration: 60, event: Event.first, user: User.first, role: 'Volunteer', role_number: 1)
 
     test_user = OmniAuth.config.mock_auth[:google_oauth2]
     User.create(uid: test_user[:uid], full_name: test_user[:info][:name], email: test_user[:info][:email], avatar_url: test_user[:info][:image], user_role: UserRole.find_by(name: 'Officer'))

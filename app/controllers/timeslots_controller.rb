@@ -36,22 +36,13 @@ class TimeslotsController < ApplicationController
     # Redirects to new form if count is not provided and if start time is larger than end time
     # Creates Timeslot objects otherwise
     if time > end_time || count < 10
+      flash[:notice] = 'You cannot use an end time smaller than your start time'
       redirect_to new_timeslot_path(event_id: params[:timeslot][:event_id])
     else
-      # Creates timeslots by starting at start time and skip counting
-      # (using 'count' variable) to end time
-      while time <= end_time
-
-        timeslot = Timeslot.new
-        timeslot.time = time
-        timeslot.duration = count
-        timeslot.event_id = params[:timeslot][:event_id]
-
-        timeslot.save
-
-        time += (count * 60)
-      end
-
+      event = Event.find(params[:timeslot][:event_id])
+      create_timeslots(time, end_time, count, event, 'Volunteer', event.volunteers)
+      create_timeslots(time, end_time, count, event, 'Front Desk', event.front_desks)
+      create_timeslots(time, end_time, count, event, 'Runner', event.runners)
       # Redirects to the event page for the timslots' event
       @eventid = params[:timeslot][:event_id]
       @event_exit = Event.find(@eventid)
@@ -67,8 +58,16 @@ class TimeslotsController < ApplicationController
       @events = Event.all
       redirect_to events_path
     else
-      flash[:notice] = 'Timeslot claimed'
+      flash[:notice] =
+        "You have claimed the timeslot at #{timeslot.time.strftime('%l:%M %P')}
+         for the role #{timeslot.role} #{timeslot.role_number}"
+
+      # timeslot.is_approved = false
       timeslot.user = current_user
+
+      user = current_user
+      user.total_unapproved_hours += timeslot.duration
+      user.save
       timeslot.save
 
       redirect_to event_path(timeslot.event)
@@ -78,10 +77,112 @@ class TimeslotsController < ApplicationController
   # Unclaims a claimed timeslot if the user owned it or if the user has the right permissions
   def unclaim
     timeslot = Timeslot.find(params[:id])
-    if current_user.id == timeslot.user_id || current_user.user_role.can_create
+    user = timeslot.user
+    if current_user.id == timeslot.user_id || current_user.user_role.can_claim_unclaim
+      flash[:notice] =
+        "You have unclaimed the timeslot at #{timeslot.time.strftime('%l:%M %P')}
+         for the role #{timeslot.role} #{timeslot.role_number}"
+
+      if timeslot.is_approved
+        user.total_approved_hours -= timeslot.duration
+
+        case timeslot.role
+        when 'Front Desk'
+          user.front_office_hours -= timeslot.duration
+        when 'Runner'
+          user.pantry_runner_hours -= timeslot.duration
+        when 'Volunteer'
+          user.volunteer_hours -= timeslot.duration
+        end
+
+      else
+        user.total_unapproved_hours -= timeslot.duration
+
+      end
+      user.save
+      timeslot.is_approved = false
       timeslot.user = nil
       timeslot.save
     end
     redirect_to event_path(timeslot.event)
+  end
+
+  def approve
+    return unless current_user.user_role.can_approve_unapprove
+
+    timeslot = Timeslot.find(params[:id])
+    timeslot.is_approved = true
+    user = timeslot.user
+
+    case timeslot.role
+    when 'Front Desk'
+      user.front_office_hours += timeslot.duration
+    when 'Runner'
+      user.pantry_runner_hours += timeslot.duration
+    when 'Volunteer'
+      user.volunteer_hours += timeslot.duration
+    end
+    user.total_approved_hours += timeslot.duration
+    user.total_unapproved_hours -= timeslot.duration
+
+    user.save
+    timeslot.save
+    flash[:notice] = "You have approved the timeslot at #{timeslot.time.strftime('%l:%M %P')}
+    for the role #{timeslot.role} #{timeslot.role_number} for the user #{timeslot.user.full_name}"
+    redirect_to(event_path(timeslot.event))
+  end
+
+  def unapprove
+    return unless current_user.user_role.can_approve_unapprove
+
+    timeslot = Timeslot.find(params[:id])
+    timeslot.is_approved = false
+    user = timeslot.user
+
+    case timeslot.role
+    when 'Front Desk'
+      user.front_office_hours -= timeslot.duration
+    when 'Runner'
+      user.pantry_runner_hours -= timeslot.duration
+    when 'Volunteer'
+      user.volunteer_hours -= timeslot.duration
+    end
+    user.total_unapproved_hours += timeslot.duration
+    user.total_approved_hours -= timeslot.duration
+
+    user.save
+    timeslot.save
+    flash[:notice] = "You have unapproved the timeslot at #{timeslot.time.strftime('%l:%M %P')}
+    for the role #{timeslot.role} #{timeslot.role_number} for the user #{timeslot.user.full_name}"
+    redirect_to(event_path(timeslot.event))
+  end
+
+  private
+
+  def create_timeslots(start_time, end_time, count, _event, role_name, role_amount)
+    # byebug
+    role_number = 0
+
+    role_amount.times do
+      time = start_time
+      role_number += 1
+
+      input_role = role_name.to_s
+
+      while time <= end_time
+
+        timeslot = Timeslot.new
+        timeslot.time = time
+        timeslot.duration = count
+        timeslot.event_id = params[:timeslot][:event_id]
+        timeslot.role = input_role
+        timeslot.role_number = role_number
+        timeslot.is_approved = false
+
+        timeslot.save
+
+        time += (count * 60)
+      end
+    end
   end
 end

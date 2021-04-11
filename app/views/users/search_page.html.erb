@@ -1,0 +1,11 @@
+<h1> You have made it to the user search form </h1>
+
+<%= form_with url: "/search", method: :post do |form| %>
+    <%= form.label :query, "Search for user:" %>
+    <%= form.text_field :query %>
+    <%= form.submit "Search" %>
+  <% end %>
+
+
+  
+<%= link_to "Homepage" , root_path %>
