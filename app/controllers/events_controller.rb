@@ -36,6 +36,7 @@ class EventsController < ApplicationController
 
     @timeslots_matrix.push(row)
 
+    # Creates header for table
     @header = ['time']
 
     counter = 0

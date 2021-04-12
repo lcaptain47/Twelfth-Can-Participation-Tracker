@@ -40,9 +40,12 @@ class TimeslotsController < ApplicationController
       redirect_to new_timeslot_path(event_id: params[:timeslot][:event_id])
     else
       event = Event.find(params[:timeslot][:event_id])
+
+      # Creates timeslots for each role
       create_timeslots(time, end_time, count, event, 'Volunteer', event.volunteers)
       create_timeslots(time, end_time, count, event, 'Front Desk', event.front_desks)
       create_timeslots(time, end_time, count, event, 'Runner', event.runners)
+
       # Redirects to the event page for the timslots' event
       @eventid = params[:timeslot][:event_id]
       @event_exit = Event.find(@eventid)
@@ -107,6 +110,7 @@ class TimeslotsController < ApplicationController
     redirect_to event_path(timeslot.event)
   end
 
+  # Approves timeslot and increments respective hours for owner of timeslot
   def approve
     return unless current_user.user_role.can_approve_unapprove
 
@@ -132,6 +136,7 @@ class TimeslotsController < ApplicationController
     redirect_to(event_path(timeslot.event))
   end
 
+  # Unapproves timeslot and decrements respective hours for owner of timeslot
   def unapprove
     return unless current_user.user_role.can_approve_unapprove
 
@@ -159,8 +164,8 @@ class TimeslotsController < ApplicationController
 
   private
 
+  # Generalizes timeslot creation for each role
   def create_timeslots(start_time, end_time, count, _event, role_name, role_amount)
-    # byebug
     role_number = 0
 
     role_amount.times do

@@ -1,0 +1,180 @@
+<style>
+    img{
+        margin-top: 30px;
+        margin-bottom: 30px;
+    }
+</style>
+
+<div class="container">
+    <div class="card mt-4 mb-4 shadow">
+        <div class="card-header">
+            <h3 style="text-align:center;">Tutorials</h3>
+        </div>
+        <div class="card-body">
+
+
+            <h3>User Actions</h3>
+            <p>Howdy!</p>
+            <p>
+                Welcome to the 12<sup>th</sup> Can Participation Tracker.
+                To get started, navigate to any event on the homepage by clicking on the name.
+             </p>
+
+             <%= image_tag("Homepage.png", style:"width:100%")%>
+
+             <p>
+                Once you clicked on an event, you'll see that event's details which include the name, date, description, and it's roles.
+                Clicking claim on any timeslot will let you claim that time for that event and will let the officers of the organization know
+                that you will be volunteering that day under that role. 
+             </p>
+
+             <%= image_tag("Normal Event.png", style: "width:100%")%>
+
+             <p>
+                Additionally, once you've clicked claim, your total unapproved hours will increase. You can see how many hours your account has
+                by clicking on name on the navigation bar or your name on the timeslot table.
+             </p>
+
+             <!-- User show page -->
+             <%= image_tag("Normal User Page.png", style: "width:100%")%>
+
+             <p>
+                Under your account page, you will see details on the total approved and unapproved hours for events you've signed up to. 
+                You'll also see a breakdown of the specific role hours you've signed up for. These won't increase until an officer has approved 
+                your timeslot. 
+             </p>
+
+             <p>
+                Make sure you attend the event you signed up for, as your approved hours and role won't increase until an officer has confirmed that you've
+                gone to the event.
+             </p>
+
+             <p>
+                If you suddenly can't make it to an event, please unclaim your timeslots by going to that event's page and clicking unclaim.
+             </p>
+             
+             <!--  Event show page Unclaim-->
+             <%= image_tag("Normal Event Unclaim.png", style: "width:100%")%>
+
+            <% if current_user.user_role.name == "Officer" || current_user.user_role.name == "President"%>
+                <h3>Officer Actions</h3>
+
+                <p>
+                    As an officer, you have access to timeslot approval, event creation, and unclaiming another user's timeslot in addition to the ones listed above.
+                </p>
+
+                <h5><i>Creating an Event</i></h5>
+
+                <p>
+                    As an officer, you can create events and add timeslots to them. You'll notice on the navigation bar
+                    that there is a "New Event" link. Clicking that will take you to the create event form.
+                </p>
+
+                <!-- Event form here -->
+                <%= image_tag("Event Form.png", style: "width:100%")%>
+
+                <p>
+                    Creating an event is simple. Just add in a name, date, description, and the number of each role (capped at 20 per role).
+                    Once you are satisfied with the event, click the "Create Event" button. You will be redirected to that event's page. Congrats, you've
+                    created a blank event.
+                </p>
+
+                <!-- Event page here -->
+                <%= image_tag("Officer Event No Slots.png", style: "width:100%")%>
+
+                <p>
+                    Next, you'll need to add some timeslots. Click the "Add Timeslots" button and you'll be taken to a timeslots form.
+                </p>
+
+                <!-- Timeslot form -->
+                <%= image_tag("Timeslot Form.png", style: "width:100%")%>
+
+                <p>
+                    Enter a starting time and end time for the event that day. The increment field is for how long each timeslot will be.
+                    So, if you wanted each timeslot to be an hour long, you would input 60 for the increment. The increment field can be
+                    from 10 to 60 in increments of 10. Once you're satisfied with your timeslots, click "Create Timeslots". You will be redirected
+                    back to the event page where you will see a new table on the bottom.
+                </p>
+
+                <!-- Event page with timeslots here -->
+                <%= image_tag("Officer Event Slots.png", style: "width:100%")%>
+                
+                
+
+                <h5><i>Unclaiming Another User's Timeslot</i></h5>
+                <p>
+                    If you need to unclaim another user's timeslot, simply go to that event's page and click unclaim on that user's timeslot like you would as
+                    a normal user.
+                </p>
+
+                <h5><i>Timeslot Approval</i></h5>
+                <p>
+                    As an officer, you can approve another user's timeslots. This is to ensure that if a member doesn't show up to
+                    an event, they won't get the hours that they signed up for. 
+                </p>
+
+                <p>
+                    To do this, all you need to do is to go to an event page with timeslots that are already claimed.
+                </p>
+
+                <!-- Event show page claimed timeslots -->
+                <%= image_tag("Officer Event Approve.png", style: "width:100%")%>
+
+                <p>
+                    Click on the "Approve" button for any timeslot you want to approve. You can also 
+                    unapprove any approved timeslots by clicking on the "Unapprove" button
+                </p>
+
+                <!-- Unapprove buttons -->
+                <%= image_tag("Officer Event Unapprove.png", style: "width:100%")%>
+            <% end %>
+
+            <% if current_user.user_role.name == "President"%>
+                <h3>President Actions</h3>
+                <p>
+                    As a president, you have access to deleting and promoting/demoting users in addition to the actions above.
+                </p>
+
+                <h5><i>Promoting/Demoting Users</i></h5>
+                <p>
+                    To promote a normal user to an officer, simply visit that user's page and click on the "Promote to Officer" button.
+                </p>
+
+                <!-- Normal user promote -->
+                <%= image_tag("User Promote.png", style: "width:100%")%>
+
+                <p>
+                    To demote an officer to a normal user, click on the "Demote to User" button.
+                </p>
+
+                <p>
+                    To promote an officer to President, click on the "Promote to President" button. Be warned,
+                    promoting an officer to president will automatically demote you to a normal user.
+                    If you still need to be an officer, you will have to get the new president to promote you.
+                </p>
+
+                <!-- officer page -->
+                <%= image_tag("Officer Promote Demote.png", style: "width:100%")%>
+
+                <h5><i>Deleting Users</i></h5>
+                <p>
+                    There are two ways to delete users. One way is to delete an individual users by going to 
+                    their page and clicking the "Delete User" Button.
+                </p>
+
+                <!-- Normal delete -->
+                <%= image_tag("Normal Delete.png", style: "width:100%")%>
+
+                <p>
+                    Another way to delete users is all at once by going to your page and clicking the "System Wipe" button.
+                    This will only delete normal users and will not delete officers or the president. You will need to
+                    individually delete officers through the previous method. You cannot delete yourself.
+                </p>
+
+                <!-- System wipe -->
+                <%= image_tag("System Wipe.png", style: "width:100%")%>
+            <% end %>
+        </div>
+    
+    </div>
+</div>

@@ -11,6 +11,7 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
   end
 
+  # Deletes all normal users. Presidents and officers not affected
   def wipe_all
     return unless current_user.user_role.can_delete_users
 
@@ -22,6 +23,7 @@ class UsersController < ApplicationController
     redirect_to root_path
   end
 
+  # Deletes target user
   def destroy
     @user = User.find(params[:id])
     if current_user.user_role.can_delete_users
@@ -31,6 +33,9 @@ class UsersController < ApplicationController
     redirect_to root_path
   end
 
+  # Promotes target user
+  # If Normal User: Promote to officer
+  # If Officer: Promote to president and demote president to user
   def promote
     user = User.find(params[:id])
 
@@ -52,6 +57,7 @@ class UsersController < ApplicationController
     redirect_to user_path(user)
   end
 
+  # Demotes user down one level
   def demote
     user = User.find(params[:id])
 
@@ -67,6 +73,7 @@ class UsersController < ApplicationController
 
   def search_page; end
 
+  # Searches for user by name
   def search
     @users = User.where(full_name: params[:query].strip)
     if @users.length.zero?
