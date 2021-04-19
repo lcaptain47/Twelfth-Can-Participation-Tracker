@@ -10,6 +10,8 @@ RSpec.describe 'Tests search features and the existence of users' do
     test_user = Faker::Omniauth.google
     User.create(uid: test_user[:uid], full_name: test_user[:info][:name], email: test_user[:info][:email], avatar_url: test_user[:info][:image], user_role: UserRole.find_by(name: 'User'))
     # test_user = OmniAuth.config.mock_auth[:google_oauth2]
+    test_user = OmniAuth.config.mock_auth[:google_oauth2]
+    User.create(uid: test_user[:uid], full_name: test_user[:info][:name], email: test_user[:info][:email], avatar_url: test_user[:info][:image], user_role: UserRole.find_by(name: 'Officer'))
 
     visit '/'
     click_link 'Sign in'
@@ -27,7 +29,8 @@ RSpec.describe 'Tests search features and the existence of users' do
   it 'Searches for a user that exists currently and will visit their respective profile page' do
     test_user = Faker::Omniauth.google
     User.create(uid: test_user[:uid], full_name: test_user[:info][:name], email: test_user[:info][:email], avatar_url: test_user[:info][:image], user_role: UserRole.find_by(name: 'User'))
-    test_user = OmniAuth.config.mock_auth[:google_oauth2]
+    test_user2 = OmniAuth.config.mock_auth[:google_oauth2]
+    User.create(uid: test_user2[:uid], full_name: test_user2[:info][:name], email: test_user2[:info][:email], avatar_url: test_user2[:info][:image], user_role: UserRole.find_by(name: 'Officer'))
 
     visit '/'
     click_link 'Sign in'
@@ -47,7 +50,8 @@ RSpec.describe 'Tests search features and the existence of users' do
   it 'Searches for a user that does not exist currently' do
     test_user = Faker::Omniauth.google
     User.create(uid: test_user[:uid], full_name: test_user[:info][:name], email: test_user[:info][:email], avatar_url: test_user[:info][:image], user_role: UserRole.find_by(name: 'User'))
-    # test_user = OmniAuth.config.mock_auth[:google_oauth2]
+    test_user = OmniAuth.config.mock_auth[:google_oauth2]
+    User.create(uid: test_user[:uid], full_name: test_user[:info][:name], email: test_user[:info][:email], avatar_url: test_user[:info][:image], user_role: UserRole.find_by(name: 'Officer'))
 
     visit '/'
     click_link 'Sign in'
