@@ -80,7 +80,7 @@ class UsersController < ApplicationController
 
   # Searches for user by name
   def search
-    @users = User.where("full_name ilike ?", "%" + params[:query].strip + "%")
+    @users = User.where('full_name ilike ?', "%#{params[:query].strip}%")
     if @users.length.zero?
       flash[:notice] = "#{params[:query]} not found"
       redirect_to users_path

@@ -15,7 +15,7 @@ RSpec.describe 'User Deletion feature' do
     click_link 'User Index Page'
 
     user = User.find_by(full_name: 'Lucas Campbell')
-    user.user_role = UserRole.find_by(name: "User")
+    user.user_role = UserRole.find_by(name: 'User')
     user.save
 
     click_link 'Jane Doe'
@@ -26,13 +26,13 @@ RSpec.describe 'User Deletion feature' do
     click_link 'Homepage'
 
     user = User.find_by(full_name: 'Lucas Campbell')
-    user.user_role = UserRole.find_by(name: "Officer")
+    user.user_role = UserRole.find_by(name: 'Officer')
     user.save
 
     click_link 'User Index Page'
 
     user = User.find_by(full_name: 'Lucas Campbell')
-    user.user_role = UserRole.find_by(name: "User")
+    user.user_role = UserRole.find_by(name: 'User')
     user.save
 
     click_link 'Lucas Campbell'

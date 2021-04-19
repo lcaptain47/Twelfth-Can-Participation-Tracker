@@ -151,7 +151,7 @@ RSpec.describe 'Tests the user promotion feature' do
     click_link 'User Index Page'
 
     user = User.find_by(full_name: 'Lucas Campbell')
-    user.user_role = UserRole.find_by(name: "User")
+    user.user_role = UserRole.find_by(name: 'User')
     user.save
 
     expect(page).to have_content('John Doe')
@@ -175,7 +175,7 @@ RSpec.describe 'Tests the user promotion feature' do
     click_link 'User Index Page'
 
     user = User.find_by(full_name: 'Lucas Campbell')
-    user.user_role = UserRole.find_by(name: "User")
+    user.user_role = UserRole.find_by(name: 'User')
     user.save
 
     expect(page).to have_content('James Doe')
@@ -199,7 +199,7 @@ RSpec.describe 'Tests the user promotion feature' do
     click_link 'User Index Page'
 
     user = User.find_by(full_name: 'Lucas Campbell')
-    user.user_role = UserRole.find_by(name: "User")
+    user.user_role = UserRole.find_by(name: 'User')
     user.save
 
     expect(page).to have_content('Jonathan Doe')
