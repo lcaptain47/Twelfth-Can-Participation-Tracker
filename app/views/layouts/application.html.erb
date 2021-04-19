@@ -23,12 +23,12 @@
         <li class="nav-item active">
           <%= link_to "Tutorials", tutorial_page_path, class: "nav-link"%>
         </li>
-        <li class="nav-item active">
-          <%= link_to "User Index Page", users_path, class: "nav-link"%>
-        </li>
         <% if current_user.user_role.can_create %>
           <li class="nav-item active">
             <%= link_to "New Event", new_event_path, class: "nav-link" %>
+          </li>
+          <li class="nav-item active">
+            <%= link_to "User Index Page", users_path, class: "nav-link"%>
           </li>
         <% end %>
         <li class="nav-item active">
