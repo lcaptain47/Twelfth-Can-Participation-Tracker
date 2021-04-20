@@ -144,11 +144,16 @@ RSpec.describe 'Tests the user promotion feature' do
     User.create(uid: test_user[:uid], full_name: 'John Doe', email: test_user[:info][:email], avatar_url: test_user[:info][:image], user_role: UserRole.find_by(name: 'User'))
 
     test_user = OmniAuth.config.mock_auth[:google_oauth2]
-    User.create(uid: test_user[:uid], full_name: test_user[:info][:name], email: test_user[:info][:email], avatar_url: test_user[:info][:image], user_role: UserRole.find_by(name: 'User'))
+    User.create(uid: test_user[:uid], full_name: test_user[:info][:name], email: test_user[:info][:email], avatar_url: test_user[:info][:image], user_role: UserRole.find_by(name: 'Officer'))
 
     visit '/'
     click_link 'Sign in'
     click_link 'User Index Page'
+
+    user = User.find_by(full_name: 'Lucas Campbell')
+    user.user_role = UserRole.find_by(name: 'User')
+    user.save
+
     expect(page).to have_content('John Doe')
     click_link 'John Doe'
     expect(page).to have_content('John Doe')
@@ -163,11 +168,16 @@ RSpec.describe 'Tests the user promotion feature' do
     User.create(uid: test_user[:uid], full_name: 'James Doe', email: test_user[:info][:email], avatar_url: test_user[:info][:image], user_role: UserRole.find_by(name: 'Officer'))
 
     test_user = OmniAuth.config.mock_auth[:google_oauth2]
-    User.create(uid: test_user[:uid], full_name: test_user[:info][:name], email: test_user[:info][:email], avatar_url: test_user[:info][:image], user_role: UserRole.find_by(name: 'User'))
+    User.create(uid: test_user[:uid], full_name: test_user[:info][:name], email: test_user[:info][:email], avatar_url: test_user[:info][:image], user_role: UserRole.find_by(name: 'Officer'))
 
     visit '/'
     click_link 'Sign in'
     click_link 'User Index Page'
+
+    user = User.find_by(full_name: 'Lucas Campbell')
+    user.user_role = UserRole.find_by(name: 'User')
+    user.save
+
     expect(page).to have_content('James Doe')
     click_link 'James Doe'
     expect(page).to have_content('James Doe')
@@ -182,11 +192,16 @@ RSpec.describe 'Tests the user promotion feature' do
     User.create(uid: test_user[:uid], full_name: 'Jonathan Doe', email: test_user[:info][:email], avatar_url: test_user[:info][:image], user_role: UserRole.find_by(name: 'President'))
 
     test_user = OmniAuth.config.mock_auth[:google_oauth2]
-    User.create(uid: test_user[:uid], full_name: test_user[:info][:name], email: test_user[:info][:email], avatar_url: test_user[:info][:image], user_role: UserRole.find_by(name: 'User'))
+    User.create(uid: test_user[:uid], full_name: test_user[:info][:name], email: test_user[:info][:email], avatar_url: test_user[:info][:image], user_role: UserRole.find_by(name: 'Officer'))
 
     visit '/'
     click_link 'Sign in'
     click_link 'User Index Page'
+
+    user = User.find_by(full_name: 'Lucas Campbell')
+    user.user_role = UserRole.find_by(name: 'User')
+    user.save
+
     expect(page).to have_content('Jonathan Doe')
     click_link 'Jonathan Doe'
     expect(page).to have_content('Jonathan Doe')

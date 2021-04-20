@@ -5,18 +5,36 @@ require 'rails_helper'
 RSpec.describe 'User Deletion feature' do
   it 'does not show the user delete button or system wipe for anyone who are not able to delete users' do
     test_user = Faker::Omniauth.google
-    User.create(uid: test_user[:uid], full_name: 'Jane Doe', email: test_user[:info][:email], avatar_url: test_user[:info][:image], user_role: UserRole.find_by(name: 'User'))
+    User.create(uid: test_user[:uid], full_name: 'Jane Doe', email: test_user[:info][:email], avatar_url: test_user[:info][:image], user_role: UserRole.find_by(name: 'Officer'))
+
+    test_user = OmniAuth.config.mock_auth[:google_oauth2]
+    User.create(uid: test_user[:uid], full_name: test_user[:info][:name], email: test_user[:info][:email], avatar_url: test_user[:info][:image], user_role: UserRole.find_by(name: 'Officer'))
 
     visit '/'
     click_link 'Sign in'
     click_link 'User Index Page'
+
+    user = User.find_by(full_name: 'Lucas Campbell')
+    user.user_role = UserRole.find_by(name: 'User')
+    user.save
+
     click_link 'Jane Doe'
 
     expect(page).not_to have_content('Delete User')
     expect(page).not_to have_content('System Wipe')
 
     click_link 'Homepage'
+
+    user = User.find_by(full_name: 'Lucas Campbell')
+    user.user_role = UserRole.find_by(name: 'Officer')
+    user.save
+
     click_link 'User Index Page'
+
+    user = User.find_by(full_name: 'Lucas Campbell')
+    user.user_role = UserRole.find_by(name: 'User')
+    user.save
+
     click_link 'Lucas Campbell'
 
     expect(page).not_to have_content('Delete User')

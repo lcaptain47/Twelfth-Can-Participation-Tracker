@@ -71,11 +71,16 @@ class UsersController < ApplicationController
     redirect_to user_path(user)
   end
 
-  def search_page; end
+  def search_page
+    return if current_user.user_role.can_create
+
+    flash[:notice] = 'You are not allowed to access this page'
+    redirect_to root_path
+  end
 
   # Searches for user by name
   def search
-    @users = User.where(full_name: params[:query].strip)
+    @users = User.where('full_name ilike ?', "%#{params[:query].strip}%")
     if @users.length.zero?
       flash[:notice] = "#{params[:query]} not found"
       redirect_to users_path
