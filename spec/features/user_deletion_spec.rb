@@ -29,6 +29,8 @@ RSpec.describe 'User Deletion feature' do
     user.user_role = UserRole.find_by(name: 'Officer')
     user.save
 
+    sleep 5
+
     click_link 'User Index Page'
 
     user = User.find_by(full_name: 'Lucas Campbell')
