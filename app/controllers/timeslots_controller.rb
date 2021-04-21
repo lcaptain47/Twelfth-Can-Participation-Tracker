@@ -174,7 +174,7 @@ class TimeslotsController < ApplicationController
 
       input_role = role_name.to_s
 
-      while time < end_time && time + (count * 60) < end_time
+      while time < end_time && time + (count * 60) <= end_time
 
         timeslot = Timeslot.new
         timeslot.time = time

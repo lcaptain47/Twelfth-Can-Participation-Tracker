@@ -72,7 +72,7 @@ RSpec.describe 'Tests the user priviledges feature' do
     fill_in 'timeslot_count', with: 60
     select '04', from: 'timeslot_start_time_4i'
     select '00', from: 'timeslot_start_time_5i'
-    select '04', from: 'timeslot_end_time_4i'
+    select '05', from: 'timeslot_end_time_4i'
     select '00', from: 'timeslot_end_time_5i'
     click_on 'Create Timeslot'
     expect(page).to have_content('4:00 am')
