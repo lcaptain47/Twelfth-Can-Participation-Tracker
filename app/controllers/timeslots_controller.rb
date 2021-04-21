@@ -35,8 +35,8 @@ class TimeslotsController < ApplicationController
 
     # Redirects to new form if count is not provided and if start time is larger than end time
     # Creates Timeslot objects otherwise
-    if time > end_time || count < 10
-      flash[:notice] = 'You cannot use an end time smaller than your start time'
+    if time >= end_time || count < 10
+      flash[:notice] = 'You cannot use an end time smaller than  or equal to your start time'
       redirect_to new_timeslot_path(event_id: params[:timeslot][:event_id])
     else
       event = Event.find(params[:timeslot][:event_id])
@@ -174,7 +174,7 @@ class TimeslotsController < ApplicationController
 
       input_role = role_name.to_s
 
-      while time <= end_time
+      while time < end_time && time + (count * 60) <= end_time
 
         timeslot = Timeslot.new
         timeslot.time = time

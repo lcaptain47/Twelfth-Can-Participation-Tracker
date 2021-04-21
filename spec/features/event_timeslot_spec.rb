@@ -38,7 +38,7 @@ RSpec.describe 'Tests the new event and timeslot system' do
     select '06', from: 'timeslot_end_time_4i'
     select '00', from: 'timeslot_end_time_5i'
     click_on 'Create Timeslot'
-    expect(page).to have_content('Claim', count: 27)
+    expect(page).to have_content('Claim', count: 18)
   end
 
   it 'Does not let user use a smaller end time and bigger start time' do
@@ -55,6 +55,6 @@ RSpec.describe 'Tests the new event and timeslot system' do
     select '04', from: 'timeslot_end_time_4i'
     select '00', from: 'timeslot_end_time_5i'
     click_on 'Create Timeslot'
-    expect(page).to have_content('You cannot use an end time smaller than your start time')
+    expect(page).to have_content('You cannot use an end time smaller than or equal to your start time')
   end
 end
