@@ -37,6 +37,7 @@ This includes a guide on how to run the application locally and how to deploy it
   * Basic start up 
     1. Clone repository
     2. In root folder, run: ```rails db:migrate``` and ```rails db:seed```
+    4. You will also need to run ```yarn add bootstrap@4.6.0 jquery popper.js```. You only need to do this locally and not for deployment.
     3. Run ```rails s``` to start the server
   * How to create a user of any role
     1. Log into the application via a google account
