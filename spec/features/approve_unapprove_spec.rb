@@ -24,6 +24,7 @@ RSpec.describe 'Tests the approve and unapprove features' do
     click_link 'Test'
     click_link 'Unapprove'
     click_link test_user[:info][:name]
+    sleep 5
     expect(page).to have_content('Total Unapproved Hours: 1.0')
     expect(page).to have_content('Total Volunteer Hours: 0.0')
   end
