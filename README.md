@@ -33,6 +33,7 @@ This includes a guide on how to run the application locally and how to deploy it
     * Faker
     * Webdrivers
     * Tzinfo-data
+* Demo of below: https://youtu.be/QIT3BsR8S5M
 * How to run
   * Basic start up 
     1. Clone repository
@@ -61,9 +62,11 @@ This includes a guide on how to run the application locally and how to deploy it
     2. Run ```heroku run rails db:migrate -a app-name``` and then ```heroku run rails db:seed -a app-name```
     3. If you need a list of apps under your heroku account run: ```heroku apps```
   * Troubleshooting
+    * Once again, if you are having issues with Google OAuth, contact lcaptain47
     * If you cannot connect to the database on Heroku, make sure that the application has a postgres server, as sometimes Heroku doesn't add one.
     * If you are getting issues with installing mimemagic (a gem), try running ```bundle update mimemagic``` before deployment 
-* CI/CD Presses
+* CI/CD Process. 
+  * Demo: https://youtu.be/jAczKs57cro
   * The application currently supports CI/CD via GitHub Actions and Heroku. 
   * CI
     * CI is done via GitHub Actions. The workflow in the .github folder runs under the following conditions:
