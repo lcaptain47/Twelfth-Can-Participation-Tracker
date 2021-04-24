@@ -63,3 +63,18 @@ This includes a guide on how to run the application locally and how to deploy it
   * Troubleshooting
     * If you cannot connect to the database on Heroku, make sure that the application has a postgres server, as sometimes Heroku doesn't add one.
     * If you are getting issues with installing mimemagic (a gem), try running ```bundle update mimemagic``` before deployment 
+* CI/CD Presses
+  * The application currently supports CI/CD via GitHub Actions and Heroku. 
+  * CI
+    * CI is done via GitHub Actions. The workflow in the .github folder runs under the following conditions:
+      * When a pull request to main is created
+      * When a successful push to main is made
+    * The workflow runs the entire testing suite, rubocop, brakeman, and simplecov. 
+    * The artifacts for these jobs can be found in the action once it has been run.
+  * CD
+    * CD is done via Heroku and is simple to configure
+      1. Create a pipeline at Heroku.
+      2. Connect it to the GitHub repository.
+      3. Go into the pipeline settings and allow review apps to be created automatically when a pull request is made.
+    * More instructions can be found here: https://devcenter.heroku.com/articles/pipelines
+    
