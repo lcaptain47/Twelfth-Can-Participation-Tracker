@@ -58,9 +58,8 @@ This includes a guide on how to run the application locally and how to deploy it
   * The application includes a proc file which runs ```rails db:migrate``` and ```rails db:seed``` automatically
   * If they do not run, do the following
     1. Install the Heroku CLI: https://devcenter.heroku.com/articles/heroku-cli#download-and-install
-    2. Run ```heroku run rails c -a app-name-here```
-    3. Run ```rails db:migrate``` and then ```rails db:seed```
-    4. If you need a list of apps under your heroku account run: ```heroku apps```
+    2. Run ```heroku run rails db:migrate -a app-name``` and then ```heroku run rails db:seed -a app-name```
+    3. If you need a list of apps under your heroku account run: ```heroku apps```
   * Troubleshooting
     * If you cannot connect to the database on Heroku, make sure that the application has a postgres server, as sometimes Heroku doesn't add one.
     * If you are getting issues with installing mimemagic (a gem), try running ```bundle update mimemagic``` before deployment 
